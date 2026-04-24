@@ -1,0 +1,116 @@
+﻿<h1 class="firstHeading">LoadGoogleMapTiles</h1>
+<p>&#160;</p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Return"><span class="tocnumber">4</span> <span class="toctext">Return</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Remark"><span class="tocnumber">6</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Included"><span class="tocnumber">8</span> <span class="toctext">Header to Included</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Reference"><span class="tocnumber">9</span> <span class="toctext">Reference</span></a></li>
+</ul>
+</div>
+<h2><a name="Description" id="Description"></a><span class="mw-headline">Description</span></h2>
+<p>retrieve google map image</p>
+<h2><a name="Syntax" id="Syntax"></a><span class="mw-headline">Syntax</span></h2>
+<pre class="oc" style="font-family:monospace;">
+LPVOID LoadGoogleMapTiles<span style="color: #000000;">(</span> <span style="color: #0000ff;">double</span> dMinLongitude, <span style="color: #0000ff;">double</span> dMaxLongitude, <span style="color: #0000ff;">double</span> dMinLatitude, <span style="color: #0000ff;">double</span> dMaxLatitude, <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nZoomLevel, LPCSTR key, string <span style="color: #000040;">*</span> pstrCopyright, LPCSTR request_header, LPCSTR request_data, <span style="color: #0000ff;">bool</span> bConvertToWGS84, LPCSTR session_token <span style="color: #000000;">)</span>
+</pre>
+<h2><a name="Parameters" id="Parameters"></a><span class="mw-headline">Parameters</span></h2>
+<dl>
+<dt>dMinLongitude</dt>
+<dd>[input] minimum longitude</dd>
+</dl>
+<dl>
+<dt>dMaxLongitude</dt>
+<dd>[input] maximum longitude</dd>
+</dl>
+<dl>
+<dt>dMinLatitude</dt>
+<dd>[input] minimum latitude</dd>
+</dl>
+<dl>
+<dt>dMaxLatitude</dt>
+<dd>[input] maximum latitude</dd>
+</dl>
+<dl>
+<dt>nZoomLevel</dt>
+<dd>[input] zoom level</dd>
+</dl>
+<dl>
+<dt>key</dt>
+<dd>[input] google map API key</dd>
+</dl>
+<dl>
+<dt>pstrCopyright</dt>
+<dd>[output] Copyright</dd>
+</dl>
+<dl>
+<dt>request_header</dt>
+<dd>[input] referrer URL, can be NULL</dd>
+</dl>
+<dl>
+<dt>request_data</dt>
+<dd>[input] display options, include mapType, layerTypes... etc</dd>
+</dl>
+<dl>
+<dt>bConvertToWGS84</dt>
+<dd>[input] if true, convert to the World Geodetic System WGS84 standard</dd>
+</dl>
+<dl>
+<dt>session_token</dt>
+<dd>[input] NULL, reserved</dd>
+</dl>
+<h2><a name="Return" id="Return"></a><span class="mw-headline">Return</span></h2>
+<p>return pointer to image matrix for success, otherwise return NULL</p>
+<h2><a name="Examples" id="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b></p>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>Origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>..<span style="color: #000040;">/</span>OriginLab<span style="color: #000040;">/</span>opencv_origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>OImage.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+
+<span style="color: #0000ff;">void</span> LoadGoogleMapTiles_ex<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        <span style="color: #0000ff;">double</span> dMinLongitude <span style="color: #000080;">=</span> <span style="color: #0000dd;">110</span>;
+        <span style="color: #0000ff;">double</span> dMaxLongitude <span style="color: #000080;">=</span> <span style="color: #0000dd;">120</span>;
+        <span style="color: #0000ff;">double</span> dMinLatitude <span style="color: #000080;">=</span> <span style="color: #0000dd;">17</span>;
+        <span style="color: #0000ff;">double</span> dMaxLatitude <span style="color: #000080;">=</span> <span style="color: #0000dd;">25</span>;
+        <span style="color: #0000ff;">int</span> nZoomLevel <span style="color: #000080;">=</span> <span style="color: #0000dd;">6</span>;
+        
+        LPCSTR key;<span style="color: #008000;">//set api key here</span>
+        LPCSTR request_header;<span style="color: #008000;">//set referrer URL here</span>
+        
+        string request_data;
+        request_data.<span style="color: #000000;">Format</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"{<span style="color: #666666; font-weight: bold;">\"</span>mapType<span style="color: #666666; font-weight: bold;">\"</span>:<span style="color: #666666; font-weight: bold;">\"</span>satellite<span style="color: #666666; font-weight: bold;">\"</span>, <span style="color: #666666; font-weight: bold;">\"</span>layerTypes<span style="color: #666666; font-weight: bold;">\"</span>:[<span style="color: #666666; font-weight: bold;">\"</span>layerRoadmap<span style="color: #666666; font-weight: bold;">\"</span>]}"</span><span style="color: #000000;">)</span>;
+        
+        string strCopyright;
+        CvMat<span style="color: #000040;">*</span> ptrMat <span style="color: #000080;">=</span> <span style="color: #000000;">(</span>CvMat<span style="color: #000040;">*</span><span style="color: #000000;">)</span>LoadGoogleMapTiles<span style="color: #000000;">(</span>
+                dMinLongitude, dMaxLongitude, dMinLatitude, dMaxLatitude, nZoomLevel,
+                key, <span style="color: #000040;">&amp;</span>strCopyright, request_header, request_data, <span style="color: #0000ff;">false</span>, <span style="color: #0000ff;">NULL</span><span style="color: #000000;">)</span>;
+        <span style="color: #000000;">printf</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"Copyright: %s<span style="color: #666666; font-weight: bold;">\n</span>"</span>, strCopyright<span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>ptrMat<span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>
+                ocvMat mat;
+                mat.<span style="color: #000000;">SetFromMat</span><span style="color: #000000;">(</span>ptrMat, <span style="color: #0000ff;">false</span><span style="color: #000000;">)</span>;
+                ImagePage gp;
+                gp.<span style="color: #000000;">Create</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+                ImageLayer img;
+                img <span style="color: #000080;">=</span> gp.<span style="color: #000000;">Layers</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+                img.<span style="color: #000000;">SetMat</span><span style="color: #000000;">(</span>mat, <span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+        <span style="color: #000000;">}</span>
+<span style="color: #000000;">}</span>
+</pre>
+<p></p>
+<h2><a name="Remark" id="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h2><a name="See_Also" id="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<p><a href="../../OriginC/OriginC/LoadMapTiles(global_function).html" title="OriginC:LoadMapTiles(global function)">LoadMapTiles</a></p>
+<h2><a name="Header_to_Included" id="Header_to_Included"></a><span class="mw-headline">Header to Included</span></h2>
+<p>OImage.h</p>
+<h2><a name="Reference" id="Reference"></a><span class="mw-headline">Reference</span></h2>

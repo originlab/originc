@@ -1,0 +1,283 @@
+﻿<h1 class="firstHeading">List All Columns of Workbook in Grid Dialog</h1>
+<p>&#160;</p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Version_Info"><span class="tocnumber">1</span> <span class="toctext">Version Info</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Summary"><span class="tocnumber">2</span> <span class="toctext">Summary</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Make_a_Simple_Grid_Dialog"><span class="tocnumber">3</span> <span class="toctext">Make a Simple Grid Dialog</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#SimpleGridDlg.h"><span class="tocnumber">3.1</span> <span class="toctext">SimpleGridDlg.h</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#SimpleGridDlg.cpp"><span class="tocnumber">3.2</span> <span class="toctext">SimpleGridDlg.cpp</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#Find_All_Columns_in_Workbook_and_Show_in_Grid"><span class="tocnumber">4</span> <span class="toctext">Find All Columns in Workbook and Show in Grid</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="#mytest.c"><span class="tocnumber">4.1</span> <span class="toctext">mytest.c</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#To_Launch_The_Dialog"><span class="tocnumber">5</span> <span class="toctext">To Launch The Dialog</span></a></li>
+</ul>
+</div>
+<h2><a name="Version_Info" id="Version_Info"></a><span class="mw-headline">Version Info</span></h2>
+<p class="version">Minimum Origin Version Required: Origin 2022</p>
+<h2><a name="Summary" id="Summary"></a><span class="mw-headline">Summary</span></h2>
+<p>In this tutorial we show</p>
+<ol>
+<li>how to build a grid dialog</li>
+<li>how to get all columns in a workbook</li>
+<li>how to list columns attributes in grid</li>
+<li>how to use the selected column in grid to make a plot</li>
+</ol>
+<h2><a name="Make_a_Simple_Grid_Dialog" id="Make_a_Simple_Grid_Dialog"></a><span class="mw-headline">Make a Simple Grid Dialog</span></h2>
+<p>In this section, we show how to make <b>SimpleGridDlg.h</b> and <b>SimpleGridDlg.cpp</b> these two files to create a simple grid dialog.</p>
+<h3><a name="SimpleGridDlg.h" id="SimpleGridDlg.h"></a><span class="mw-headline">SimpleGridDlg.h</span></h3>
+<p>Open <b>Code Builder</b>, create <b>SimpleGridDlg.h</b>. You can set Location to User File Folder.</p>
+<pre class="oc" style="font-family:monospace;">
+#ifndef SIMPLE_GRID_DLG_H
+<span style="color: #0000ff;">#define</span> SIMPLE_GRID_DLG_H
+
+<span style="color: #0000ff;">class</span> SimpleGridDlg <span style="color: #000000;">:</span> <span style="color: #0000ff;">public</span> ResizeDialog
+<span style="color: #000000;">{</span>
+<span style="color: #0000ff;">public</span><span style="color: #000000;">:</span>
+        SimpleGridDlg<span style="color: #000000;">(</span>string strColHeaders, vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vstrContent, <span style="color: #0000ff;">bool</span> bByRow, string strDLG<span style="color: #000000;">)</span>;     
+        ~SimpleGridDlg<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;     
+        <span style="color: #0000ff;">int</span> DoModalEx<span style="color: #000000;">(</span>HWND hWndParent <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span><span style="color: #000000;">)</span>;
+        
+        <span style="color: #0000ff;">int</span> GetSelAfterOK<span style="color: #000000;">(</span>vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span><span style="color: #000040;">&amp;</span> vsSel<span style="color: #000000;">)</span>;
+        
+<span style="color: #0000ff;">protected</span><span style="color: #000000;">:</span>
+EVENTS_BEGIN
+        ON_INIT<span style="color: #000000;">(</span>OnInitDialog<span style="color: #000000;">)</span> 
+        ON_READY<span style="color: #000000;">(</span>OnReady<span style="color: #000000;">)</span>
+        ON_SIZE<span style="color: #000000;">(</span>OnDlgResize<span style="color: #000000;">)</span>
+        ON_GETMINMAXINFO<span style="color: #000000;">(</span>OnMinMaxInfo<span style="color: #000000;">)</span>
+        ON_OK<span style="color: #000000;">(</span>OnOK<span style="color: #000000;">)</span>
+
+EVENTS_END
+
+        <span style="color: #0000ff;">BOOL</span> OnInitDialog<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">BOOL</span> OnReady<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">BOOL</span> OnDlgResize<span style="color: #000000;">(</span><span style="color: #0000ff;">int</span> nType, <span style="color: #0000ff;">int</span> cx, <span style="color: #0000ff;">int</span> cy<span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">BOOL</span> OnOK<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+<span style="color: #0000ff;">private</span><span style="color: #000000;">:</span>
+        string                          m_strDlgName;
+        string                          m_strColHeaders;
+        vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span>          m_vstrContent;
+        <span style="color: #0000ff;">bool</span>                               m_bByRow;
+        GridListControl         m_list;
+<span style="color: #000000;">}</span>;
+
+<span style="color: #0000ff;">#endif</span> <span style="color: #008000;">//SIMPLE_GRID_DLG_H</span>
+</pre>
+<h3><a name="SimpleGridDlg.cpp" id="SimpleGridDlg.cpp"></a><span class="mw-headline">SimpleGridDlg.cpp</span></h3>
+<p>In <b>Code Builder</b>, create <b>SimpleGridDlg.cpp</b>. This file should be in the same folder as <b>SimpleGridDlg.h</b>.</p>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>Origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+
+<span style="color: #0000ff;">#pragma</span> labtalk<span style="color: #000000;">(</span><span style="color: #0000dd;">0</span><span style="color: #000000;">)</span> 
+
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>..\OriginLab\DialogEx.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #ff00ff;">"SimpleGridDlg.h"</span>
+<span style="color: #0000ff;">#define</span> STR_ODLG8_DLL GetAppPath<span style="color: #000000;">(</span><span style="color: #0000ff;">TRUE</span><span style="color: #000000;">)</span><span style="color: #000040;">+</span><span style="color: #ff00ff;">"<span style="color: #666666; font-weight: bold;">\\</span>OriginC<span style="color: #666666; font-weight: bold;">\\</span>OriginLab<span style="color: #666666; font-weight: bold;">\\</span>ODlg8.dll"</span>
+
+SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">SimpleGridDlg</span><span style="color: #000000;">(</span>string strColHeaders, vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vstrContent, <span style="color: #0000ff;">bool</span> bByRow, string strDLG<span style="color: #000000;">)</span> <span style="color: #000000;">:</span> ResizeDialog<span style="color: #000000;">(</span>IDD_GRIDLIST_DLG, STR_ODLG8_DLL<span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        m_strDlgName    <span style="color: #000080;">=</span> strDLG;
+        m_strColHeaders <span style="color: #000080;">=</span> strColHeaders;
+        m_vstrContent   <span style="color: #000080;">=</span> vstrContent;
+        m_bByRow                <span style="color: #000080;">=</span> bByRow;
+<span style="color: #000000;">}</span>
+        
+SimpleGridDlg<span style="color: #000000;">::</span>~SimpleGridDlg<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">int</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">DoModalEx</span><span style="color: #000000;">(</span>HWND hWndParent<span style="color: #008000; font-style: regular;">/* = NULL*/</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>             
+        InitMsgMap<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">int</span> nRet <span style="color: #000080;">=</span> ResizeDialog<span style="color: #000000;">::</span><span style="color: #000000;">DoModal</span><span style="color: #000000;">(</span>hWndParent<span style="color: #000000;">)</span>;             
+        <span style="color: #0000ff;">return</span> nRet;
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">int</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">GetSelAfterOK</span><span style="color: #000000;">(</span>vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span><span style="color: #000040;">&amp;</span> vsSel<span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        vsSel <span style="color: #000080;">=</span> m_vstrContent;
+        <span style="color: #0000ff;">return</span> vsSel.<span style="color: #000000;">GetSize</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">BOOL</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">OnInitDialog</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        ResizeDialog<span style="color: #000000;">::</span><span style="color: #000000;">OnInitDialog</span><span style="color: #000000;">(</span>IDC_LIST, m_strDlgName<span style="color: #000000;">)</span>;
+        Text <span style="color: #000080;">=</span> m_strDlgName;       
+        m_list.<span style="color: #000000;">Init</span><span style="color: #000000;">(</span>IDC_LIST, <span style="color: #000040;">*</span><span style="color: #0000ff;">this</span><span style="color: #000000;">)</span>;  
+        m_list.<span style="color: #000000;">SetEditable</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        m_list.<span style="color: #000000;">SetColHeader</span><span style="color: #000000;">(</span>m_strColHeaders<span style="color: #000000;">)</span>;    
+        
+        <span style="color: #0000ff;">int</span> nRow <span style="color: #000080;">=</span> m_vstrContent.<span style="color: #000000;">GetSize</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span><span style="color: #000040;">/</span>m_list.<span style="color: #000000;">GetNumCols</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        m_list.<span style="color: #000000;">SetRows</span><span style="color: #000000;">(</span>nRow<span style="color: #000000;">)</span>;
+        m_list.<span style="color: #000000;">SetTableValue</span><span style="color: #000000;">(</span>m_vstrContent, m_bByRow<span style="color: #000000;">)</span>;
+        m_list.<span style="color: #000000;">ResizeCols</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span>;
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">BOOL</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">OnReady</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        SetInitReady<span style="color: #000000;">(</span><span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span>;
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">BOOL</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">OnDlgResize</span><span style="color: #000000;">(</span><span style="color: #0000ff;">int</span> nType, <span style="color: #0000ff;">int</span> cx, <span style="color: #0000ff;">int</span> cy<span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>     
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span><span style="color: #000040;">!</span>IsInitReady<span style="color: #000000;">(</span><span style="color: #000000;">)</span><span style="color: #000000;">)</span>
+                <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span>;
+        
+        MoveControlsHelper      _temp<span style="color: #000000;">(</span><span style="color: #0000ff;">this</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">int</span> nGap <span style="color: #000080;">=</span> GetControlGap<span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        
+        RECT rrOK;
+        Button btnOK <span style="color: #000080;">=</span> GetItem<span style="color: #000000;">(</span>IDOK<span style="color: #000000;">)</span>;
+        GetControlClientRect<span style="color: #000000;">(</span>IDOK, rrOK<span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">int</span> nButtonHeight <span style="color: #000080;">=</span> RECT_HEIGHT<span style="color: #000000;">(</span>rrOK<span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">int</span> nButtonWidth <span style="color: #000080;">=</span> RECT_WIDTH<span style="color: #000000;">(</span>rrOK<span style="color: #000000;">)</span>;        
+        
+        RECT rList;
+        rList.<span style="color: #000000;">left</span> <span style="color: #000080;">=</span> nGap;
+        rList.<span style="color: #000000;">top</span> <span style="color: #000080;">=</span> nGap;
+        rList.<span style="color: #000000;">right</span> <span style="color: #000080;">=</span> cx <span style="color: #000040;">-</span> nGap;
+        rList.<span style="color: #000000;">bottom</span> <span style="color: #000080;">=</span> cy <span style="color: #000040;">-</span> <span style="color: #0000dd;">2</span> <span style="color: #000040;">*</span> nGap <span style="color: #000040;">-</span> nButtonHeight;
+        
+        Control ctrlList <span style="color: #000080;">=</span> GetItem<span style="color: #000000;">(</span>IDC_LIST<span style="color: #000000;">)</span>;
+        MoveControl<span style="color: #000000;">(</span>ctrlList, rList<span style="color: #000000;">)</span>;
+        
+        RECT rrCancel;
+        rrCancel.<span style="color: #000000;">right</span> <span style="color: #000080;">=</span> cx <span style="color: #000040;">-</span> nGap;
+        rrCancel.<span style="color: #000000;">left</span> <span style="color: #000080;">=</span> rrCancel.<span style="color: #000000;">right</span> <span style="color: #000040;">-</span> nButtonWidth;
+        rrCancel.<span style="color: #000000;">bottom</span> <span style="color: #000080;">=</span> cy <span style="color: #000040;">-</span> nGap;
+        rrCancel.<span style="color: #000000;">top</span> <span style="color: #000080;">=</span> rrCancel.<span style="color: #000000;">bottom</span> <span style="color: #000040;">-</span> nButtonHeight;
+        MoveControl<span style="color: #000000;">(</span>GetItem<span style="color: #000000;">(</span>IDCANCEL<span style="color: #000000;">)</span>, rrCancel<span style="color: #000000;">)</span>;
+        
+        rrOK <span style="color: #000080;">=</span> rrCancel;
+        rrOK.<span style="color: #000000;">right</span> <span style="color: #000080;">=</span> rrCancel.<span style="color: #000000;">left</span> <span style="color: #000040;">-</span> nGap;
+        rrOK.<span style="color: #000000;">left</span> <span style="color: #000080;">=</span> rrOK.<span style="color: #000000;">right</span> <span style="color: #000040;">-</span> nButtonWidth;
+        MoveControl<span style="color: #000000;">(</span>GetItem<span style="color: #000000;">(</span>IDOK<span style="color: #000000;">)</span>, rrOK<span style="color: #000000;">)</span>;   
+        <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">true</span>;
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">BOOL</span> SimpleGridDlg<span style="color: #000000;">::</span><span style="color: #000000;">OnOK</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        <span style="color: #0000ff;">return</span> m_list.<span style="color: #000000;">GetRowValues</span><span style="color: #000000;">(</span>m_list.<span style="color: #000000;">GetSelectedRow</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>, m_vstrContent<span style="color: #000000;">)</span> <span style="color: #000080;">==</span> <span style="color: #0000ff;">true</span>;        
+<span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">bool</span> open_simple_grid_dlg<span style="color: #000000;">(</span>string strColHeaders, vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span><span style="color: #000040;">&amp;</span> vstrContent, <span style="color: #0000ff;">bool</span> bByRow, string strDLG<span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        SimpleGridDlg mydlg<span style="color: #000000;">(</span>strColHeaders, vstrContent, bByRow, strDLG<span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>mydlg.<span style="color: #000000;">DoModalEx</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span> <span style="color: #000080;">==</span> IDOK<span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>
+                <span style="color: #0000ff;">int</span> nRet <span style="color: #000080;">=</span> mydlg.<span style="color: #000000;">GetSelAfterOK</span><span style="color: #000000;">(</span>vstrContent<span style="color: #000000;">)</span>;
+                <span style="color: #0000ff;">return</span> nRet <span style="color: #000080;">&gt;</span> <span style="color: #0000dd;">0</span>;
+        <span style="color: #000000;">}</span>     
+        <span style="color: #0000ff;">return</span> <span style="color: #0000ff;">false</span>;
+<span style="color: #000000;">}</span>
+</pre>
+<table class="note">
+<tr>
+<td><b>Note:</b> This dialog use the built-in Resource DLL ODlg8.dll. You can also use another Resource DLL. To learn more: <a href="../../OriginC/OCGuide/Simple_Hello_World_Dialog.html#Create_Resource_DLL_in_VC" title="OCGuide:Simple Hello World Dialog">read here</a>.</td>
+</tr>
+</table>
+<h2><a name="Find_All_Columns_in_Workbook_and_Show_in_Grid" id="Find_All_Columns_in_Workbook_and_Show_in_Grid"></a><span class="mw-headline">Find All Columns in Workbook and Show in Grid</span></h2>
+<p>In this section we show how to get all columns in a workbook and display these columns' attributes in grid.</p>
+<h3><a name="mytest.c" id="mytest.c"></a><span class="mw-headline">mytest.c</span></h3>
+<p>In <b>Code Builder</b>, create <b>mytest.c</b>. This file should be in the same folder as <b>SimpleGridDlg.h</b> and <b>SimpleGridDlg.cpp</b>.</p>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>Origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>xfutils.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+
+<span style="color: #0000ff;">typedef</span> <span style="color: #0000ff;">bool</span> <span style="color: #000000;">(</span><span style="color: #000040;">*</span>PFN_SIMPLE_GRID_DLG<span style="color: #000000;">)</span><span style="color: #000000;">(</span>string strColHeaders, vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span><span style="color: #000040;">&amp;</span> vstrContent, <span style="color: #0000ff;">bool</span> bByRow, string strDLG<span style="color: #000000;">)</span>;
+
+<span style="color: #0000ff;">#define</span>    _GET_COL_INFO<span style="color: #000000;">(</span>_TYPE, _ISNAME, _ROW<span style="color: #000000;">)</span>                           \
+                <span style="color: #000000;">{</span>                                                                                             \
+                        vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vsInfo;                                          \
+                        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>_ISNAME<span style="color: #000000;">)</span>                                                                      \
+                                qr.<span style="color: #000000;">GetNames</span><span style="color: #000000;">(</span>vsInfo, _TYPE<span style="color: #000000;">)</span>;                              \
+                        <span style="color: #0000ff;">else</span>                                                                               \
+                                qr.<span style="color: #000000;">GetColInfo</span><span style="color: #000000;">(</span>vsInfo, _TYPE, _ROW<span style="color: #000000;">)</span>;              \
+                        vstrContent.<span style="color: #000000;">Append</span><span style="color: #000000;">(</span>vsInfo<span style="color: #000000;">)</span>;                                      \
+                <span style="color: #000000;">}</span>
+
+<span style="color: #0000ff;">void</span> list_current_book_col<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        WorksheetPage wp <span style="color: #000080;">=</span> Project.<span style="color: #000000;">Pages</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span><span style="color: #000040;">!</span>wp<span style="color: #000000;">)</span>
+                <span style="color: #0000ff;">return</span>;
+        
+        <span style="color: #0000ff;">bool</span> bByRow <span style="color: #000080;">=</span> <span style="color: #0000ff;">false</span>;
+        string strDLG <span style="color: #000080;">=</span> <span style="color: #ff00ff;">"Select a Column in "</span> <span style="color: #000040;">+</span> wp.<span style="color: #000000;">GetName</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        string strHeaders <span style="color: #000080;">=</span> <span style="color: #ff00ff;">"Sheet|Col|Type|LName|Value|U1|U2|Range"</span>;<span style="color: #008000;">//range string will be used to construct the column</span>
+        vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vstrContent;
+        
+        string strQuery;
+        strQuery.<span style="color: #000000;">Format</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"Select Column from %s"</span>, wp.<span style="color: #000000;">GetName</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span><span style="color: #000000;">)</span>;
+        QueryResult qr;
+        <span style="color: #0000ff;">int</span> nFound <span style="color: #000080;">=</span> qr.<span style="color: #000000;">Build</span><span style="color: #000000;">(</span>strQuery<span style="color: #000000;">)</span>;
+        
+        <span style="color: #008000;">//follow the order in strHeaders to get the column attributes</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTNAME_SHEET, <span style="color: #0000ff;">true</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTNAME_SNAME, <span style="color: #0000ff;">true</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTCOL_TYPE, <span style="color: #0000ff;">false</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTNAME_LNAME, <span style="color: #0000ff;">true</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTCOL_VALUE, <span style="color: #0000ff;">false</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTCOL_UDL, <span style="color: #0000ff;">false</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTCOL_UDL, <span style="color: #0000ff;">false</span>, <span style="color: #0000dd;">1</span><span style="color: #000000;">)</span>
+        _GET_COL_INFO<span style="color: #000000;">(</span>QUERYRESULTNAME_RANGE, <span style="color: #0000ff;">true</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">)</span>
+        
+        <span style="color: #008000;">//this file should be in the same folder with SimpleGridDlg.cpp/h</span>
+        string strFile <span style="color: #000080;">=</span> GetFilePath<span style="color: #000000;">(</span>__FILE__<span style="color: #000000;">)</span> <span style="color: #000040;">+</span> <span style="color: #ff00ff;">"SimpleGridDlg.cpp"</span>;
+        PFN_SIMPLE_GRID_DLG pfn <span style="color: #000080;">=</span> Project.<span style="color: #000000;">FindFunction</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"open_simple_grid_dlg"</span>, strFile, <span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+        
+        <span style="color: #008000;">//display vstrContent in a simple grid dialog</span>
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span> pfn <span style="color: #000040;">&amp;&amp;</span> pfn<span style="color: #000000;">(</span>strHeaders, vstrContent, bByRow, strDLG<span style="color: #000000;">)</span> <span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>
+                Column col;
+                <span style="color: #0000ff;">int</span> nRangeCol <span style="color: #000080;">=</span> <span style="color: #0000dd;">7</span>;
+                <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>vstrContent.<span style="color: #000000;">GetSize</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span> <span style="color: #000080;">&gt;</span> nRangeCol<span style="color: #000000;">)</span>
+                        okxf_resolve_string_get_origin_object<span style="color: #000000;">(</span>vstrContent<span style="color: #000000;">[</span>nRangeCol<span style="color: #000000;">]</span>, <span style="color: #000040;">&amp;</span>col<span style="color: #000000;">)</span>;
+                
+                <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>col<span style="color: #000000;">)</span>
+                <span style="color: #000000;">{</span>
+                        string strCol;
+                        col.<span style="color: #000000;">GetRangeString</span><span style="color: #000000;">(</span>strCol<span style="color: #000000;">)</span>;
+                        <span style="color: #000000;">printf</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"Column: %s<span style="color: #666666; font-weight: bold;">\n</span>"</span>, strCol<span style="color: #000000;">)</span>;
+                        
+                        <span style="color: #008000;">//use the seleced column to make xy plot</span>
+                        string strLT;
+                        strLT.<span style="color: #000000;">Format</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"plotxy iy:=%s"</span>, strCol<span style="color: #000000;">)</span>;
+                        LT_execute<span style="color: #000000;">(</span>strLT<span style="color: #000000;">)</span>;
+                        <span style="color: #0000ff;">return</span>;
+                <span style="color: #000000;">}</span>
+        <span style="color: #000000;">}</span>
+        out_str<span style="color: #000000;">(</span><span style="color: #ff00ff;">"error or no column selected"</span><span style="color: #000000;">)</span>;
+<span style="color: #000000;">}</span>
+</pre>
+<table class="note">
+<tr>
+<td><b>Note:</b>
+<ol>
+<li>Origin Class <b>QueryResult</b> is used to search origin object in project. To learn how to query, read <a href="../../OriginC/OriginC/QueryResult-Build.html" title="OriginC:QueryResult-Build">this page</a>.</li>
+<li>Function <a href="../../OriginC/OriginC/QueryResult-GetNames.html" title="OriginC:QueryResult-GetNames"><b>QueryResult::GetNames()</b></a> and <a href="../../OriginC/OriginC/QueryResult-GetColInfo.html" title="OriginC:QueryResult-GetColInfo"><b>QueryResult::GetColInfo()</b></a> are used to get different properties of the found objects. These properties are stored in column order in string array <b>vstrContent</b>, so the value of variable <b>bByRow</b> is false.</li>
+<li>Function <b>open_simple_grid_dlg</b> is used to receive the column names and content to show in the grid dialog. This function is in <b>SimpleGridDlg.cpp</b>. It's called by <a href="../../OriginC/OriginC/Project-FindFunction.html" title="OriginC:Project-FindFunction"><b>Project::FindFunction()</b></a>.</li>
+<li>X-Function <a class="external text" href="https://www.originlab.com/doc/en/X-Function/ref/plotxy" target="_blank"><b>plotxy</b></a> is used to plot with the selected column.</li>
+</ol>
+</td>
+</tr>
+</table>
+<h2><a name="To_Launch_The_Dialog" id="To_Launch_The_Dialog"></a><span class="mw-headline">To Launch The Dialog</span></h2>
+<ol>
+<li>Add <b>mytest.c</b> to workspace and build</li>
+<li>Run function <b>list_current_book_col</b></li>
+<li>The dialog should be:<br />
+<a class="image"><img alt="LIST COL IN GRID.png" src="../images/List_All_Columns_of_Workbook_in_Grid_Dialog/LIST_COL_IN_GRID.png" width="687" /></a></li>
+<li>Select a row and click OK, the dialog will close and it will make a plot with corresponding column of the selected row</li>
+</ol>

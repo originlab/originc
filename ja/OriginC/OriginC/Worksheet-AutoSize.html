@@ -1,0 +1,47 @@
+﻿<h1 class="firstHeading">Worksheet::AutoSize</h1>
+<p><span class="OIndex" style="display:none">AutoSize</span></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>目次</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description"><span class="tocnumber">1</span> <span class="toctext">概要</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">構文</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Parameters"><span class="tocnumber">3</span> <span class="toctext">パラメータ</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Return"><span class="tocnumber">4</span> <span class="toctext">戻り値</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">サンプル</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Remark"><span class="tocnumber">6</span> <span class="toctext">備考</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">関連情報</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Include"><span class="tocnumber">8</span> <span class="toctext">含めるヘッダ</span></a></li>
+</ul>
+</div>
+<h2><a name="Description" id="Description"></a><span class="mw-headline">概要</span></h2>
+<p>ワークシートのサイズを自動設定する</p>
+<h2><a name="Syntax" id="Syntax"></a><span class="mw-headline">構文</span></h2>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">BOOL</span> AutoSize<span style="color: #000000;">(</span> <span style="color: #0000ff;">BOOL</span> bUndo <span style="color: #000080;">=</span> <span style="color: #0000ff;">false</span>, DWORD dwCntrl <span style="color: #000080;">=</span> AS_INVALIDATE <span style="color: #000000;">)</span>
+</pre>
+<h2><a name="Parameters" id="Parameters"></a><span class="mw-headline">パラメータ</span></h2>
+<dl>
+<dt>bUndo</dt>
+<dd>[input]操作の「元に戻す」をサポートする必要があるかどうか（サポートする場合はTRUE）</dd>
+<dt>dwCntrl</dt>
+<dd>[input]行の高さのみを変更するか、列の幅などを変更するかを制御するには、AS_NOWIDTH enumを参照</dd>
+</dl>
+<pre class="oc" style="font-family:monospace;">
+AS_SELECTION <span style="color: #000000;">:</span> 選択範囲のサイズのみを変更
+AS_NOWIDTH <span style="color: #000000;">:</span> 幅変更なし
+AS_NOHEIGHT <span style="color: #000000;">:</span> 高さ変更なし
+AS_INVALIDATE <span style="color: #000000;">:</span> 無効にして再描画する
+</pre>
+<h2><a name="Return" id="Return"></a><span class="mw-headline">戻り値</span></h2>
+<p>成功した場合はTRUE、失敗した場合はFALSE。</p>
+<h2><a name="Examples" id="Examples"></a><span class="mw-headline">サンプル</span></h2>
+<h2><a name="Remark" id="Remark"></a><span class="mw-headline">備考</span></h2>
+<h2><a name="See_Also" id="See_Also"></a><span class="mw-headline">関連情報</span></h2>
+<dl>
+<dt><a href="../../OriginC/OriginC/Worksheet-AutoSizeRow.html" title="OriginC:Worksheet-AutoSizeRow">Worksheet::AutoSizeRow</a></dt>
+<dt><a href="../../OriginC/OriginC/OriginObject-AutoSize.html" title="OriginC:OriginObject-AutoSize">OriginObject::AutoSize</a></dt>
+</dl>
+<h2><a name="Header_to_Include" id="Header_to_Include"></a><span class="mw-headline">含めるヘッダ</span></h2>
+<p>origin.h</p>

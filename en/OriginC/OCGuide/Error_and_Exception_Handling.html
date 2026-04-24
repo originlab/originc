@@ -1,0 +1,47 @@
+<h1 class="firstHeading">1.2.6 Error and Exception Handling</h1><p><br />
+</p>
+<h2><a name="Exception_HandlingException_Handling"></a><span class="mw-headline"><span class="OIndex" style="display:none">Exception Handling</span>Exception Handling</span></h2>
+<p>Origin C supports C++-style exception handling using the <b>try</b>, <b>catch</b>, and <b>throw</b> statements <span class="OIndex" style="display:none">try-catch Statement</span><span class="OIndex" style="display:none">throw Statement</span>.
+</p><p>A <b>try</b> block is the keyword <code>try</code> followed by statements in braces. Immediately after the try block is a single <b>catch</b> handler.  
+</p>
+<ul><li><ul><li>Note:** Origin C supports only **one** catch handler and it must accept an <i>int</i> error code.</li></ul></li></ul>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">try</span>
+<span style="color: #000000;">&#123;</span>
+    LPSTR lpdest <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span>;         <span style="color: #008000;">// NULL pointer on purpose</span>
+    <span style="color: #000000;">strcpy</span><span style="color: #000000;">&#40;</span>lpdest, <span style="color: #ff00ff;">&quot;Test&quot;</span><span style="color: #000000;">&#41;</span>;      <span style="color: #008000;">// copy to NULL pointer to cause error</span>
+<span style="color: #000000;">&#125;</span>
+<span style="color: #0000ff;">catch</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> nErr<span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Error = &quot;</span>, nErr<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>During execution, statements in the try block run first. If an error is thrown, control jumps to the catch block; otherwise the catch block is skipped.
+</p><p>You can use <b>throw</b> to signal an error explicitly and jump to the catch block:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> TryCatchThrowEx<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #0000ff;">try</span>
+    <span style="color: #000000;">&#123;</span>
+        DoSomeWork<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">4</span><span style="color: #000000;">&#41;</span>;   <span style="color: #008000;">// valid -&gt; prints result</span>
+        DoSomeWork<span style="color: #000000;">&#40;</span><span style="color: #000040;">-</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#41;</span>;  <span style="color: #008000;">// invalid -&gt; throws</span>
+    <span style="color: #000000;">&#125;</span>
+    <span style="color: #0000ff;">catch</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> iErr<span style="color: #000000;">&#41;</span>
+    <span style="color: #000000;">&#123;</span>
+        <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Error code =&#160;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, iErr<span style="color: #000000;">&#41;</span>;
+    <span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span>
+
+<span style="color: #0000ff;">void</span> DoSomeWork<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">double</span> num<span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #0000ff;">if</span> <span style="color: #000000;">&#40;</span> num <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">0</span> <span style="color: #000000;">&#41;</span>
+        <span style="color: #0000ff;">throw</span> <span style="color: #0000dd;">100</span>; <span style="color: #008000;">// force error: negative input</span>
+    <span style="color: #0000ff;">if</span> <span style="color: #000000;">&#40;</span> <span style="color: #0000dd;">0</span> <span style="color: #000080;">==</span> num <span style="color: #000000;">&#41;</span>
+        <span style="color: #0000ff;">throw</span> <span style="color: #0000dd;">101</span>; <span style="color: #008000;">// force error: zero not allowed</span>
+
+    <span style="color: #0000ff;">double</span> result <span style="color: #000080;">=</span> <span style="color: #000000;">sqrt</span><span style="color: #000000;">&#40;</span>num<span style="color: #000000;">&#41;</span> <span style="color: #000040;">/</span> <span style="color: #000000;">log</span><span style="color: #000000;">&#40;</span>num<span style="color: #000000;">&#41;</span>;
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;sqrt(%f) / log(%f) =&#160;%g<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, num, num, result<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<table class="noborder"><tr>
+	<td style="vertical-align:top" width="60"><img src="../images/Error_and_Exception_Handling/Tip_icon.png?v=21427" width="57"  border="0" /></td><td><p>Because only <code>catch(int)</code> is supported, choose and document distinct integer codes for different error conditions.
+</p></td></tr></table>
+
+

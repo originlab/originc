@@ -1,0 +1,288 @@
+<h1 class="firstHeading">1.2.2 Operators</h1><p><span class="OIndex" style="display:none">Operators</span> <b>Operators</b> in Origin C support the same arithmetic, logical, comparison, and bitwise operators as ANSI C. The sections below list the four operator types and show usage.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Arithmetic_OperatorsArithmetic_Operators"><span class="tocnumber">1</span> <span class="toctext"><span class="OIndex" style="display:none">Arithmetic Operators</span>Arithmetic Operators</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Comparison_OperatorsComparison_Operators"><span class="tocnumber">2</span> <span class="toctext"><span class="OIndex" style="display:none">Comparison Operators</span>Comparison Operators</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Logical_OperatorsLogical_Operators"><span class="tocnumber">3</span> <span class="toctext"><span class="OIndex" style="display:none">Logical Operators</span>Logical Operators</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Bitwise_OperatorsAND_OperatorOR_OperatorXOR_OperatorBitwise_Operators"><span class="tocnumber">4</span> <span class="toctext"><span class="OIndex" style="display:none">Bitwise Operators</span><span class="OIndex" style="display:none">AND Operator</span><span class="OIndex" style="display:none">OR Operator</span><span class="OIndex" style="display:none">XOR Operator</span>Bitwise Operators</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Arithmetic_OperatorsArithmetic_Operators"></a><span class="mw-headline"><span class="OIndex" style="display:none">Arithmetic Operators</span>Arithmetic Operators</span></h2>
+<table class="simple">
+<tr>
+<th> Operator
+</th>
+<th> Definition
+</th>
+<th> Example
+</th></tr>
+<tr>
+<td> <center>*</center>
+</td>
+<td> multiplication
+</td>
+<td> <code>10 * 3 -&gt; 30</code>
+</td></tr>
+<tr>
+<td> <center>/</center>
+</td>
+<td> division
+</td>
+<td> <code>6 / 2 -&gt; 3</code>
+</td></tr>
+<tr>
+<td> <center>%</center>
+</td>
+<td> modulus (remainder)
+</td>
+<td> <code>11&#160;% 2 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>+</center>
+</td>
+<td> addition
+</td>
+<td> <code>5 + 4 -&gt; 9</code>
+</td></tr>
+<tr>
+<td> <center>-</center>
+</td>
+<td> subtraction
+</td>
+<td> <code>9 - 4 -&gt; 5</code>
+</td></tr>
+<tr>
+<td> <center>^</center>
+</td>
+<td> exponentiation (power)<br />See note below.
+</td>
+<td> <code>10 ^ 3 -&gt; 1000</code> <small>(Origin C default)</small>
+</td></tr></table>
+<p><b>Note.</b> By default, Origin C treats the caret <span class="OIndex" style="display:none">Caret Character</span> (^) as the <span class="OIndex" style="display:none">Exponentiate Operator</span>—the exponentiation (power) operator—to match LabTalk. In standard ANSI C, ^ is the bitwise XOR operator. To use ^ as XOR in Origin C, add <code>#pragma xor</code> before your code (e.g., <code>#pragma xor(push, FALSE)</code> … <code>#pragma xor(pop)</code>).
+</p>
+<pre class="oc" style="font-family:monospace;">out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;10 raised to the 3rd is &quot;</span>, <span style="color: #0000dd;">10</span><span style="color: #000040;">^</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// default: ^ is exponent in Origin C</span>
+
+<span style="color: #0000ff;">#pragma</span> xor<span style="color: #000000;">&#40;</span>push, <span style="color: #0000ff;">FALSE</span><span style="color: #000000;">&#41;</span>                   <span style="color: #008000;">// interpret ^ as XOR</span>
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;10 XOR 3 is &quot;</span>, <span style="color: #0000dd;">10</span><span style="color: #000040;">^</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">#pragma</span> xor<span style="color: #000000;">&#40;</span>pop<span style="color: #000000;">&#41;</span>                           <span style="color: #008000;">// restore default</span>
+
+<span style="color: #008000;">// Portable exponentiation that never needs pragma:</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;pow(10,3) is &quot;</span>, <span style="color: #000000;">pow</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">10</span>,<span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;</pre>
+<p>Dividing an integer by another integer yields an integer result by default. Use the pragma below so the compiler treats numeric literals as double.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> a <span style="color: #000080;">=</span> <span style="color: #0000dd;">3</span>, b <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span>;
+
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;a/b -&gt; &quot;</span>, a<span style="color: #000040;">/</span>b<span style="color: #000000;">&#41;</span>;                 <span style="color: #008000;">// 1 (integer division)</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;3/2 -&gt; &quot;</span>, <span style="color: #0000dd;">3</span><span style="color: #000040;">/</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>;                 <span style="color: #008000;">// 1 (integer division)</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;3/2.0 -&gt; &quot;</span>, <span style="color: #0000dd;">3</span><span style="color: #000040;">/</span><span style="color: #0000dd;">2.0</span><span style="color: #000000;">&#41;</span>;             <span style="color: #008000;">// 1.5 (double literal)</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;(double)3/2 -&gt; &quot;</span>, <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">double</span><span style="color: #000000;">&#41;</span><span style="color: #0000dd;">3</span><span style="color: #000040;">/</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 1.5 (explicit cast)</span>
+
+<span style="color: #008000;">// Treat numeric literals as double so 3/2 becomes 1.5:</span>
+<span style="color: #0000ff;">#pragma</span> numlittype<span style="color: #000000;">&#40;</span>push, <span style="color: #0000ff;">TRUE</span><span style="color: #000000;">&#41;</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;3/2 with numlittype -&gt; &quot;</span>, <span style="color: #0000dd;">3</span><span style="color: #000040;">/</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 1.5</span>
+
+<span style="color: #008000;">// Variables still follow normal promotions; these now become double</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;3/b with numlittype -&gt; &quot;</span>, <span style="color: #0000dd;">3</span><span style="color: #000040;">/</span>b<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 1.5</span>
+out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;a/2 with numlittype -&gt; &quot;</span>, a<span style="color: #000040;">/</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 1.5</span>
+<span style="color: #0000ff;">#pragma</span> numlittype<span style="color: #000000;">&#40;</span>pop<span style="color: #000000;">&#41;</span> <span style="color: #008000;">// restore default</span></pre>
+<p>The <span class="OIndex" style="display:none">Modulus Operator</span> calculates the remainder of the left operand divided by the right operand. This operator can only be applied to integral operands.
+</p>
+<pre class="oc" style="font-family:monospace;">out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;The remainder of 11 divided by 2 is &quot;</span>, <span style="color: #0000dd;">11</span> <span style="color: #000040;">%</span> <span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>;</pre>
+<p>A common pattern is to test odd/even:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> n <span style="color: #000080;">=</span> <span style="color: #0000dd;">27</span>;
+out_str<span style="color: #000000;">&#40;</span>n <span style="color: #000040;">%</span> <span style="color: #0000dd;">2</span>&#160;? <span style="color: #ff00ff;">&quot;27 is odd&quot;</span> <span style="color: #000000;">:</span> <span style="color: #ff00ff;">&quot;27 is even&quot;</span><span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="Comparison_OperatorsComparison_Operators"></a><span class="mw-headline"><span class="OIndex" style="display:none">Comparison Operators</span>Comparison Operators</span></h2>
+<p>Comparison operators evaluate to true or false with true yielding 1 and false yielding 0.
+</p>
+<table class="simple">
+<tr>
+<th> Operator
+</th>
+<th> Definition
+</th>
+<th> Example
+</th></tr>
+<tr>
+<td> <center>&gt;</center>
+</td>
+<td> greater than
+</td>
+<td> <code>5 &gt; 4 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>&gt;=</center>
+</td>
+<td> greater than or equal to
+</td>
+<td> <code>5 &gt;= 5 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>&lt;</center>
+</td>
+<td> less than
+</td>
+<td> <code>3 &lt; 2 -&gt; 0</code>
+</td></tr>
+<tr>
+<td> <center>&lt;=</center>
+</td>
+<td> less than or equal to
+</td>
+<td> <code>2 &lt;= 2 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>==</center>
+</td>
+<td> equal to
+</td>
+<td> <code>7 == 7 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>!=</center>
+</td>
+<td> not equal to
+</td>
+<td> <code>7&#160;!= 8 -&gt; 1</code>
+</td></tr></table>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> aa <span style="color: #000080;">&gt;=</span> <span style="color: #0000dd;">0</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;aa is greater than or equal to zero&quot;</span><span style="color: #000000;">&#41;</span>;
+
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #0000dd;">12</span> <span style="color: #000080;">==</span> aa <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;aa is equal to twelve&quot;</span><span style="color: #000000;">&#41;</span>;
+	
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> aa <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">99</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;aa is less than 99&quot;</span><span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="Logical_OperatorsLogical_Operators"></a><span class="mw-headline"><span class="OIndex" style="display:none">Logical Operators</span>Logical Operators</span></h2>
+<p>Logical operators evaluate to true or false with true yielding 1 and false yielding 0. The operands are evaluated from left to right. Evaluation stops when the entire expression can be determined (short-circuit).
+</p>
+<table class="simple">
+<tr>
+<th> Operator
+</th>
+<th> Definition
+</th>
+<th> Example
+</th></tr>
+<tr>
+<td> <center>!</center>
+</td>
+<td> NOT
+</td>
+<td> <code>!0 -&gt; 1</code>
+</td></tr>
+<tr>
+<td> <center>&amp;&amp;</center>
+</td>
+<td> AND
+</td>
+<td> <code>1 &amp;&amp; 0 -&gt; 0</code>
+</td></tr>
+<tr>
+<td> <center>||</center>
+</td>
+<td> OR
+</td>
+<td> <code>0 || 1 -&gt; 1</code>
+</td></tr></table>
+<p>Consider the following two examples:
+</p>
+<pre class="oc" style="font-family:monospace;">expr1A <span style="color: #000040;">&amp;&amp;</span> expr2
+expr1B <span style="color: #000040;">||</span> expr2</pre>
+<p><code>expr2</code> will not be evaluated if <code>expr1A</code> evaluates to false or <code>expr1B</code> evaluates to true. Ordering can prevent errors and improve efficiency. For example, guard against divide-by-zero:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> denom <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>, num <span style="color: #000080;">=</span> <span style="color: #0000dd;">10</span>;
+<span style="color: #008000;">// Safe: right side never executes because denom == 0 makes whole &amp;&amp; false</span>
+<span style="color: #0000ff;">if</span> <span style="color: #000000;">&#40;</span> denom <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span> <span style="color: #000040;">&amp;&amp;</span> <span style="color: #000000;">&#40;</span>num <span style="color: #000040;">/</span> denom<span style="color: #000000;">&#41;</span> <span style="color: #000080;">&gt;</span> <span style="color: #0000dd;">2</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;greater than 2&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #008000;">// Reversing the order could evaluate num/denom first and fail.</span></pre>
+<p>Another classic short-circuit guard uses a NULL check:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000040;">!</span><span style="color: #000080;">=</span> ptr <span style="color: #000040;">&amp;&amp;</span> ptr<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>dataValue <span style="color: #000080;">&lt;</span> upperLimit <span style="color: #000000;">&#41;</span>
+    process_data<span style="color: #000000;">&#40;</span>ptr<span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="Bitwise_OperatorsAND_OperatorOR_OperatorXOR_OperatorBitwise_Operators"></a><span class="mw-headline"><span class="OIndex" style="display:none">Bitwise Operators</span><span class="OIndex" style="display:none">AND Operator</span><span class="OIndex" style="display:none">OR Operator</span><span class="OIndex" style="display:none">XOR Operator</span>Bitwise Operators</span></h2>
+<p>Bitwise operators allow you to test and set individual bits. The operands must be of integral type.
+</p>
+<table class="simple">
+<tr>
+<th> Operator
+</th>
+<th> Definition
+</th>
+<th> Example
+</th></tr>
+<tr>
+<td> <center>~</center>
+</td>
+<td> bitwise complement (invert bits)
+</td>
+<td> <code>~5 -&gt; 250</code> <small>(00000101 → 11111010, 8-bit)</small>
+</td></tr>
+<tr>
+<td> <center>&lt;&lt;</center>
+</td>
+<td> shift left
+</td>
+<td> <code>1 &lt;&lt; 3 -&gt; 8</code> <small>(00000001 → 00001000)</small>
+</td></tr>
+<tr>
+<td> <center>&gt;&gt;</center>
+</td>
+<td> shift right
+</td>
+<td> <code>8 &gt;&gt; 2 -&gt; 2</code> <small>(00001000 → 00000010)</small>
+</td></tr>
+<tr>
+<td> <center>&amp;</center>
+</td>
+<td> bitwise AND
+</td>
+<td> <code>6 &amp; 3 -&gt; 2</code> <small>(00000110 &amp; 00000011 = 00000010)</small>
+</td></tr>
+<tr>
+<td> <center>^</center>
+</td>
+<td> bitwise exclusive OR (XOR)<br />See note below.
+</td>
+<td> <code>5 ^ 3 -&gt; 6</code> <small>(00000101 ^ 00000011 = 00000110; requires <code>#pragma xor</code>)</small>
+</td></tr>
+<tr>
+<td> <center>|</center>
+</td>
+<td> bitwise inclusive OR
+</td>
+<td> <code>5 | 2 -&gt; 7</code> <small>(00000101 | 00000010 = 00000111)</small>
+</td></tr></table>
+<p><b>Note.</b> By default, Origin C treats ^ as exponentiation (power). Use <code>#pragma xor</code> to interpret ^ as bitwise XOR instead:
+</p>
+<pre class="oc" style="font-family:monospace;">out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;10 raised to the 3rd is &quot;</span>, <span style="color: #0000dd;">10</span><span style="color: #000040;">^</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">#pragma</span> xor<span style="color: #000000;">&#40;</span>push, <span style="color: #0000ff;">FALSE</span><span style="color: #000000;">&#41;</span>
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;10 XOR 3 is &quot;</span>, <span style="color: #0000dd;">10</span><span style="color: #000040;">^</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">#pragma</span> xor<span style="color: #000000;">&#40;</span>pop<span style="color: #000000;">&#41;</span></pre>
+<p>Common bit-mask patterns:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">// Bit flags</span>
+<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> FLAG_READ  <span style="color: #000080;">=</span> 0x01; <span style="color: #008000;">// 0001</span>
+<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> FLAG_WRITE <span style="color: #000080;">=</span> 0x02; <span style="color: #008000;">// 0010</span>
+<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> FLAG_EXEC  <span style="color: #000080;">=</span> 0x04; <span style="color: #008000;">// 0100</span>
+
+<span style="color: #0000ff;">int</span> perms <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>;
+perms <span style="color: #000040;">|</span><span style="color: #000080;">=</span> FLAG_READ;  <span style="color: #008000;">// set</span>
+perms <span style="color: #000040;">|</span><span style="color: #000080;">=</span> FLAG_WRITE; <span style="color: #008000;">// set</span>
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;perms after set = &quot;</span>, perms<span style="color: #000000;">&#41;</span>;   <span style="color: #008000;">// 0x03</span>
+
+perms <span style="color: #000040;">&amp;</span><span style="color: #000080;">=</span> ~FLAG_WRITE; 
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;perms after clear = &quot;</span>, perms<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 0x01</span>
+
+perms <span style="color: #000040;">^</span><span style="color: #000080;">=</span> FLAG_EXEC; 
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;perms after toggle = &quot;</span>, perms<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 0x05</span>
+
+out_str<span style="color: #000000;">&#40;</span> <span style="color: #000000;">&#40;</span>perms <span style="color: #000040;">&amp;</span> FLAG_READ<span style="color: #000000;">&#41;</span>&#160;? <span style="color: #ff00ff;">&quot;READ on&quot;</span> <span style="color: #000000;">:</span> <span style="color: #ff00ff;">&quot;READ off&quot;</span> <span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// test</span></pre>
+
+
+
+
+
+

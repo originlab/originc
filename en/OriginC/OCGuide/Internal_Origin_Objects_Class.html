@@ -1,0 +1,236 @@
+<h1 class="firstHeading">1.3.4 Internal Origin Objects Class</h1><p><br />
+</p>
+<h2><a name="Internal_Origin_Objects_Class"></a><span class="mw-headline">Internal Origin Objects Class</span></h2>
+<p><span class="OIndex" style="display:none">Classes, Origin Objects Category</span>The following classes are used to handle Origin objects. For details, see the <b><a href="../../OriginC/Category/Internal_Origin_Objects_(class_category).html" title="Category:Internal Origin Objects (class category)">Origin C Reference: Classes – Internal Origin Objects</a></b> chapter in the Origin C help.
+</p>
+<table class="simple">
+<tr>
+<th> Class
+</th>
+<th> Brief Description
+</th></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Axis_(class).html" title="Category:Axis (class)">Axis</a>
+</td>
+<td> Access axes contained in layers on an Origin page.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/AxisObject_(class).html" title="Category:AxisObject (class)">AxisObject</a>
+</td>
+<td> Access axis objects (ticks, grids, labels) contained by axes on a graph page.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Collection_(class).html" title="Category:Collection (class)">Collection</a>
+</td>
+<td> Generic container template for internal Origin objects (e.g., <code>Collection&lt;PageBase&gt; Pages</code>). Supports attach/detach and idiomatic looping (e.g., <code>foreach</code>).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/CollectionEmbeddedPages_(class).html" title="Category:CollectionEmbeddedPages (class)">CollectionEmbeddedPages</a>
+</td>
+<td> Access pages embedded in a worksheet.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Column_(class).html" title="Category:Column (class)">Column</a>
+</td>
+<td> Wrapper for worksheet columns; each holds a <b>Dataset</b>. Primarily controls display/style of the associated data.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DataObject_(class).html" title="Category:DataObject (class)">DataObject</a>
+</td>
+<td> Base class for worksheet columns and matrix objects; data objects live in layers on a page.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DataObjectBase_(class).html" title="Category:DataObjectBase (class)">DataObjectBase</a>
+</td>
+<td> Abstract base for <b>DataObject</b> and <b>DataPlot</b> hierarchies (polymorphic use).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DataPlot_(class).html" title="Category:DataPlot (class)">DataPlot</a>
+</td>
+<td> Wrapper for graph data plots; stores plot characteristics and resides in a graph layer.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DataRange_(class).html" title="Category:DataRange (class)">DataRange</a>
+</td>
+<td> Build/query ranges from Worksheet/Matrix/Graph. Holds page, sheet/layer, and index info; can aggregate multiple sub-ranges.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DataRangeEx_(class).html" title="Category:DataRangeEx (class)">DataRangeEx</a>
+</td>
+<td> Extension of <b>DataRange</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/DatasetObject_(class).html" title="Category:DatasetObject (class)">DatasetObject</a>
+</td>
+<td> Access non-numeric datasets (typically members of <b>Column</b>).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Datasheet_(class).html" title="Category:Datasheet (class)">Datasheet</a>
+</td>
+<td> Handle worksheet and matrix layers.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Folder_(class).html" title="Category:Folder (class)">Folder</a>
+</td>
+<td> Project Explorer folder wrapper; provides access to pages and folder hierarchy.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Fpoint3d_(class).html" title="Category:Fpoint3d (class)">fpoint3d</a>
+</td>
+<td> 3D point with <i>double</i> (x, y, z).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Fpoint_(class).html" title="Category:Fpoint (class)">fpoint</a>
+</td>
+<td> 2D point with <i>double</i> (x, y).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GetGraphPoints_(class).html" title="Category:GetGraphPoints (class)">GetGraphPoints</a>
+</td>
+<td> Get screen/data (x, y) positions from a graph window.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GraphLayer_(class).html" title="Category:GraphLayer (class)">GraphLayer</a>
+</td>
+<td> Wrapper for graph layers; contains a collection of <b>DataPlot</b> objects; owned by a <b>GraphPage</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GraphObject_(class).html" title="Category:GraphObject (class)">GraphObject</a>
+</td>
+<td> Handle graph objects (text/graphic annotations, style holders, ROI objects). Contained by a <b>GraphLayer</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GraphPage_(class).html" title="Category:GraphPage (class)">GraphPage</a>
+</td>
+<td> Wrapper for graph pages (windows); provides access to layers and their objects.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GraphPageBase_(class).html" title="Category:GraphPageBase (class)">GraphPageBase</a>
+</td>
+<td> Base class for <b>GraphPage</b> and <b>LayoutPage</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Grid_(class).html" title="Category:Grid (class)">Grid</a>
+</td>
+<td> Format data-sheet windows; selection, labels, cell color, merge, etc.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/GroupPlot_(class).html" title="Category:GroupPlot (class)">GroupPlot</a>
+</td>
+<td> Handle grouped plots contained in a layer.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Layer_(class).html" title="Category:Layer (class)">Layer</a>
+</td>
+<td> Wrapper for page layers; many objects on a page are contained in layers.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/LayoutPage_(class).html" title="Category:LayoutPage (class)">LayoutPage</a>
+</td>
+<td> Wrapper for layout pages (windows); exposes page methods and layer access.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Layout_(class).html" title="Category:Layout (class)">Layout</a>
+</td>
+<td> Wrapper for layout layers within a layout page.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/MatrixLayer_(class).html" title="Category:MatrixLayer (class)">MatrixLayer</a>
+</td>
+<td> Handle matrix layers; contains a collection of matrix objects in the layer.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/MatrixObject_(class).html" title="Category:MatrixObject (class)">MatrixObject</a>
+</td>
+<td> Wrapper for matrix objects; controls style/display. Data access is via <b>Matrix</b>; analogous to <b>Column</b> (style) vs <b>Dataset</b> (data).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/MatrixPage_(class).html" title="Category:MatrixPage (class)">MatrixPage</a>
+</td>
+<td> Wrapper for matrix pages (windows); provides access to matrix layers and their objects.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Note_(class).html" title="Category:Note (class)">Note</a>
+</td>
+<td> Wrapper for Note pages (windows).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/OriginObject_(class).html" title="Category:OriginObject (class)">OriginObject</a>
+</td>
+<td> Base class for all Origin objects.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Page_(class).html" title="Category:Page (class)">Page</a>
+</td>
+<td> Wrapper for general pages; contains one or more layers (except Note).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/PageBase_(class).html" title="Category:PageBase (class)">PageBase</a>
+</td>
+<td> Abstract base for page types; useful for generic functions or attaching to the active page.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Point_(class).html" title="Category:Point (class)">point</a>
+</td>
+<td> 2D integer point (x, y).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Project_(class).html" title="Category:Project (class)">Project</a>
+</td>
+<td> Access most objects in the project; exposes collections (pages, datasets) and active objects (ActiveCurve/Layer/Folder).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/ROIObject_(class).html" title="Category:ROIObject (class)">ROIObject</a>
+</td>
+<td> Handle region-of-interest objects, typically on matrices.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Scale_(class).html" title="Category:Scale (class)">Scale</a>
+</td>
+<td> Handle axis scales (each graph layer has X and Y scales).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Storage_(class).html" title="Category:Storage (class)">storage</a>
+</td>
+<td> Save binary (<b>TreeNode</b>) and INI (<b>INIFile</b>) data into Origin objects.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/StyleHolder_(class).html" title="Category:StyleHolder (class)">StyleHolder</a>
+</td>
+<td> Wrapper for data-plot style holders (plot type info).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/UndoBlock_(class).html" title="Category:UndoBlock (class)">UndoBlock</a>
+</td>
+<td> Safe project edits via <code>UndoBlockBegin()</code>/<code>UndoBlockEnd()</code>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/WorksheetPage_(class).html" title="Category:WorksheetPage (class)">WorksheetPage</a>
+</td>
+<td> Wrapper for worksheet pages (windows).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Worksheet_(class).html" title="Category:Worksheet (class)">Worksheet</a>
+</td>
+<td> Handle worksheet layers; contains a collection of <b>Column</b> objects.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/XYRange_(class).html" title="Category:XYRange (class)">XYRange</a>
+</td>
+<td> Build/get XY ranges (one X, one Y). Holds page/sheet/layer and index info; can contain multiple sub-ranges.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/XYRangeComplex_(class).html" title="Category:XYRangeComplex (class)">XYRangeComplex</a>
+</td>
+<td> XY ranges for complex data (matrix/worksheet); multiple sub-ranges supported.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/XYZRange_(class).html" title="Category:XYZRange (class)">XYZRange</a>
+</td>
+<td> XYZ ranges (matrix/worksheet); multiple sub-ranges supported.
+</td></tr></table>
+<table class="noborder"><tr>
+	<td style="vertical-align:top" width="60"><img src="../images/Internal_Origin_Objects_Class/Tip_icon.png?v=21427" width="57"  border="0" /></td><td><p>Many of these classes are **wrappers** around internal Origin objects (they reference an internal object; multiple wrappers can refer to the same internal object). Where applicable, data access vs. style/display responsibilities are split (e.g., <b>Matrix</b> for data, <b>MatrixObject</b> for style).
+</p></td></tr></table>
+
+

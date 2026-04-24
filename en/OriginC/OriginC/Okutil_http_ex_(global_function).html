@@ -1,0 +1,102 @@
+<h1 class="firstHeading">2.1.21.10 okutil_http_ex</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Return"><span class="tocnumber">4</span> <span class="toctext">Return</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Remark"><span class="tocnumber">6</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Included"><span class="tocnumber">8</span> <span class="toctext">Header to Included</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Reference"><span class="tocnumber">9</span> <span class="toctext">Reference</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
+<p>get data from a web service or POST request to server
+</p>
+<h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> okutil_http_ex<span style="color: #000000;">&#40;</span> LPCSTR lpcszURL, OCHTTP_t <span style="color: #000040;">*</span> phttp <span style="color: #000000;">&#41;</span></pre>
+<h2><a name="Parameters"></a><span class="mw-headline">Parameters</span></h2>
+<dl><dt> lpcszURL</dt>
+<dd>[input] the web service URL</dd>
+<dt> phttp </dt>
+<dd>[input/output] HTTP setting</dd></dl>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">typedef</span> <span style="color: #0000ff;">struct</span> <span style="color: #000000;">&#123;</span>
+	DWORD dwOptions; <span style="color: #008000;">// see OCHTTP_*</span>
+	<span style="color: #0000ff;">int</span> nConnectTimeout; <span style="color: #008000;">//the number of seconds an HTTP request has to establish a connection before it times out</span>
+	<span style="color: #0000ff;">int</span> nResponseTimeout; <span style="color: #008000;">//the number of seconds to wait for a response</span>
+	<span style="color: #0000ff;">BOOL</span> bIgnoreCertError; <span style="color: #008000;">//Ignore Error</span>
+	LPCSTR pcszSrc; <span style="color: #008000;">// request data</span>
+	LPCSTR pcszDst; <span style="color: #008000;">// file from service</span>
+	LPVOID pstrDst; <span style="color: #008000;">// string from service</span>
+	LPCSTR pcszRequestHeader; <span style="color: #008000;">//request header</span>
+	LPVOID pstrResp; <span style="color: #008000;">//result from the call</span>
+<span style="color: #000000;">&#125;</span> OCHTTP_t;
+
+<span style="color: #0000ff;">enum</span> <span style="color: #000000;">&#123;</span>
+	OCHTTP_GET <span style="color: #000080;">=</span> 0x0001, <span style="color: #008000;">//get data from service</span>
+	OCHTTP_POST <span style="color: #000080;">=</span> 0x0002, <span style="color: #008000;">//POST request to ser</span>
+	OCHTTP_SRC_STR <span style="color: #000080;">=</span> 0x0010, <span style="color: #008000;">//pcszSrc is request data</span>
+	OCHTTP_SRC_FILE <span style="color: #000080;">=</span> 0x0020, <span style="color: #008000;">//pcszSrc is full path name of the file with the request data</span>
+	OCHTTP_DST_STR <span style="color: #000080;">=</span> 0x0040, <span style="color: #008000;">//get string from service</span>
+	OCHTTP_DST_FILE <span style="color: #000080;">=</span> 0x0080, <span style="color: #008000;">//get file from service</span>
+	OCHTTP_PROGRESSBAR <span style="color: #000080;">=</span> 0x0100, <span style="color: #008000;">/// EJP 2019-01-23 ORG-19597-S4 OKUTIL_HTTP_PROGRESS_BAR</span>
+	OCHTTP_SRC_BIN <span style="color: #000080;">=</span> 0x0200, <span style="color: #008000;">/// EJP 2024-04-17 ORG-28773-S1 HTTP_POST_BINARY_FILE</span>
+<span style="color: #000000;">&#125;</span>;</pre>
+<h2><a name="Return"></a><span class="mw-headline">Return</span></h2>
+<p>0 if succcess, otherwise an negative error code
+</p>
+<h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> okutil_http_ex_download<span style="color: #000000;">&#40;</span>LPCSTR lpcszURL, string<span style="color: #000040;">&amp;</span>strResp, string<span style="color: #000040;">&amp;</span>strTmpFileName<span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	<span style="color: #008000;">// init http settings for download.</span>
+	OCHTTP_t http;
+	http.<span style="color: #000000;">dwOptions</span> <span style="color: #000080;">=</span> OCHTTP_GET <span style="color: #000040;">|</span> OCHTTP_DST_FILE;
+	http.<span style="color: #000000;">bIgnoreCertError</span> <span style="color: #000080;">=</span> <span style="color: #0000ff;">true</span>;
+	http.<span style="color: #000000;">nConnectTimeout</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>;
+	http.<span style="color: #000000;">nResponseTimeout</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">30</span>;
+	http.<span style="color: #000000;">pcszDst</span> <span style="color: #000080;">=</span> strTmpFileName; <span style="color: #008000;">// download to temp file.</span>
+	http.<span style="color: #000000;">pstrResp</span> <span style="color: #000080;">=</span> <span style="color: #000040;">&amp;</span>strResp;
+
+	<span style="color: #0000ff;">int</span> nErrr <span style="color: #000080;">=</span> okutil_http_ex<span style="color: #000000;">&#40;</span>lpcszURL, <span style="color: #000040;">&amp;</span>http<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;err&#160;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, nErrr<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX2</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> test_http_post_text_file<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	OCHTTP_t http;
+	http.<span style="color: #000000;">dwOptions</span> <span style="color: #000080;">=</span> OCHTTP_POST <span style="color: #000040;">|</span> OCHTTP_SRC_FILE; <span style="color: #008000;">//upload file</span>
+	http.<span style="color: #000000;">bIgnoreCertError</span> <span style="color: #000080;">=</span> <span style="color: #0000ff;">true</span>;
+	http.<span style="color: #000000;">pcszSrc</span> <span style="color: #000080;">=</span> GetAppPath<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">TRUE</span><span style="color: #000000;">&#41;</span> <span style="color: #000040;">+</span> <span style="color: #ff00ff;">&quot;Samples<span style="color: #666666; font-weight: bold;">\\</span>Statistics<span style="color: #666666; font-weight: bold;">\\</span>cars.csv&quot;</span>; <span style="color: #008000;">//Replace with your file</span>
+	<span style="color: #0000ff;">int</span> err <span style="color: #000080;">=</span> okutil_http_ex<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;https://posttestserver.dev/p/3qsy1gsnu2848b5a/post&quot;</span>, <span style="color: #000040;">&amp;</span>http<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">//Replace with your URL</span>
+	<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;err&#160;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, err<span style="color: #000000;">&#41;</span>; 
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX3</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> test_http_post_binary_file<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	OCHTTP_t http;
+	http.<span style="color: #000000;">dwOptions</span> <span style="color: #000080;">=</span> OCHTTP_POST <span style="color: #000040;">|</span> OCHTTP_SRC_FILE <span style="color: #000040;">|</span> OCHTTP_SRC_BIN; <span style="color: #008000;">//upload binary file</span>
+	http.<span style="color: #000000;">bIgnoreCertError</span> <span style="color: #000080;">=</span> <span style="color: #0000ff;">true</span>;
+	http.<span style="color: #000000;">pcszSrc</span> <span style="color: #000080;">=</span> GetAppPath<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">TRUE</span><span style="color: #000000;">&#41;</span> <span style="color: #000040;">+</span> <span style="color: #ff00ff;">&quot;Samples<span style="color: #666666; font-weight: bold;">\\</span>Python<span style="color: #666666; font-weight: bold;">\\</span>Extract Image Colors.opju&quot;</span>; <span style="color: #008000;">//Replace with your file</span>
+	<span style="color: #0000ff;">int</span> err <span style="color: #000080;">=</span> okutil_http_ex<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;https://posttestserver.dev/p/3qsy1gsnu2848b5a/post&quot;</span>, <span style="color: #000040;">&amp;</span>http<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">//Replace with your URL</span>
+	<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;err&#160;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, err<span style="color: #000000;">&#41;</span>; 
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<h2><a name="Header_to_Included"></a><span class="mw-headline">Header to Included</span></h2>
+<p>origin.h
+</p>
+<h2><a name="Reference"></a><span class="mw-headline">Reference</span></h2>
+
+
+
+
+
+

@@ -1,0 +1,197 @@
+<h1 class="firstHeading">1.2.3 Statement Flow Control</h1><p><br />
+Origin C supports all ANSI C flow control statements <span class="OIndex" style="display:none">Flow Control Statements</span> including the if, if-else, switch, for, while, do-while, goto, break, and continue statements. In addition, Origin C supports the C# <b>foreach</b> statement for looping through a collection of objects.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#if_Statementif-else_StatementThe_if_Statement"><span class="tocnumber">1</span> <span class="toctext"><span class="OIndex" style="display:none">if Statement</span><span class="OIndex" style="display:none">if-else Statement</span>The if Statement</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#switch_StatementThe_switch_Statement"><span class="tocnumber">2</span> <span class="toctext"><span class="OIndex" style="display:none">switch Statement</span>The switch Statement</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#for_Statementloop_StatementThe_for_Statement"><span class="tocnumber">3</span> <span class="toctext"><span class="OIndex" style="display:none">for Statement</span><span class="OIndex" style="display:none">loop Statement</span>The for Statement</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#while.2Fdo-while_StatementThe_while_Statement"><span class="tocnumber">4</span> <span class="toctext"><span class="OIndex" style="display:none">while/do-while Statement</span>The while Statement</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Jump_Statements"><span class="tocnumber">5</span> <span class="toctext">Jump Statements</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#break_Statementbreak"><span class="tocnumber">5.1</span> <span class="toctext"><span class="OIndex" style="display:none">break Statement</span>break</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#continue_Statementcontinue"><span class="tocnumber">5.2</span> <span class="toctext"><span class="OIndex" style="display:none">continue Statement</span>continue</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#goto_Statementgoto"><span class="tocnumber">5.3</span> <span class="toctext"><span class="OIndex" style="display:none">goto Statement</span>goto</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#foreach_StatementThe_foreach_Statement"><span class="tocnumber">6</span> <span class="toctext"><span class="OIndex" style="display:none">foreach Statement</span>The foreach Statement</span></a></li>
+</ul>
+</div>
+
+<h2><a name="if_Statementif-else_StatementThe_if_Statement"></a><span class="mw-headline"><span class="OIndex" style="display:none">if Statement</span><span class="OIndex" style="display:none">if-else Statement</span>The if Statement</span></h2>
+<p>The <b>if</b> statement tests a condition and executes a block when the test is true. The <b>if-else</b> statement executes an alternative block when the test is false.
+</p><p>Examples using different input types:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">bool</span> bb <span style="color: #000080;">=</span> <span style="color: #0000ff;">true</span>;    <span style="color: #008000;">// Boolean</span>
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> bb <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;bb is true&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span>
+
+<span style="color: #0000ff;">int</span> nn <span style="color: #000080;">=</span> <span style="color: #0000dd;">5</span>;
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> nn <span style="color: #000000;">&#41;</span>           <span style="color: #008000;">// Integer: 0 = false, non-zero = true</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;nn not 0&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span>
+
+<span style="color: #0000ff;">double</span><span style="color: #000040;">*</span> pData <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span>;
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000080;">==</span> pData <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// Pointer check</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Pointer pData is NULL&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>An <b>if-else</b> block:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">bool</span> bRet <span style="color: #000080;">=</span> <span style="color: #0000ff;">true</span>;
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> bRet <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Valid input&quot;</span><span style="color: #000000;">&#41;</span>;      <span style="color: #008000;">// when bRet is true</span>
+<span style="color: #000000;">&#125;</span>
+<span style="color: #0000ff;">else</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;INVALID input&quot;</span><span style="color: #000000;">&#41;</span>;    <span style="color: #008000;">// when bRet is false</span>
+<span style="color: #000000;">&#125;</span></pre>
+<p>Braces are optional if the block has only one statement:
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> bRet <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Valid input&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">else</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;INVALID input&quot;</span><span style="color: #000000;">&#41;</span>;</pre>
+<p>An <b>else if</b> ladder (common pattern):
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> score <span style="color: #000080;">=</span> <span style="color: #0000dd;">86</span>;
+<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> score <span style="color: #000080;">&gt;=</span> <span style="color: #0000dd;">90</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Grade: A&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> score <span style="color: #000080;">&gt;=</span> <span style="color: #0000dd;">80</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Grade: B&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> score <span style="color: #000080;">&gt;=</span> <span style="color: #0000dd;">70</span> <span style="color: #000000;">&#41;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Grade: C&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">else</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Grade: D/F&quot;</span><span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="switch_StatementThe_switch_Statement"></a><span class="mw-headline"><span class="OIndex" style="display:none">switch Statement</span>The switch Statement</span></h2>
+<p>Use <b>switch</b> to execute different blocks for mutually exclusive choices. The <code>break</code> statement exits the switch block (a <code>break</code> after <code>default</code> is optional but harmless).
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">// Using an enum makes intent clearer</span>
+<span style="color: #0000ff;">enum</span> DataType <span style="color: #000000;">&#123;</span> TYPE_INT <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span>, TYPE_FLOAT <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span>, TYPE_STRING <span style="color: #000080;">=</span> <span style="color: #0000dd;">3</span>, TYPE_OTHER <span style="color: #000080;">=</span> <span style="color: #0000dd;">4</span> <span style="color: #000000;">&#125;</span>;
+
+<span style="color: #0000ff;">int</span> nType <span style="color: #000080;">=</span> TYPE_FLOAT;
+<span style="color: #0000ff;">switch</span><span style="color: #000000;">&#40;</span> nType <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// integer value as condition</span>
+<span style="color: #000000;">&#123;</span>
+<span style="color: #0000ff;">case</span> TYPE_INT<span style="color: #000000;">:</span>
+<span style="color: #0000ff;">case</span> TYPE_FLOAT<span style="color: #000000;">:</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Numeric type&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #0000ff;">break</span>;
+
+<span style="color: #0000ff;">case</span> TYPE_STRING<span style="color: #000000;">:</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;String type&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #008000;">// no break here, fall through to TYPE_OTHER</span>
+
+<span style="color: #0000ff;">case</span> TYPE_OTHER<span style="color: #000000;">:</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Other type&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #0000ff;">break</span>;
+
+<span style="color: #0000ff;">default</span><span style="color: #000000;">:</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Unrecognized type&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #0000ff;">break</span>; <span style="color: #008000;">// optional</span>
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="for_Statementloop_StatementThe_for_Statement"></a><span class="mw-headline"><span class="OIndex" style="display:none">for Statement</span><span class="OIndex" style="display:none">loop Statement</span>The for Statement</span></h2>
+<p>The <b>for</b> statement runs a fixed number of times or steps through an array by index.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">char</span> str<span style="color: #000000;">&#91;</span><span style="color: #000000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;This is a string&quot;</span>;
+<span style="color: #0000ff;">int</span> n <span style="color: #000080;">=</span> <span style="color: #000000;">strlen</span><span style="color: #000000;">&#40;</span>str<span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> index <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; index <span style="color: #000080;">&lt;</span> n; index<span style="color: #000040;">++</span> <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;char at&#160;%2d is&#160;%c<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, index, str<span style="color: #000000;">&#91;</span>index<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>Iterating over a vector by index and by element:
+</p>
+<pre class="oc" style="font-family:monospace;">vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> v <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span><span style="color: #0000dd;">1.2</span>, <span style="color: #0000dd;">3.4</span>, <span style="color: #0000dd;">5.6</span><span style="color: #000000;">&#125;</span>;
+
+<span style="color: #008000;">// Index-based</span>
+<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; i <span style="color: #000080;">&lt;</span> v.<span style="color: #000000;">GetSize</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>; i<span style="color: #000040;">++</span> <span style="color: #000000;">&#41;</span>
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;v[%d] =&#160;%g<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, i, v<span style="color: #000000;">&#91;</span>i<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
+
+<span style="color: #008000;">// Element-based using foreach over the collection</span>
+foreach<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">double</span> val in v<span style="color: #000000;">&#41;</span>
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;val =&#160;%g<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, val<span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="while.2Fdo-while_StatementThe_while_Statement"></a><span class="mw-headline"><span class="OIndex" style="display:none">while/do-while Statement</span>The while Statement</span></h2>
+<p><b>while</b> and <b>do-while</b> execute a block until a condition is met. <b>while</b> tests at the beginning; <b>do-while</b> tests at the end.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> count <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>;
+<span style="color: #0000ff;">while</span><span style="color: #000000;">&#40;</span> count <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">10</span> <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;count = &quot;</span>, count<span style="color: #000000;">&#41;</span>;
+    count<span style="color: #000040;">++</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>A simple menu loop with <b>do-while</b> (executes at least once):
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span> choice;
+<span style="color: #0000ff;">do</span>
+<span style="color: #000000;">&#123;</span>
+    out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;1) Import  2) Analyze  3) Exit&quot;</span><span style="color: #000000;">&#41;</span>;
+    choice <span style="color: #000080;">=</span> <span style="color: #0000dd;">3</span>; <span style="color: #008000;">// substitute a real input mechanism if needed</span>
+
+    <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #0000dd;">1</span> <span style="color: #000080;">==</span> choice <span style="color: #000000;">&#41;</span>
+        out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Importing...&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #0000ff;">else</span> <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #0000dd;">2</span> <span style="color: #000080;">==</span> choice <span style="color: #000000;">&#41;</span>
+        out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Analyzing...&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span>
+<span style="color: #0000ff;">while</span><span style="color: #000000;">&#40;</span> choice <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">3</span> <span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// exit on 3</span></pre>
+<h2><a name="Jump_Statements"></a><span class="mw-headline">Jump Statements</span></h2>
+<p>Jump statements unconditionally transfer control within a function: <b>break</b>, <b>continue</b>, and <b>goto</b>.
+</p>
+<h3><a name="break_Statementbreak"></a><span class="mw-headline"><span class="OIndex" style="display:none">break Statement</span>break</span></h3>
+<p>The <b>break</b> statement exits the nearest enclosing loop or switch immediately.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> index <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; index <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">10</span>; index<span style="color: #000040;">++</span> <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #000000;">pow</span><span style="color: #000000;">&#40;</span>index, <span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span> <span style="color: #000080;">&gt;</span> <span style="color: #0000dd;">10</span> <span style="color: #000000;">&#41;</span>
+        <span style="color: #0000ff;">break</span>; <span style="color: #008000;">// terminate for loop</span>
+
+    out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;index = &quot;</span>, index<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<h3><a name="continue_Statementcontinue"></a><span class="mw-headline"><span class="OIndex" style="display:none">continue Statement</span>continue</span></h3>
+<p>The <b>continue</b> statement skips the rest of the current loop iteration and proceeds with the next iteration.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;The odd numbers from 1 to 10 are:<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> index <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span>; index <span style="color: #000080;">&lt;=</span> <span style="color: #0000dd;">10</span>; index<span style="color: #000040;">++</span> <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #000000;">&#40;</span>index <span style="color: #000040;">%</span> <span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span> <span style="color: #000080;">==</span> <span style="color: #0000dd;">0</span> <span style="color: #000000;">&#41;</span>       <span style="color: #008000;">// use&#160;% (modulus) to test even/odd</span>
+        <span style="color: #0000ff;">continue</span>;                <span style="color: #008000;">// skip even numbers</span>
+
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, index<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>Another <b>continue</b> use: skip blanks when counting letters.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> s <span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;A B  C&quot;</span>;
+<span style="color: #0000ff;">int</span> letters <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>;
+<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; s<span style="color: #000000;">&#91;</span>i<span style="color: #000000;">&#93;</span>; i<span style="color: #000040;">++</span> <span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> <span style="color: #ff00ff;">' '</span> <span style="color: #000080;">==</span> s<span style="color: #000000;">&#91;</span>i<span style="color: #000000;">&#93;</span> <span style="color: #000000;">&#41;</span>
+        <span style="color: #0000ff;">continue</span>;
+    letters<span style="color: #000040;">++</span>;
+<span style="color: #000000;">&#125;</span>
+out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;letters = &quot;</span>, letters<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// 3</span></pre>
+<h3><a name="goto_Statementgoto"></a><span class="mw-headline"><span class="OIndex" style="display:none">goto Statement</span>goto</span></h3>
+<p>The <b>goto</b> statement jumps to a labeled statement within the same function. Use sparingly; structured control flow is usually clearer.
+</p>
+<pre class="oc" style="font-family:monospace;">out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Begin&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #0000ff;">goto</span> Mark1;
+
+out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Skipped statement&quot;</span><span style="color: #000000;">&#41;</span>;
+
+Mark1<span style="color: #000000;">:</span>
+out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;First statement after Mark1&quot;</span><span style="color: #000000;">&#41;</span>;</pre>
+<h2><a name="foreach_StatementThe_foreach_Statement"></a><span class="mw-headline"><span class="OIndex" style="display:none">foreach Statement</span>The foreach Statement</span></h2>
+<p>Use <b>foreach</b> to loop through a collection. The example below iterates all pages in the project and prints name and type.
+</p>
+<pre class="oc" style="font-family:monospace;">foreach<span style="color: #000000;">&#40;</span>PageBase pg in Project.<span style="color: #000000;">Pages</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%s is of type&#160;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, pg.<span style="color: #000000;">GetName</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>, pg.<span style="color: #000000;">GetType</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p>Refer to the <a href="../../OriginC/OCGuide/Collections.html" title="OCGuide:Collections">Collections</a> section for a list of all collection-based classes in Origin C.
+</p>
+
+
+
+
+

@@ -1,0 +1,107 @@
+﻿<h1 class="firstHeading">LoadMapTiles</h1>
+<p>&#160;</p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Return"><span class="tocnumber">4</span> <span class="toctext">Return</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Remark"><span class="tocnumber">6</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Included"><span class="tocnumber">8</span> <span class="toctext">Header to Included</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Reference"><span class="tocnumber">9</span> <span class="toctext">Reference</span></a></li>
+</ul>
+</div>
+<h2><a name="Description" id="Description"></a><span class="mw-headline">Description</span></h2>
+<p>retrieve map image by given url</p>
+<h2><a name="Syntax" id="Syntax"></a><span class="mw-headline">Syntax</span></h2>
+<pre class="oc" style="font-family:monospace;">
+LPVOID LoadMapTiles<span style="color: #000000;">(</span> LPCSTR lpcszUrl, <span style="color: #0000ff;">double</span> dMinLongitude, <span style="color: #0000ff;">double</span> dMaxLongitude, <span style="color: #0000ff;">double</span> dMinLatitude, <span style="color: #0000ff;">double</span> dMaxLatitude, <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nZoomLevel, MapTilesOptions<span style="color: #000040;">*</span> lpOptions <span style="color: #000000;">)</span>
+</pre>
+<h2><a name="Parameters" id="Parameters"></a><span class="mw-headline">Parameters</span></h2>
+<dl>
+<dt>lpcszUrl</dt>
+<dd>[input] url such as <a class="external free" href="https://abc.example.com/tiles/{x}/{y}/{z}" target="_blank">https://abc.example.com/tiles/{x}/{y}/{z}</a>, where {x}, {y}, and {z} are mandatory.</dd>
+</dl>
+<dl>
+<dt>dMinLongitude</dt>
+<dd>[input] minimum longitude</dd>
+</dl>
+<dl>
+<dt>dMaxLongitude</dt>
+<dd>[input] maximum longitude</dd>
+</dl>
+<dl>
+<dt>dMinLatitude</dt>
+<dd>[input] minimum latitude</dd>
+</dl>
+<dl>
+<dt>dMaxLatitude</dt>
+<dd>[input] maximum latitude</dd>
+</dl>
+<dl>
+<dt>nZoomLevel</dt>
+<dd>[input] zoom level</dd>
+</dl>
+<dl>
+<dt>lpOptions</dt>
+<dd>[input] MapTilesOptions, can be NULL</dd>
+</dl>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">struct</span> MapTilesOptions
+<span style="color: #000000;">{</span>
+        <span style="color: #0000ff;">bool</span> bIsWebMercator; <span style="color: #008000;">//true to be Web Mercator</span>
+        <span style="color: #0000ff;">bool</span> bConvertToWGS84; <span style="color: #008000;">//if true, convert to the World Geodetic System WGS84 standard</span>
+        <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nTimeout; <span style="color: #008000;">//timeout limit</span>
+        <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nDelay; <span style="color: #008000;">//delay time</span>
+        <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nRetry; <span style="color: #008000;">//number of retry</span>
+        <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nParallel; <span style="color: #008000;">//parallel threads</span>
+        <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> lpcszRequestHeader; <span style="color: #008000;">//request header</span>
+<span style="color: #000000;">}</span>;
+</pre>
+<p></p>
+<h2><a name="Return" id="Return"></a><span class="mw-headline">Return</span></h2>
+<p>return pointer to image matrix for success, otherwise return NULL</p>
+<h2><a name="Examples" id="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b></p>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>Origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>..<span style="color: #000040;">/</span>OriginLab<span style="color: #000040;">/</span>opencv_origin.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>OImage.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+
+<span style="color: #0000ff;">void</span> LoadMapTiles_ex<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        LPCSTR lpcszUrlPattern;<span style="color: #008000;">//set URL here</span>
+        
+        <span style="color: #0000ff;">double</span> west <span style="color: #000080;">=</span> <span style="color: #0000dd;">110</span>;
+        <span style="color: #0000ff;">double</span> east <span style="color: #000080;">=</span> <span style="color: #0000dd;">120</span>;
+        <span style="color: #0000ff;">double</span> north <span style="color: #000080;">=</span> <span style="color: #0000dd;">25</span>; 
+        <span style="color: #0000ff;">double</span> south <span style="color: #000080;">=</span> <span style="color: #0000dd;">17</span>;
+        <span style="color: #0000ff;">unsigned</span> <span style="color: #0000ff;">int</span> nZoomLevel <span style="color: #000080;">=</span> <span style="color: #0000dd;">6</span>;
+        CvMat<span style="color: #000040;">*</span> ptrMat <span style="color: #000080;">=</span> <span style="color: #000000;">(</span>CvMat<span style="color: #000040;">*</span><span style="color: #000000;">)</span>LoadMapTiles<span style="color: #000000;">(</span>lpcszUrlPattern, west, east, south, north, nZoomLevel, <span style="color: #0000ff;">NULL</span><span style="color: #000000;">)</span>;
+
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>ptrMat<span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>
+                ocvMat mat;
+                mat.<span style="color: #000000;">SetFromMat</span><span style="color: #000000;">(</span>ptrMat, <span style="color: #0000ff;">false</span><span style="color: #000000;">)</span>;
+                ImagePage gp;
+                gp.<span style="color: #000000;">Create</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+                ImageLayer img;
+                img <span style="color: #000080;">=</span> gp.<span style="color: #000000;">Layers</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+                img.<span style="color: #000000;">SetMat</span><span style="color: #000000;">(</span>mat, <span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+        <span style="color: #000000;">}</span>
+
+        <span style="color: #0000ff;">return</span>;
+
+<span style="color: #000000;">}</span>
+</pre>
+<h2><a name="Remark" id="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h2><a name="See_Also" id="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<p><a href="../../OriginC/OriginC/LoadGoogleMapTiles(global_function).html" title="OriginC:LoadGoogleMapTiles(global function)">LoadGoogleMapTiles</a></p>
+<h2><a name="Header_to_Included" id="Header_to_Included"></a><span class="mw-headline">Header to Included</span></h2>
+<p>OImage.h</p>
+<h2><a name="Reference" id="Reference"></a><span class="mw-headline">Reference</span></h2>

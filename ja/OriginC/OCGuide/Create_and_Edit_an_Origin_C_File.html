@@ -1,0 +1,156 @@
+﻿<h1 class="firstHeading">Origin Cファイルの作成と編集</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>目次</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">概要</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#File_Types"><span class="tocnumber">2</span> <span class="toctext">ファイルの種類</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Source_.28.2A.c.2C_.2A.cpp.2C_.2A.h.2C_.2A.ocz.29"><span class="tocnumber">2.1</span> <span class="toctext">ソース (*.c, *.cpp, *.h, *.ocz)</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Object_.28.2A.ocb.29File.2C_Object_File.28.2A.OCB.29"><span class="tocnumber">2.2</span> <span class="toctext">オブジェクト (*.ocb)<span class="OIndex" style="display:none">ファイル, オブジェクトファイル(*.OCB)</span></span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Preprocessed_.28.2A.op.29File.2C_Preprocessed_File.28.2A.OP.29"><span class="tocnumber">2.3</span> <span class="toctext">プリプロセス (*.op)<span class="OIndex" style="display:none">ファイル, プリプロセスファイル(*.OP)</span></span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#.40OCSCompiler.2C_Generate_Pre-processed_File"><span class="tocnumber">2.3.1</span> <span class="toctext">@OCS<span class="OIndex" style="display:none">コンパイラ, プリプロセスファイルを生成</span></span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#.40OCSBCompiler.2C_Type_of_Pre-processed_File"><span class="tocnumber">2.3.2</span> <span class="toctext">@OCSB<span class="OIndex" style="display:none">コンパイラ, プリプロセスファイルの種類</span></span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-8"><a href="#Workspace_.28.2A.ocw.29File.2C_Workspace_File.28.2A.OCW.29"><span class="tocnumber">2.4</span> <span class="toctext">ワークスペース (*.ocw)<span class="OIndex" style="display:none">ファイル、ワークスペースファイル(*.OCW)</span></span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#The_Workspace_View"><span class="tocnumber">3</span> <span class="toctext">ワークスペース表示</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#AppsWorkspace.2C_Packages_Folder"><span class="tocnumber">3.1</span> <span class="toctext">Apps<span class="OIndex" style="display:none">ワークスペース、パッケージフォルダ</span></span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#ProjectWorkspace.2C_Project_Folder"><span class="tocnumber">3.2</span> <span class="toctext">Project<span class="OIndex" style="display:none">ワークスペース、プロジェクトフォルダ</span></span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#SystemWorkspace.2C_System_Folder"><span class="tocnumber">3.3</span> <span class="toctext">System<span class="OIndex" style="display:none">ワークスペース、システムフォルダ</span></span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#TemporaryWorkspace.2C_Temporary_Folder"><span class="tocnumber">3.4</span> <span class="toctext">Temporary<span class="OIndex" style="display:none">ワークスペース、一時フォルダ</span></span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#User_.5BAutoLoad.5DWorkspace.2C_User_Folder"><span class="tocnumber">3.5</span> <span class="toctext">User [AutoLoad]<span class="OIndex" style="display:none">ワークスペース、ユーザフォルダ</span></span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#UserWorkspace.2C_User_Folder"><span class="tocnumber">3.6</span> <span class="toctext">User<span class="OIndex" style="display:none">ワークスペース、ユーザフォルダ</span></span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="#Code_Builder_Quick_StartCode_Builder"><span class="tocnumber">4</span> <span class="toctext">コードビルダのクイックスタート<span class="OIndex" style="display:none">コードビルダ</span></span></a></li>
+</ul>
+</div>
+<h2><a name="Overview"></a><span class="mw-headline">概要</span></h2>
+<p>コードビルダは、Origin CとLabTalkプログラミングの統合開発環境(IDE)です。  コードビルダは、Origin Cのプログラムを記述／編集したり、コンパイル、リンク、デバッグをしたり、実行するためのツールを提供します。  Origin Cのコードは任意のテキストエディタで書くことができますが、コンパイルしてリンクするにはコードビルダのワークスペースに追加する必要があります。
+</p><p><a  class="image"><img alt="CodeBuilder.png" src="../images/Create_and_Edit_an_Origin_C_File/CodeBuilder.png" width="586"  /></a><br /><b>コードビルダウィンドウ</b>
+</p>
+<h2><a name="File_Types"></a><span class="mw-headline">ファイルの種類</span></h2>
+<p>Origin Cは、ファイル、ソース、オブジェクト、プリプロセス、ワークスペースという4種類のファイルを使用する。
+</p>
+<h3><a name="Source_.28.2A.c.2C_.2A.cpp.2C_.2A.h.2C_.2A.ocz.29"></a><span class="mw-headline">ソース (*.c, *.cpp, *.h, *.ocz)</span></h3>
+<p>ソースファイルは基本的に人間が読めるOrigin Cコードを含むテキストファイルです。  コードビルダや他のテキストエディタで作成することができ、任意の場所に保存することができます。  コードビルダのテキストエディタは、シンタックスの色付け、内容に応じたヘルプ、デバッグの機能があります。また、コードビルダでは暗号化Origin Cファイル(*.ocz)を作成でき、他の人と安全にファイルを共有できます。
+</p><p>ソースファイルはコンパイル、リンク、ロードされるまで、それらに含まれる関数をOriginで使用することはできません。
+</p>
+<h3><a name="Object_.28.2A.ocb.29File.2C_Object_File.28.2A.OCB.29"></a><span class="mw-headline">オブジェクト (*.ocb)<span class="OIndex" style="display:none">ファイル, オブジェクトファイル(*.OCB)</span></span></h3>
+<p>ソースファイルがコンパイルされるとき、オブジェクトファイルが生成されます。  オブジェクトファイルはソースファイルと同じファイル名を持ちますが、ファイル拡張子は、<b>*.ocb</b> となります。  オブジェクトファイルは、コンピュータが読むことができ、Originはその関数を呼び出して実行します。  Originは、最初にソースファイルをコンパイルし、そして、ソースファイルが変更されときにのみ再コンパイルします。  
+</p><p>Origin内のオブジェクトファイルは、バージョンに依存し、それらを共有することはできません。  関数やOrigin Cアプリケーションを共有する場合、代わりにプリプロセスファイルを共有します。
+</p>
+<h3><a name="Preprocessed_.28.2A.op.29File.2C_Preprocessed_File.28.2A.OP.29"></a><span class="mw-headline">プリプロセス (*.op)<span class="OIndex" style="display:none">ファイル, プリプロセスファイル(*.OP)</span></span></h3>
+<p>デフォルトでは、Originはソースファイルをコンパイルしてオブジェクトファイルを生成します。  しかし、下記のシステム変数で、オブジェクトファイルの代わりにプリプロセスファイルを生成するように変更することができます。  プリプロセスファイルは、コンパイルが必要ですが、コードの共有に対して次のようなメリットがあります。
+</p>
+<ul><li> Originのバージョンに依存しない</li>
+<li> ソースコードを共有せずに関数を共有可能</li>
+<li> ビルド処理がソースファイルよりもはるかに高速</li></ul>
+<p>オブジェクト(OCB)ファイルまたはプリプロセス(OP)ファイルの生成を可能にするシステム変数は @OCS と @OCSB です。スクリプトウィンドウまたはコードビルダのLabTalkコンソールで、これらの値を変更できます。  例えば、スクリプトウィンドウで、次のように入力します。
+</p>
+<pre class="lt" style="font-family:monospace;">@OCSB<span style="color: #000080;">=</span><span style="color: #0000dd;">0</span>; <span style="color: #008000;">// これ以降コンパイルでOPファイルを作成</span></pre>
+<p><br />
+</p>
+<h4><a name=".40OCSCompiler.2C_Generate_Pre-processed_File"></a><span class="mw-headline">@OCS<span class="OIndex" style="display:none">コンパイラ, プリプロセスファイルを生成</span></span></h4>
+<p>この変数のデフォルト値は1で、OCBファイルまたはOPファイルを作成します。@OCS=0の場合、コンパイラはOCBファイルまたはOPファイルを作成しません。
+</p>
+<h4><a name=".40OCSBCompiler.2C_Type_of_Pre-processed_File"></a><span class="mw-headline">@OCSB<span class="OIndex" style="display:none">コンパイラ, プリプロセスファイルの種類</span></span></h4>
+<p>@OCSB=1がデフォルト値で、これはコンパイル時にオブジェクトを生成します。OPファイルを生成するには、@OCSB=0を設定すると、コンパイル時にOPファイルが生成される。OPファイルは、ソースファイルと同じフォルダ内に保存され、同じファイル名を持ちますが、拡張子がOPとなります。@OCS=0の場合、この変数は意味を持ちません。 
+</p>
+<table class="noborder"><tr>
+	<td style="vertical-align:top" width="60"><img src="../images/Create_and_Edit_an_Origin_C_File/Tip_icon.png" width="57"  border="0" /></td><td><p><b>Notes:</b> 
+<p>1.生成されるOPとOCBは、32bit、64bitのバージョンを持ちます。例えば、32bitバージョンのabc.cから生成されたopファイルは、abc_32.OPという名前になります。
+</p>
+</p><p>2.Origin 9.0以降、生成された32bitあるいは64bitバージョンのファイルは、対応するバージョン（32bitあるいは64bit）のOriginでしか動作しません。
+</p></td></tr></table>
+<h3><a name="Workspace_.28.2A.ocw.29File.2C_Workspace_File.28.2A.OCW.29"></a><span class="mw-headline">ワークスペース (*.ocw)<span class="OIndex" style="display:none">ファイル、ワークスペースファイル(*.OCW)</span></span></h3>
+<p>コードビルダでは、数多くのOrigin Cソースファイルを含むプロジェクトを作成または使用できます。   これらのファイルは、フォルダ内で階層で統合化されていたり、されていない場合があります。このようなファイルを、プロジェクトを切り替える度に、手動でロードするのはとても不便です。 
+</p><p>このような理由で、Userフォルダに含まれる構造およびファイルはワークスペースファイルに保存することができます。  ワークスペースファイルをコードビルダにロードする際に、プロジェクトは直前に保存した状態に戻ります。割り当てられた構造が何であっても、すべてのソースファイルが利用できます。
+</p>
+<h2><a name="The_Workspace_View"></a><span class="mw-headline">ワークスペース表示</span></h2>
+<p>コードビルダのワークスペース表示は次の、6つのフォルダがあります。
+</p>
+<ol><li> Apps</li>
+<li> Project</li>
+<li> System</li>
+<li> Temporary</li>
+<li> User [AutoLoad]</li>
+<li> User </li></ol>
+<p><a  class="image"><img alt="CB OrgPanel.png" src="../images/Create_and_Edit_an_Origin_C_File/CB_OrgPanel.png" width="197"  /></a><br /><b>ワークスペース表示</b>
+</p><p>各フォルダ内のファイルは、次のように異なるイベントでコンパイルリンクします。 
+</p>
+<h3><a name="AppsWorkspace.2C_Packages_Folder"></a><span class="mw-headline">Apps<span class="OIndex" style="display:none">ワークスペース、パッケージフォルダ</span></span></h3>
+<p>このフォルダはパッケージを管理するために使用されます。このフォルダにはフォルダのみが含まれており、各フォルダはAppsフォルダ内のディスクフォルダを表します。 
+</p>
+<ul><li> 「Apps」フォルダのコンテキストメニュー</li></ul>
+<p>Appsフォルダを右クリックすると、次の2つの項目を含むコンテキストメニューが表示されます。
+</p>
+<ol><li><b>既存フォルダの追加...</b></li>
+<li><b>新規作成</b></li></ol>
+<p>1つ目はAppsフォルダに既に存在するフォルダを選択する方法で、2つ目は<b>Untitled</b>という名前の新しいフォルダを作成する方法で、Appsフォルダに<b>Untitled</b>という名前の新しいディスクフォルダも作成する方法です。<b>新規作成</b>メニューを繰り返し選択すると<b>Untitled</b>フォルダが複数作成されます。
+</p>
+<ul><li> 各パッケージフォルダのコンテキストメニュー。
+<dl><dd> <a  class="image"><img alt="Cb package context menu.png" src="../images/Create_and_Edit_an_Origin_C_File/Cb_package_context_menu.png" width="235"  /></a></dd></dl>
+<ol><li> 新規作成...
+<dl><dd> これはフォルダ内にファイルを作成するために使用されます。</dd></dl></li>
+<li> ファイルの追加
+<dl><dd> フォルダにファイルを追加するのに使用します。各パッケージフォルダは、Appsフォルダ内のディスクフォルダを表します。選択したファイルがまだ Apps Folder\packageFolder\ にない場合は、Apps Folder\packageFolder\ フォルダにコピーされます。</dd></dl></li>
+<li> フルパスを表示
+<dl><dd> ファイルのフルパスを表示/非表示にします。</dd></dl></li>
+<li> 除外扱いとする
+<dl><dd> コードビルダーでビルドボタンをクリックしたときに、Appフォルダ内のすべてのファイルがコンパイルリンクされないようにします。 </dd></dl></li>
+<li> 関係アイテムのロード
+<dl><dd> すべての依存Origin CファイルをTemporaryフォルダにロードしてコンパイルします。</dd></dl></li>
+<li> 名前の変更
+<dl><dd> フォルダの名前を変更します。</dd></dl></li>
+<li> 削除
+<dl><dd> コードビルダからフォルダを削除します。これは実際にはファイルシステムからフォルダを削除しません。</dd></dl></li>
+<li> 複製
+<dl><dd> フォルダを複製します。</dd></dl></li>
+<li> 生成...
+<dl><dd> パッケージマネージャを起動し、パッケージフォルダからファイルを追加します。最後に保存されたときと同じファイルシステムの場所にOPXが存在する場合、そのOPXがロードされ、パッケージフォルダからすべてのファイルが追加される前にすべてのファイルが削除されます。</dd></dl></li>
+<li> ファイルエクスプローラでフォルダを開く
+<dl><dd> ファイルエクスプローラでパッケージフォルダを開きます。</dd></dl></li>
+<li> iniからOPXを作成
+<dl><dd> 「package.ini」が存在する場合、package.iniからOPXファイルを生成します。参照<a class="external autonumber" href="https://www.originlab.com/doc/AppDev/App-Development#Example_package.ini_File" target="_blank">[1]</a></dd></dl></li></ol></li></ul>
+<h3><a name="ProjectWorkspace.2C_Project_Folder"></a><span class="mw-headline">Project<span class="OIndex" style="display:none">ワークスペース、プロジェクトフォルダ</span></span></h3>
+<p>Projectフォルダ内のファイルは、現在のOriginプロジェクトファイル(*.OPJ)に保存されます。それらを含むOriginプロジェクトファイルを開く際に、それらはコードビルダワークスペースのプロジェクトフォルダに追加されます。  それらはプロジェクトファイルを開くと自動的にコンパイルされリンクされます。
+</p>
+<h3><a name="SystemWorkspace.2C_System_Folder"></a><span class="mw-headline">System<span class="OIndex" style="display:none">ワークスペース、システムフォルダ</span></span></h3>
+<p>Systemフォルダ内のファイルは、Windowsフォルダ内に外部的に保存されます（通常はOrigin Cフォルダまたはそのサブフォルダの1つ）。それらは、自動的にコードビルダワークスペースのSystemフォルダに追加され、Originが起動したときにコンパイル、リンクされます。
+</p>
+<h3><a name="TemporaryWorkspace.2C_Temporary_Folder"></a><span class="mw-headline">Temporary<span class="OIndex" style="display:none">ワークスペース、一時フォルダ</span></span></h3>
+<p>Project, System, Userフォルダ内にリストされていないすべてのファイルは、Originを使用しているときにロードされ、コンパイルされ、Temporaryフォルダに表示されます。  例えば、グラフをエクスポートする場合、グラフエクスポートを取り扱うために使われるすべてのファイルは、Temporaryフォルダに現れます。
+</p>
+<h3><a name="User_.5BAutoLoad.5DWorkspace.2C_User_Folder"></a><span class="mw-headline">User [AutoLoad]<span class="OIndex" style="display:none">ワークスペース、ユーザフォルダ</span></span></h3>
+<p>このフォルダは、次で説明する<b>User Folder</b> に似ています。相違点としては、手動でのコンパイルリンクが必要ないことです。このフォルダ内のファイルは、Origin起動時に自動的にコンパイルリンクされ、このフォルダ下のファイルで定義された関数が利用可能になります。 
+</p>
+<h3><a name="UserWorkspace.2C_User_Folder"></a><span class="mw-headline">User<span class="OIndex" style="display:none">ワークスペース、ユーザフォルダ</span></span></h3>
+<p>User フォルダ内のファイルはWindowsフォルダ内に外部保存され、コードビルダワークスペースのUserフォルダに手動で追加されます。コンパイルとリンクは、ユーザがコードビルダで行います。
+</p><p><br />
+</p>
+<table class="noborder"><tr>
+	<td style="vertical-align:top" width="60"><img src="../images/Create_and_Edit_an_Origin_C_File/Tip_icon.png" width="57"  border="0" /></td><td><p><b>Notes:</b> 
+<p><b>Apps</b>フォルダと<b>User [AutoLoad]</b>フォルダの内容はすべてのOriginセッションをまたいで保持され、<b>Project</b>フォルダの内容は各プロジェクトファイル(OPJ)に固有です。
+</p>
+</p></td></tr></table>
+<h2><a name="Code_Builder_Quick_StartCode_Builder"></a><span class="mw-headline">コードビルダのクイックスタート<span class="OIndex" style="display:none">コードビルダ</span></span></h2>
+<p>コードビルダの使用を開始するには：
+</p>
+<ol><li> キーボードで<b>Alt+4</b>を押すか、コードビルダボタン<a  class="image"><img alt="Button Code Builder.png" src="../images/Create_and_Edit_an_Origin_C_File/Button_Code_Builder.png" width="23"  /></a>をクリックして、コードビルダを開きます。</li>
+<li> <span class="OIndex" style="display:none">ソースファイルの新規作成</span> <b>Ctrl+N</b>を押すか、<b>新規</b>ツールバーボタンをクリックして、新しいソースコードファイルを作成します。  新規ファイルダイアログが開いたら、ソースコードファイルの名前を入力し、Enterキーを押すかOKボタンをクリックします。</li>
+<li> エディタウィンドウが開きます。  エディタウィンドウの最後の行の末尾に移動し、Enterキーを押して新しい空白行を開始します。  次の関数を入力します。<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> HelloWorld<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+	<span style="color: #000000;">printf</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">&quot;Hello World, from Origin C<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span><span style="color: #000000;">)</span>;
+<span style="color: #000000;">}</span></pre></li>
+<li> コードを呼び出す前にコンパイルしてリンクする必要があります。<b>Shift+F8</b>を押すか、ツールバーのビルドボタン <a  class="image"><img alt="Button Build.png" src="../images/Create_and_Edit_an_Origin_C_File/Button_Build.png" width="22"  /></a>をクリックして、コンパイルおよびリンクすることができます。</li>
+<li> 出力ウィンドウにコンパイルとリンクの進行状況が表示されます。  エラーが表示された場合は、関数を再確認してエラーを修正します。  エラーが表示されなければ、関数を呼び出す準備ができています。</li>
+<li> <span class="OIndex" style="display:none">関数、実行</span>コマンド-結果ウィンドウの上部をクリックします。  関数に引数は必要ないため、<b>HelloWorld</b>または<b>HelloWorld()</b>を入力してEnterキーを押します。  コマンド-結果ウィンドウの下部には、入力した行の繰り返しが表示され、その後に関数の出力行が表示されます。</li></ol>
+<p>これらのステップはコードビルダーを使用するのに十分なものですが、Origin Cファイルを効率よく記述したり、デバッグや実行の助けとなる多くの詳細設定があります。  これらについては、後に続くセクションで説明しています。
+</p>
+
+    

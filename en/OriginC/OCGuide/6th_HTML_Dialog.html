@@ -1,0 +1,241 @@
+<h1 class="firstHeading">1.18.1.5.6 Chrome HTML Dialog communicates to JavaScript</h1><p><span class="OIndex" style="display:none">CEF HTML dialog communicate java script</span><span class="OIndex" style="display:none">Chrome HTML Dialog</span>
+</p>
+<p class='urlname' style='display: none'>sixth-HTML-dialog</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Summary"><span class="tocnumber">1</span> <span class="toctext">Summary</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Creating_an_CEF_HTML_Page_for_Dialog"><span class="tocnumber">2</span> <span class="toctext">Creating an CEF HTML Page for Dialog</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Creating_an_CEF_HTML_Dialog"><span class="tocnumber">3</span> <span class="toctext">Creating an CEF HTML Dialog</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Launching_The_Dialog"><span class="tocnumber">4</span> <span class="toctext">Launching The Dialog</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Summary"></a><span class="mw-headline">Summary</span></h2>
+<p>In this tutorial, you build the CEF(Chromium Embedded Framework) HTML control dialog to show how to communicate asynchronously or synchronously to Java Script.
+</p>
+<p class="version" >Minimum Origin Version Required: Origin 2024b</p>
+<h2><a name="Creating_an_CEF_HTML_Page_for_Dialog"></a><span class="mw-headline">Creating an CEF HTML Page for Dialog</span></h2>
+<ol>
+<li> Open <b>Code Builder</b>,  create a new HTML file and save as CefSimpleHtmlDlg.html to the folder CefSimpleHtmlDlg.
+<li> Copy the following code and paste it within the CefSimpleHtmlDlg.html:
+
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;!</span>doctype html<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>html<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>head<span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;</span>meta charset<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;utf-8&quot;</span><span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;</span>script src<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;http://olab/resource/programfolder/JS/jquery.js&quot;</span><span style="color: #339933;">&gt;&lt;/</span>script<span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;</span>script src<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;http://olab/resource/programfolder/JS/olab.js&quot;</span><span style="color: #339933;">&gt;&lt;/</span>script<span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;</span>script language<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;JavaScript&quot;</span><span style="color: #339933;">&gt;</span>
+	<span style="color: #000066; font-weight: bold;">function</span> setup<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+	<span style="color: #009900;">&#125;</span>
+	
+	<span style="color: #000066; font-weight: bold;">function</span> alertFromOrigin<span style="color: #009900;">&#40;</span>msg<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+		alert<span style="color: #009900;">&#40;</span>msg<span style="color: #009900;">&#41;</span>
+		window.<span style="color: #660066;">O</span>.<span style="color: #660066;">OnCallbackFromOrigin</span><span style="color: #009900;">&#40;</span>msg<span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#125;</span>
+	
+	<span style="color: #006600; font-style: italic;">// Send a query to Origin with Asynchronous, recomment use Asynchronous methods.</span>
+	<span style="color: #000066; font-weight: bold;">function</span> sendMessageAsync<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+		window.<span style="color: #660066;">O</span>.<span style="color: #660066;">OnDoSomethingReturnObject</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span> document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;messageAsync&quot;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span>response<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+			<span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>response<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+				document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'resultAsync'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'Response: '</span><span style="color: #339933;">+</span>JSON.<span style="color: #660066;">stringify</span><span style="color: #009900;">&#40;</span>response<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+			<span style="color: #009900;">&#125;</span>
+			<span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">&#123;</span>
+				document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'resultAsync'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'Error'</span><span style="color: #339933;">;</span>
+			<span style="color: #009900;">&#125;</span>
+			
+		<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+
+	<span style="color: #006600; font-style: italic;">// Send a query to Origin with Synchronous, not recomment to use Synchronous methods, use Asynchronous methods instead.</span>
+	<span style="color: #000066; font-weight: bold;">function</span> sendMessageSync<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+		let response <span style="color: #339933;">=</span> window.<span style="color: #660066;">O</span>.<span style="color: #660066;">OnDoSomethingReturnObject</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span> document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;messageSync&quot;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		<span style="color: #000066; font-weight: bold;">if</span><span style="color: #009900;">&#40;</span>response<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+			document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'resultSync'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'Response: '</span><span style="color: #339933;">+</span>JSON.<span style="color: #660066;">stringify</span><span style="color: #009900;">&#40;</span>response<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		<span style="color: #009900;">&#125;</span>
+		<span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">&#123;</span>
+			document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'resultSync'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">value</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'Error'</span><span style="color: #339933;">;</span>
+		<span style="color: #009900;">&#125;</span>
+	<span style="color: #009900;">&#125;</span>
+	<span style="color: #339933;">&lt;/</span>script<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>head<span style="color: #339933;">&gt;</span>
+
+<span style="color: #339933;">&lt;</span>body bgcolor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;white&quot;</span> onload<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;setup()&quot;</span><span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;</span>form id<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form&quot;</span><span style="color: #339933;">&gt;</span>
+		Asynchronous Message<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> id<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;messageAsync&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;This is Asynchronous Message&quot;</span><span style="color: #339933;">&gt;</span>
+		
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;button&quot;</span> onclick<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sendMessageAsync();&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Send Message to Origin Asynchronous&quot;</span><span style="color: #339933;">&gt;</span>
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;</span>You should see the reverse of your Asynchronous message below<span style="color: #339933;">:</span>
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;&lt;</span>textarea rows<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;10&quot;</span> cols<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;40&quot;</span> id<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;resultAsync&quot;</span><span style="color: #339933;">&gt;&lt;/</span>textarea<span style="color: #339933;">&gt;</span>
+		
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;</span>Synchronous Message<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> id<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;messageSync&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;This is Synchronous Message&quot;</span><span style="color: #339933;">&gt;</span> <span style="color: #339933;">&lt;</span>span style<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;color:red&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span>not recomment to use Synchronous methods<span style="color: #339933;">,</span> use Asynchronous methods instead<span style="color: #009900;">&#41;</span><span style="color: #339933;">&lt;/</span>span<span style="color: #339933;">&gt;</span>
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;button&quot;</span> onclick<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sendMessageSync();&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Send Message to Origin Synchronous&quot;</span><span style="color: #339933;">&gt;</span>
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;</span>You should see the reverse of your Synchronous message below<span style="color: #339933;">:</span>
+		<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">/&gt;&lt;</span>textarea rows<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;10&quot;</span> cols<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;40&quot;</span> id<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;resultSync&quot;</span><span style="color: #339933;">&gt;&lt;/</span>textarea<span style="color: #339933;">&gt;</span>
+	<span style="color: #339933;">&lt;/</span>form<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>body<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>html<span style="color: #339933;">&gt;</span></pre>
+<table class="note">
+
+<tr>
+<td><b>Note:</b>
+<ul><li> Javascript communicates asynchronously to Origin in function <code>sendMessageAsync</code>, and communicates synchronously in function <code>sendMessageSync</code>. The asynchronize way is recommended to use in CEF HTML Dialog.</li></ul>
+</td></tr></table>
+</ol>
+<p>Once you finish this step, you can see the html page by opening the CefSimpleHtmlDlg.html with a web browser.
+</p>
+<h2><a name="Creating_an_CEF_HTML_Dialog"></a><span class="mw-headline">Creating an CEF HTML Dialog</span></h2>
+<p>Now you are ready to edit the Origin C code to create an CEF HTML dialog.
+</p>
+<ol>
+<li> In <b>Code Builder</b>, create a new cpp file named CefSimpleHtmlDlg.cpp under the folder CefSimpleHtmlDlg.
+<li> Copy the following code and paste it within the CefSimpleHtmlDlg.cpp&#160;:
+<pre class="c" style="font-family:monospace;"><span style="color: #339933;">#include &lt;Origin.h&gt;</span>
+<span style="color: #339933;">#include &lt;../OriginLab/DialogEx.h&gt;</span>
+<span style="color: #339933;">#define _USE_CEF_AS_HTML_CTRL</span>
+<span style="color: #339933;">#include &lt;../OriginLab/HTMLDlg.h&gt;</span>
+
+<span style="color: #339933;">#define CEFSIMPLE_HTML_FILE &quot;CefSimpleHtmlDlg.html&quot;</span>
+<span style="color: #339933;">#define CEFSIMPLE_TITLE _L(&quot;CefSimpleHtmlDlg&quot;)</span>
+
+class CefSimpleHtmlDlg<span style="color: #339933;">;</span>
+<span style="color: #993333;">static</span> CefSimpleHtmlDlg <span style="color: #339933;">*</span>s_pDlg <span style="color: #339933;">=</span> NULL<span style="color: #339933;">;</span>
+
+class CefSimpleHtmlDlg<span style="color: #339933;">:</span> public HTMLDlg
+<span style="color: #009900;">&#123;</span>
+protected<span style="color: #339933;">:</span>
+	<span style="color: #666666; font-style: italic;">// Return full path and file name to HTML file.</span>
+	string GetInitURL<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		string strFile <span style="color: #339933;">=</span> __FILE__<span style="color: #339933;">;</span>
+		<span style="color: #b1b100;">return</span> GetFilePath<span style="color: #009900;">&#40;</span>strFile<span style="color: #009900;">&#41;</span> <span style="color: #339933;">+</span> CEFSIMPLE_HTML_FILE<span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+	<span style="color: #666666; font-style: italic;">// Return title of dialog.</span>
+	string GetDialogTitle<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #b1b100;">return</span> CEFSIMPLE_TITLE<span style="color: #339933;">;</span><span style="color: #009900;">&#125;</span>
+
+	<span style="color: #666666; font-style: italic;">// Called after dialog is created but before it is shown.</span>
+	BOOL OnInitDialog<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span> <span style="color: #339933;">!</span>HTMLDlg<span style="color: #339933;">::</span><span style="color: #202020;">OnInitDialog</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#41;</span> <span style="color: #666666; font-style: italic;">// Call base class.</span>
+			<span style="color: #b1b100;">return</span> FALSE<span style="color: #339933;">;</span>
+		
+		ModifyStyle<span style="color: #009900;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> WS_MAXIMIZEBOX<span style="color: #339933;">|</span>WS_MINIMIZEBOX<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		ModifyStyleEx<span style="color: #009900;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> WS_EX_DLGMODALFRAME<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+
+		<span style="color: #b1b100;">return</span> TRUE<span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+	<span style="color: #993333;">void</span> OnHTMLReady<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #666666; font-style: italic;">//override</span>
+	<span style="color: #009900;">&#123;</span>
+		HTMLDlg<span style="color: #339933;">::</span><span style="color: #202020;">OnHTMLReady</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		
+		CallJavaScript<span style="color: #009900;">&#40;</span><span style="color: #ff0000;">&quot;alertFromOrigin('Hello!')&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+	BOOL OnDestroy<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		HTMLDlg<span style="color: #339933;">::</span><span style="color: #202020;">OnDestroy</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		<span style="color: #b1b100;">return</span> TRUE<span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+	<span style="color: #993333;">void</span> OnMinMaxInfo<span style="color: #009900;">&#40;</span>MINMAXINFO<span style="color: #339933;">*</span> lpMMI<span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		lpMMI<span style="color: #339933;">-&gt;</span>ptMinTrackSize.<span style="color: #202020;">y</span> <span style="color: #339933;">=</span> CheckConvertDlgSizeWithDPI<span style="color: #009900;">&#40;</span><span style="color: #0000dd;">450</span><span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		lpMMI<span style="color: #339933;">-&gt;</span>ptMinTrackSize.<span style="color: #202020;">x</span> <span style="color: #339933;">=</span> CheckConvertDlgSizeWithDPI<span style="color: #009900;">&#40;</span><span style="color: #0000dd;">900</span><span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+	BOOL OnDlgResize<span style="color: #009900;">&#40;</span><span style="color: #993333;">int</span> nType<span style="color: #339933;">,</span> <span style="color: #993333;">int</span> cx<span style="color: #339933;">,</span> <span style="color: #993333;">int</span> cy<span style="color: #009900;">&#41;</span> <span style="color: #666666; font-style: italic;">// when you resize the dialog, need to reinit the size and position of each control in dialog</span>
+	<span style="color: #009900;">&#123;</span>
+		<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span> <span style="color: #339933;">!</span>IsInitReady<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#41;</span>
+			<span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+
+		<span style="color: #666666; font-style: italic;">// MoveControlsHelper _temp(this); // you can uncomment this line, if the dialog flickers when you resize it</span>
+		HTMLDlg<span style="color: #339933;">::</span><span style="color: #202020;">OnDlgResize</span><span style="color: #009900;">&#40;</span>nType<span style="color: #339933;">,</span> cx<span style="color: #339933;">,</span> cy<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//place html control in dialog</span>
+
+		<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span> <span style="color: #339933;">!</span>IsHTMLDocumentCompleted<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#41;</span> <span style="color: #666666; font-style: italic;">//check the state of HTML control</span>
+			<span style="color: #b1b100;">return</span> FALSE<span style="color: #339933;">;</span>
+
+		<span style="color: #b1b100;">return</span> TRUE<span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+public<span style="color: #339933;">:</span>
+	DECLARE_DISPATCH_MAP
+
+	EVENTS_BEGIN_DERIV<span style="color: #009900;">&#40;</span>HTMLDlg<span style="color: #009900;">&#41;</span>
+		ON_INIT<span style="color: #009900;">&#40;</span>OnInitDialog<span style="color: #009900;">&#41;</span>
+		ON_DESTROY<span style="color: #009900;">&#40;</span>OnDestroy<span style="color: #009900;">&#41;</span>
+		ON_SIZE<span style="color: #009900;">&#40;</span>OnDlgResize<span style="color: #009900;">&#41;</span>
+		ON_GETMINMAXINFO<span style="color: #009900;">&#40;</span>OnMinMaxInfo<span style="color: #009900;">&#41;</span>
+	EVENTS_END_DERIV
+
+
+	<span style="color: #666666; font-style: italic;">// return object must set function name end with &quot;Object&quot;</span>
+	<span style="color: #993333;">struct</span> STRetObjs
+	<span style="color: #009900;">&#123;</span>
+		<span style="color: #993333;">int</span> id<span style="color: #339933;">;</span>
+		string name<span style="color: #339933;">;</span>
+		string message<span style="color: #339933;">;</span>
+		
+		string GetJson<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+		<span style="color: #009900;">&#123;</span>
+			string strjson<span style="color: #339933;">;</span>
+			JSON.<span style="color: #202020;">ToString</span><span style="color: #009900;">&#40;</span><span style="color: #339933;">*</span>this<span style="color: #339933;">,</span> strjson<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+			<span style="color: #b1b100;">return</span> strjson<span style="color: #339933;">;</span>
+		<span style="color: #009900;">&#125;</span>
+	<span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+	string OnDoSomethingReturnObject<span style="color: #009900;">&#40;</span><span style="color: #993333;">int</span> nId<span style="color: #339933;">,</span> string strMessage<span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		STRetObjs obj<span style="color: #339933;">;</span>
+		obj.<span style="color: #202020;">name</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">&quot;Tom&quot;</span><span style="color: #339933;">;</span>
+		obj.<span style="color: #202020;">id</span> <span style="color: #339933;">=</span> nId<span style="color: #339933;">;</span>
+		obj.<span style="color: #202020;">message</span> <span style="color: #339933;">=</span> strMessage<span style="color: #339933;">;</span>
+		<span style="color: #b1b100;">return</span> obj.<span style="color: #202020;">GetJson</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+		
+	<span style="color: #993333;">void</span> OnCallbackFromOrigin<span style="color: #009900;">&#40;</span>string strMessage<span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		<span style="color: #666666; font-style: italic;">// do your work here call from &quot;CallJavaScript(&quot;alertFromOrigin('Hello!')&quot;);&quot;</span>
+		GetNBoxDisplayInfo displayInfo<span style="color: #339933;">;</span>
+		displayInfo.<span style="color: #202020;">lpcszTitle</span> <span style="color: #339933;">=</span> strMessage<span style="color: #339933;">;</span>
+		displayInfo.<span style="color: #202020;">bHideContextHelp</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">true</span><span style="color: #339933;">;</span>
+		GETN_BOX<span style="color: #009900;">&#40;</span>tr<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		GETN_STR<span style="color: #009900;">&#40;</span>message<span style="color: #339933;">,</span> _L<span style="color: #009900;">&#40;</span><span style="color: #ff0000;">&quot;Message&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> strMessage<span style="color: #009900;">&#41;</span>
+		<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span>GetNBox<span style="color: #009900;">&#40;</span>tr<span style="color: #339933;">,</span> NULL<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>displayInfo<span style="color: #339933;">,</span> GetSafeHwnd<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+		<span style="color: #009900;">&#123;</span>
+		<span style="color: #009900;">&#125;</span>
+	<span style="color: #009900;">&#125;</span>
+
+private<span style="color: #339933;">:</span>
+<span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+
+BEGIN_DISPATCH_MAP<span style="color: #009900;">&#40;</span>CefSimpleHtmlDlg<span style="color: #339933;">,</span> HTMLDlg<span style="color: #009900;">&#41;</span>
+	DISP_FUNCTION<span style="color: #009900;">&#40;</span>NewBookTemplate<span style="color: #339933;">,</span> OnDoSomethingReturnObject<span style="color: #339933;">,</span> VTS_BSTRA<span style="color: #339933;">,</span> VTS_I4 VTS_BSTRA<span style="color: #009900;">&#41;</span>	
+	DISP_FUNCTION<span style="color: #009900;">&#40;</span>NewBookTemplate<span style="color: #339933;">,</span> OnCallbackFromOrigin<span style="color: #339933;">,</span> VTS_VOID<span style="color: #339933;">,</span> VTS_BSTRA<span style="color: #009900;">&#41;</span>
+END_DISPATCH_MAP
+
+<span style="color: #339933;">#pragma labtalk(1) // Enable OC functions for LT calling.</span>
+
+<span style="color: #993333;">void</span> DoCefSimpleHtmlDlg<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+<span style="color: #009900;">&#123;</span>
+	<span style="color: #b1b100;">if</span><span style="color: #009900;">&#40;</span> s_pDlg <span style="color: #339933;">==</span> NULL <span style="color: #009900;">&#41;</span>
+	<span style="color: #009900;">&#123;</span>
+		CefSimpleHtmlDlg dlg<span style="color: #339933;">;</span>
+		s_pDlg <span style="color: #339933;">=</span> <span style="color: #339933;">&amp;</span>dlg<span style="color: #339933;">;</span>
+		<span style="color: #666666; font-style: italic;">//DWORD dwOptions = DLG_NO_LOAD_TOP_LEFT | DLG_NO_LOAD_WIDTH_HEIGHT | DLG_HIDDEN;</span>
+		<span style="color: #666666; font-style: italic;">//dlg.DoModalEx(GetWindow(), dwOptions);</span>
+		dlg.<span style="color: #202020;">DoModalEx</span><span style="color: #009900;">&#40;</span>GetWindow<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		s_pDlg <span style="color: #339933;">=</span> NULL<span style="color: #339933;">;</span>
+	<span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span></pre>
+<table class="note">
+
+<tr>
+<td><b>Note:</b>
+<p>Function <code>OnDoSomethingReturnObject</code> compose a struct to string by <code>JSON.ToString</code> and pass to Java script. Then Java script use <code>JSON.stringify</code> to change it to JSON-compliant string representations of the struct.
+</p>
+</td></tr></table>
+</ol>
+<h2><a name="Launching_The_Dialog"></a><span class="mw-headline">Launching The Dialog</span></h2>
+<p>Save all the code and build it. Run <code>DoCefSimpleHtmlDlg</code> to lauch the dialog.
+</p>
+
+
+
+
+

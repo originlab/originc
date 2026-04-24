@@ -1,0 +1,97 @@
+<h1 class="firstHeading">1.3.3 Composite Data Types Class</h1><p><br />
+</p>
+<h2><a name="Composite_Data_Types_Class"></a><span class="mw-headline">Composite Data Types Class</span></h2>
+<p><span class="OIndex" style="display:none">Classes, Data Types Category</span>The following classes are composite data-type classes. For details, see the <b><a href="../../OriginC/Category/Composite_Data_Types_(class_category).html" title="Category:Composite Data Types (class category)">Origin C Reference: Classes – Composite Data Types</a></b> chapter in the Origin C help.
+</p>
+<table class="simple">
+<tr>
+<th> Class
+</th>
+<th> Brief Description
+</th></tr>
+<tr>
+<td> <a href="../../OriginC/Category/CategoricalData_(class).html" title="Category:CategoricalData (class)">CategoricalData</a>
+</td>
+<td> An array of integers tied to an internal Origin <b>Text</b> data set. Values map text to category indices (1-based). The mapped texts live in the associated <b>CategoricalMap</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/CategoricalMap_(class).html" title="Category:CategoricalMap (class)">CategoricalMap</a>
+</td>
+<td> An array of unique text values (allocated dynamically), not tied to an internal data set. Values are stored alphanumerically and referenced by <b>CategoricalData</b> indices.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Complex_(class).html" title="Category:Complex (class)">complex</a>
+</td>
+<td> Handles complex numbers; stores both real and imaginary parts and provides complex arithmetic/utilities.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Curve_(class).html" title="Category:Curve (class)">Curve</a>
+</td>
+<td> Derived from <b>curvebase</b> and <b>vectorbase</b>. Represents a Y data set with an optional associated X. Can be plotted via <b>GraphLayer</b> methods.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Curvebase_(class).html" title="Category:Curvebase (class)">curvebase</a>
+</td>
+<td> Abstract base of curve-like classes (used polymorphically). Not constructible; use a derived class such as <b>Curve</b>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Dataset_(class).html" title="Category:Dataset (class)">Dataset</a>
+</td>
+<td> Dynamic array derived from <b>vector</b>/<b>vectorbase</b>. May be tied or not tied to an internal Origin data set. Default element type is <b>double</b>; supports basic types (char, byte, short, word, int, uint, complex; not string). Use <code>Dataset&lt;<i>type</i>&gt;</code>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Matrix_(class).html" title="Category:Matrix (class)">Matrix</a>
+</td>
+<td> Two-dimensional array derived from <b>matrix</b>/<b>matrixbase</b>, tied to an Origin matrix window. Default type is <b>double</b>; supports basic types (char, byte, short, word, int, uint, complex; not string). Use <code>Matrix&lt;<i>type</i>&gt;</code>. Accesses matrix data; <b>MatrixObject</b> controls display/style. Worksheet “Z” values map linearly to X (columns) and Y (rows).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Matrix_(lowcase)_(class).html" title="Category:Matrix (lowcase) (class)">matrix</a>
+</td>
+<td> Two-dimensional array (lowercase <i>m</i>) derived from <b>matrixbase</b>, not tied to a matrix window (more flexible). Default type is <b>double</b>; supports the same basic types (not string). Use <code>matrix&lt;<i>type</i>&gt;</code>.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Matrixbase_(class).html" title="Category:Matrixbase (class)">matrixbase</a>
+</td>
+<td> Abstract base for <b>matrix</b> and <b>Matrix</b> (polymorphic use). Not constructible; use derived classes.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/PropertyNode_(class).html" title="Category:PropertyNode (class)">PropertyNode</a>
+</td>
+<td> Container for typed properties (bool, int, float, double, string, vector, matrix, picture, etc.).
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/String_(class).html" title="Category:String (class)">string</a>
+</td>
+<td> Null-terminated character array (similar to MFC <i>CString</i>) with rich string APIs. Works with <code>vector&lt;string&gt;</code> for string arrays.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Tree_(class).html" title="Category:Tree (class)">Tree</a>
+</td>
+<td> Save/load Origin C trees as XML.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/TreeNode_(class).html" title="Category:TreeNode (class)">TreeNode</a>
+</td>
+<td> Build multi-level trees; traverse nodes; access attributes.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/TreeNodeCollection_(class).html" title="Category:TreeNodeCollection (class)">TreeNodeCollection</a>
+</td>
+<td> Retrieve collections of child nodes with a shared name prefix.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Vectorbase_(class).html" title="Category:Vectorbase (class)">vectorbase</a>
+</td>
+<td> Abstract base for <b>vector</b> and <b>Dataset</b> (polymorphic use). Not constructible; use derived classes.
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/Category/Vector_(class).html" title="Category:Vector (class)">vector</a>
+</td>
+<td> Dynamic array derived from <b>vectorbase</b>, not tied to an internal data set (more flexible). Default type is <b>double</b>; supports basic types including char, byte, short, word, int, uint, complex, and string. Use <code>vector&lt;<i>type</i>&gt;</code>.
+</td></tr></table>
+
+
+
+
+
+

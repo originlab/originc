@@ -1,0 +1,106 @@
+﻿<h1 class="firstHeading">ReportBase::CreateTableWithMatrix</h1>
+<p>&#160;</p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Return"><span class="tocnumber">4</span> <span class="toctext">Return</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Remark"><span class="tocnumber">6</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Included"><span class="tocnumber">8</span> <span class="toctext">Header to Included</span></a></li>
+</ul>
+</div>
+<h2><a name="Description" id="Description"></a><span class="mw-headline">Description</span></h2>
+<p>Create report table with matrix data</p>
+<h2><a name="Syntax" id="Syntax"></a><span class="mw-headline">Syntax</span></h2>
+<pre class="oc" style="font-family:monospace;">
+CreateTableWithMatrix<span style="color: #000000;">(</span> LPCSTR lpcszTagName, LPCSTR lpcszLabel, <span style="color: #0000ff;">int</span> nId, <span style="color: #0000ff;">const</span> matrix <span style="color: #000040;">&amp;</span> mm, <span style="color: #0000ff;">const</span> vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> <span style="color: #000040;">&amp;</span> saColNames, <span style="color: #0000ff;">const</span> vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> <span style="color: #000040;">&amp;</span> saRowNames<span style="color: #000000;">)</span>
+</pre>
+<h2><a name="Parameters" id="Parameters"></a><span class="mw-headline">Parameters</span></h2>
+<dl>
+<dt>lpcszTagName</dt>
+<dd>[input] table tag name</dd>
+<dt>lpcszLabel</dt>
+<dd>[input] table title</dd>
+<dt>nId</dt>
+<dd>[input] table id</dd>
+<dt>mm</dt>
+<dd>[input] value to fill in the table</dd>
+<dt>saColNames</dt>
+<dd>[input] column names</dd>
+<dt>saRowNames</dt>
+<dd>[input] row names</dd>
+</dl>
+<h2><a name="Return" id="Return"></a><span class="mw-headline">Return</span></h2>
+<p>the newly created table</p>
+<h2><a name="Examples" id="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b></p>
+<pre class="oc" style="font-family:monospace;">
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>ReportTree.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>
+
+<span style="color: #0000ff;">enum</span><span style="color: #000000;">{</span>
+        RTID_TABLE1 <span style="color: #000080;">=</span> <span style="color: #0000dd;">10</span>,
+        RTID_TABLE2 <span style="color: #000080;">=</span> <span style="color: #0000dd;">20</span>,
+        RTID_TABLE3 <span style="color: #000080;">=</span> <span style="color: #0000dd;">30</span>,
+<span style="color: #000000;">}</span>;
+
+<span style="color: #0000ff;">void</span> test_CreateTableWithMatrix<span style="color: #000000;">(</span><span style="color: #000000;">)</span>
+<span style="color: #000000;">{</span>
+        Worksheet wks <span style="color: #000080;">=</span> Project.<span style="color: #000000;">ActiveLayer</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+        WorksheetPage wp <span style="color: #000080;">=</span> wks.<span style="color: #000000;">GetPage</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+
+        <span style="color: #0000ff;">int</span> nn <span style="color: #000080;">=</span> wp.<span style="color: #000000;">AddLayer</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"Report1"</span><span style="color: #000000;">)</span>;
+        
+        Worksheet wksRt <span style="color: #000080;">=</span> wp.<span style="color: #000000;">Layers</span><span style="color: #000000;">(</span>nn<span style="color: #000000;">)</span>;
+        Tree trReportTree;
+        ReportTree rt<span style="color: #000000;">(</span>trReportTree<span style="color: #000000;">)</span>;
+        
+        ReportTable rtF <span style="color: #000080;">=</span> rt.<span style="color: #000000;">CreateTable</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"factor"</span>, <span style="color: #ff00ff;">"AddRow Example"</span>, RTID_TABLE1<span style="color: #000000;">)</span>;    
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>rtF<span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>
+                StringArray sa <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #ff00ff;">"Fixed"</span>, <span style="color: #ff00ff;">"15"</span>, <span style="color: #ff00ff;">"1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"</span><span style="color: #000000;">}</span>;
+                StringArray saLabel <span style="color: #000080;">=</span> <span style="color: #000000;">{</span> <span style="color: #ff00ff;">"Type"</span>, <span style="color: #ff00ff;">"Levels"</span>,<span style="color: #ff00ff;">"Values"</span><span style="color: #000000;">}</span>;
+                StringArray saColTag <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #ff00ff;">""</span>,<span style="color: #ff00ff;">""</span>,<span style="color: #ff00ff;">""</span><span style="color: #000000;">}</span>;
+                string strRowHeader <span style="color: #000080;">=</span> <span style="color: #ff00ff;">"Factor 1"</span>;
+                
+                TreeNode trFactor <span style="color: #000080;">=</span> rtF.<span style="color: #000000;">AddRow</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"factor"</span><span style="color: #000040;">+</span><span style="color: #0000dd;">1</span>, sa, strRowHeader, saLabel, saColTag, RTID_TABLE1<span style="color: #000040;">+</span><span style="color: #0000dd;">1</span> <span style="color: #000000;">)</span>;         
+                <span style="color: #0000ff;">if</span> <span style="color: #000000;">(</span>trFactor<span style="color: #000000;">)</span>
+                <span style="color: #000000;">{</span>
+                        <span style="color: #008000;">//for version &lt;= Origin 2025 if comma is decimal separator, </span>
+                        <span style="color: #008000;">//you can make the cell always text to avoid "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15" being considered missing value</span>
+                        string str <span style="color: #000080;">=</span> TNVAL_TYPE_CSTRING;
+                        tree_set_attribute_to_all_nodes<span style="color: #000000;">(</span>trFactor, STR_TYPE_ATTRIB, str, <span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+                <span style="color: #000000;">}</span>
+        <span style="color: #000000;">}</span>     
+        
+        <span style="color: #0000ff;">int</span> id <span style="color: #000080;">=</span> RTID_TABLE2;
+        ReportTable rtData <span style="color: #000080;">=</span> rt.<span style="color: #000000;">CreateTable</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"data"</span><span style="color: #000040;">+</span><span style="color: #000000;">(</span><span style="color: #0000ff;">int</span><span style="color: #000000;">)</span>id, <span style="color: #ff00ff;">"AddColumn Example"</span>, id<span style="color: #000000;">)</span>;     
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">(</span>rtData<span style="color: #000000;">)</span>
+        <span style="color: #000000;">{</span>     
+                vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vs <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #ff00ff;">"A"</span>, <span style="color: #ff00ff;">"B"</span>, <span style="color: #ff00ff;">"C"</span><span style="color: #000000;">}</span>;
+                rtData.<span style="color: #000000;">AddColumn</span><span style="color: #000000;">(</span>vs, <span style="color: #ff00ff;">"xfactor"</span>, id<span style="color: #000040;">+</span><span style="color: #0000dd;">1</span>, <span style="color: #ff00ff;">"PlotIntoLayer"</span>, OKDATAOBJ_DESIGNATION_X<span style="color: #000000;">)</span>;
+                
+                vector vv <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #0000dd;">0.12</span>, <span style="color: #0000dd;">0.34</span>, <span style="color: #0000dd;">0.56</span><span style="color: #000000;">}</span>;
+                rtData.<span style="color: #000000;">AddColumn</span><span style="color: #000000;">(</span>vv, <span style="color: #ff00ff;">"yfactor"</span>, id<span style="color: #000040;">+</span><span style="color: #0000dd;">2</span>, <span style="color: #ff00ff;">"PlotIntoLayer"</span>, OKDATAOBJ_DESIGNATION_Y<span style="color: #000000;">)</span>;
+                rtData.<span style="color: #000000;">AddColumn</span><span style="color: #000000;">(</span>vv<span style="color: #000040;">*</span><span style="color: #0000dd;">5</span>, <span style="color: #ff00ff;">"yfactor2"</span>, id<span style="color: #000040;">+</span><span style="color: #0000dd;">3</span>, <span style="color: #ff00ff;">"PlotIntoLayer"</span>, OKDATAOBJ_DESIGNATION_Y<span style="color: #000000;">)</span>;
+        <span style="color: #000000;">}</span>
+        
+        id <span style="color: #000080;">=</span> RTID_TABLE3;
+        matrix mDoublesByDefault <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #000000;">{</span><span style="color: #0000dd;">1.1</span>,<span style="color: #0000dd;">2.2</span>,<span style="color: #0000dd;">3.3</span><span style="color: #000000;">}</span>,<span style="color: #000000;">{</span><span style="color: #0000dd;">4.4</span>,<span style="color: #0000dd;">5.5</span>,<span style="color: #0000dd;">6.6</span><span style="color: #000000;">}</span><span style="color: #000000;">}</span>;
+        vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> saColNames <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #ff00ff;">"A"</span>, <span style="color: #ff00ff;">"B"</span>, <span style="color: #ff00ff;">"C"</span><span style="color: #000000;">}</span>, saRowNames <span style="color: #000080;">=</span> <span style="color: #000000;">{</span><span style="color: #ff00ff;">"1"</span>, <span style="color: #ff00ff;">"2"</span><span style="color: #000000;">}</span>;
+        ReportTable rtMData <span style="color: #000080;">=</span> rt.<span style="color: #000000;">CreateTableWithMatrix</span><span style="color: #000000;">(</span><span style="color: #ff00ff;">"data"</span><span style="color: #000040;">+</span><span style="color: #000000;">(</span><span style="color: #0000ff;">int</span><span style="color: #000000;">)</span>id, <span style="color: #ff00ff;">"Matrix example"</span>, id, mDoublesByDefault, saColNames, saRowNames<span style="color: #000000;">)</span>;
+                
+        rt.<span style="color: #000000;">GenerateReport</span><span style="color: #000000;">(</span>wksRt, <span style="color: #0000ff;">true</span><span style="color: #000000;">)</span>;
+        wksRt.<span style="color: #000000;">AutoSize</span><span style="color: #000000;">(</span><span style="color: #000000;">)</span>;
+<span style="color: #000000;">}</span>
+</pre>
+<h2><a name="Remark" id="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h2><a name="See_Also" id="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<p><a href="../../OriginC/Category/ReportBase_(class).html#Examples" title="Category:ReportBase (class)">ReportBase's examples</a></p>
+<h2><a name="Header_to_Included" id="Header_to_Included"></a><span class="mw-headline">Header to Included</span></h2>
+<p>ReportTree.h</p>
