@@ -1,4 +1,4 @@
-<h1 class="firstHeading">2.2.3.19.36 vectorbase::SetOutputComment</h1><p><span class="OIndex" style="display:none">SetOutputComment</span>
+<h1 class="firstHeading">2.2.3.19.33 vectorbase::Reverse</h1><p><span class="OIndex" style="display:none">Reverse</span>
 </p>
 <div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
 <ul>
@@ -14,28 +14,25 @@
 </div>
 
 <h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
-<p>Sets the comment of columns for output variable when used within X-Function framework. Now only support vector and composite range type variable.
+<p>Reverse the vector
 </p>
 <h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
-<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> SetOutputComment<span style="color: #000000;">&#40;</span> LPCSTR lpcszComment <span style="color: #000000;">&#41;</span></pre>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> Reverse<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span></pre>
 <h2><a name="Parameters"></a><span class="mw-headline">Parameters</span></h2>
-<dl><dt> lpcszComment</dt>
-<dd>[input] the text of comment.</dd></dl>
 <h2><a name="Return"></a><span class="mw-headline">Return</span></h2>
+<p>Returns TRUE on success or FALSE on error.
+</p>
 <h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
 <p><b>EX1</b>
 </p>
-<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">// XFunction body</span>
-<span style="color: #0000ff;">void</span> xfTest<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">const</span> vector<span style="color: #000040;">&amp;</span> vIn, vector<span style="color: #000040;">&amp;</span> vOut<span style="color: #000000;">&#41;</span>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> Reverse_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
 <span style="color: #000000;">&#123;</span>
-    string strComment <span style="color: #000080;">=</span> vOut.<span style="color: #000000;">GetOutputComment</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
-    strComment <span style="color: #000040;">+</span><span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;<span style="color: #666666; font-weight: bold;">\r</span><span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>;
-    strComment <span style="color: #000040;">+</span><span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;Additional Comment&quot;</span>;
-    vOut.<span style="color: #000000;">SetOutputComment</span><span style="color: #000000;">&#40;</span>strComment<span style="color: #000000;">&#41;</span>;
+	vector vv <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span><span style="color: #0000dd;">0.5</span>, <span style="color: #0000dd;">0.43</span>, <span style="color: #0000dd;">0.2</span><span style="color: #000000;">&#125;</span>;
+	<span style="color: #0000ff;">BOOL</span> bRet <span style="color: #000080;">=</span> vv.<span style="color: #000000;">Reverse</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
 <h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
 <h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
-<p><a href="../../OriginC/OriginC/Vectorbase-GetOutputComment.html" title="OriginC:Vectorbase-GetOutputComment">vectorbase::GetOutputComment</a>
+<p><a href="../../OriginC/OriginC/Vectorbase-Reorder.html" title="OriginC:Vectorbase-Reorder">vectorbase::Reorder</a>
 </p>
 <h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
 <p>origin.h

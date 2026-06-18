@@ -4243,6 +4243,12 @@
     <toc_src>OriginC:Cosh_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Math Functions &gt; Trigonometric &gt; coth</toc_name>
+    <toc_link>OriginC/Coth_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/coth</toc_url>
+    <toc_src>OriginC:Coth_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Math Functions &gt; Trigonometric &gt; sin</toc_name>
     <toc_link>OriginC/Sin_(global_function).html</toc_link>
     <toc_url>OriginC/ref/sin</toc_url>
@@ -9607,6 +9613,18 @@
     <toc_src>OriginC:Matrixbase-SumColumns</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::SumDiagonals</toc_name>
+    <toc_link>OriginC/Matrixbase-SumDiagonals.html</toc_link>
+    <toc_url>OriginC/ref/matrixbase-SumDiagonals</toc_url>
+    <toc_src>OriginC:Matrixbase-SumDiagonals</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::SumRows</toc_name>
+    <toc_link>OriginC/Matrixbase-SumRows.html</toc_link>
+    <toc_url>OriginC/ref/matrixbase-SumRows</toc_url>
+    <toc_src>OriginC:Matrixbase-SumRows</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::Transpose</toc_name>
     <toc_link>OriginC/Matrixbase-Transpose.html</toc_link>
     <toc_url>OriginC/ref/matrixbase-Transpose</toc_url>
@@ -10691,6 +10709,12 @@
     <toc_link>OriginC/Vectorbase-Replace.html</toc_link>
     <toc_url>OriginC/ref/vectorbase-Replace</toc_url>
     <toc_src>OriginC:Vectorbase-Replace</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; vectorbase &gt; vectorbase::Reverse</toc_name>
+    <toc_link>OriginC/Vectorbase-Reverse.html</toc_link>
+    <toc_url>OriginC/ref/vectorbase-Reverse</toc_url>
+    <toc_src>OriginC:Vectorbase-Reverse</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; vectorbase &gt; vectorbase::SetBytes</toc_name>
