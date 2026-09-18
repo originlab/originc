@@ -1,6 +1,18 @@
 <h1 class="firstHeading">1.2.5 Classes</h1><p><br />
 Origin C supports many built-in classes, and also allows you to create your own.
 </p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Classes.2C_PredefinedOrigin_Defined_Classes"><span class="tocnumber">1</span> <span class="toctext"><span class="OIndex" style="display:none">Classes, Predefined</span>Origin Defined Classes</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Classes.2C_User_DefinedUser_Defined_Classes"><span class="tocnumber">2</span> <span class="toctext"><span class="OIndex" style="display:none">Classes, User Defined</span>User Defined Classes</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Classes.2C_InheritanceInheritance"><span class="tocnumber">3</span> <span class="toctext"><span class="OIndex" style="display:none">Classes, Inheritance</span>Inheritance</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#super"><span class="tocnumber">3.1</span> <span class="toctext">__super</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
 <h2><a name="Classes.2C_PredefinedOrigin_Defined_Classes"></a><span class="mw-headline"><span class="OIndex" style="display:none">Classes, Predefined</span>Origin Defined Classes</span></h2>
 <p>Origin C includes predefined classes for working with Origin data types and user-interface objects. These classes help you quickly write Origin C code to accomplish common tasks. This section introduces the base classes to give you an overview of their capabilities. See the next chapter, <i>Predefined Classes</i>, or the Origin C Wiki for details and examples of Origin-defined classes.
 </p>
@@ -48,6 +60,34 @@ Origin C supports many built-in classes, and also allows you to create your own.
     <span style="color: #0000ff;">const</span> Book two<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Origin C&quot;</span><span style="color: #000000;">&#41;</span>;  <span style="color: #008000;">// construct with name; const object</span>
     out_str<span style="color: #000000;">&#40;</span>two.<span style="color: #000000;">GetName</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;      <span style="color: #008000;">// OK (GetName is const)</span>
     <span style="color: #008000;">// two.SetName(&quot;new&quot;);       // NOT allowed: 'two' is const</span>
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Classes.2C_InheritanceInheritance"></a><span class="mw-headline"><span class="OIndex" style="display:none">Classes, Inheritance</span>Inheritance</span></h2>
+<h3><a name="super"></a><span class="mw-headline">__super</span></h3>
+<p>Call a base-class implementation for a function that you are overriding.
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">class</span> base
+<span style="color: #000000;">&#123;</span>
+<span style="color: #0000ff;">public</span><span style="color: #000000;">:</span>
+    <span style="color: #0000ff;">virtual</span> <span style="color: #0000ff;">void</span> fun<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#123;</span> out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Base&quot;</span><span style="color: #000000;">&#41;</span>; <span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span>;
+<span style="color: #0000ff;">class</span> A <span style="color: #000000;">:</span><span style="color: #0000ff;">public</span> base
+<span style="color: #000000;">&#123;</span>
+<span style="color: #0000ff;">public</span><span style="color: #000000;">:</span>
+    <span style="color: #0000ff;">void</span> fun<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#123;</span> out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;A&quot;</span><span style="color: #000000;">&#41;</span>;<span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span>;
+<span style="color: #0000ff;">class</span> B <span style="color: #000000;">:</span><span style="color: #0000ff;">public</span> A
+<span style="color: #000000;">&#123;</span>
+<span style="color: #0000ff;">public</span><span style="color: #000000;">:</span>
+    <span style="color: #0000ff;">void</span> fun<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+    <span style="color: #000000;">&#123;</span>
+        __super<span style="color: #000000;">::</span><span style="color: #000000;">fun</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;<span style="color: #008000;">// call A::fun()</span>
+        out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;B&quot;</span><span style="color: #000000;">&#41;</span>;
+    <span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span>;
+<span style="color: #0000ff;">void</span> main<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+    B b;
+    b.<span style="color: #000000;">fun</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
 <p>For more class features—such as constructors/destructors in larger examples or virtual methods—download
 <a class="external text" href="http://blog.originlab.com/wp-content/uploads/2017/01/OriginCExamples.zip" target="_blank">this zip file</a>, then browse to

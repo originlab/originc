@@ -1,0 +1,102 @@
+<h1 class="firstHeading">2.2.7.9 oset</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Name"><span class="tocnumber">1</span> <span class="toctext">Name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Remark"><span class="tocnumber">2</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Hierarchy"><span class="tocnumber">3</span> <span class="toctext">Hierarchy</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Header_to_Include"><span class="tocnumber">5</span> <span class="toctext">Header to Include</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Reference"><span class="tocnumber">6</span> <span class="toctext">Reference</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Members"><span class="tocnumber">7</span> <span class="toctext">Members</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Name"></a><span class="mw-headline">Name</span></h2>
+<p>oset
+</p>
+<h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<p>The OriginC oset class is an associative container that stores unique elements in a strictly sorted order. For oset&lt;double&gt; and oset&lt;float&gt;, NANUM, NaN and Inf cannot be stored. Insert, Contains, and Erase all return FALSE for those values.
+</p>
+<h2><a name="Hierarchy"></a><span class="mw-headline">Hierarchy</span></h2>
+<h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> set_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	oset<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> s1;
+	s1.<span style="color: #000000;">Insert</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;hello&quot;</span><span style="color: #000000;">&#41;</span>;
+	s1.<span style="color: #000000;">Insert</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Hello&quot;</span><span style="color: #000000;">&#41;</span>;
+	s1.<span style="color: #000000;">Insert</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;world&quot;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">if</span> <span style="color: #000000;">&#40;</span>s1.<span style="color: #000000;">Contains</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Hello&quot;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>
+		out_str<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Hello exists.&quot;</span><span style="color: #000000;">&#41;</span>;
+	
+	vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vs;
+	s1.<span style="color: #000000;">GetAsVector</span><span style="color: #000000;">&#40;</span>vs<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
+<h2><a name="Reference"></a><span class="mw-headline">Reference</span></h2>
+<h2><a name="Members"></a><span class="mw-headline">Members</span></h2>
+<table class="TableGrid" style="; border-spacing: 0px; border-spacing: 0px;" border="1">
+<tr>
+<th bgcolor="#EFEFEF" width="2%">Name
+</th>
+<th bgcolor="#EFEFEF" width="18%">Brief
+</th>
+<th bgcolor="#EFEFEF" width="2%">Example
+</th></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-Insert.html" title="OriginC:Oset-Insert">Insert</a>
+</td>
+<td> Adds one element to the set
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-Insert.html#Examples" title="OriginC:Oset-Insert">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-oset.html" title="OriginC:Oset-oset">oset</a>
+</td>
+<td> Default constructor
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-oset.html#Examples" title="OriginC:Oset-oset">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-Contains.html" title="OriginC:Oset-Contains">Contains</a>
+</td>
+<td> Check whether a value is in the set
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-Contains.html#Examples" title="OriginC:Oset-Contains">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-Erase.html" title="OriginC:Oset-Erase">Erase</a>
+</td>
+<td> Remove the specified value from the set
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-Erase.html#Examples" title="OriginC:Oset-Erase">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-GetSize.html" title="OriginC:Oset-GetSize">GetSize</a>
+</td>
+<td> Return the size of the set
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-GetSize.html#Examples" title="OriginC:Oset-GetSize">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-RemoveAll.html" title="OriginC:Oset-RemoveAll">RemoveAll</a>
+</td>
+<td> Remove all value from the set
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-RemoveAll.html#Examples" title="OriginC:Oset-RemoveAll">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Oset-GetAsVector.html" title="OriginC:Oset-GetAsVector">GetAsVector</a>
+</td>
+<td> Get the values of entire set and assign them to a vector.
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Oset-GetAsVector.html#Examples" title="OriginC:Oset-GetAsVector">Examples</a>
+</td></tr></table>
+
+
+
+
+
+

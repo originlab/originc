@@ -19,10 +19,15 @@
 </p>
 <h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
 <p>Converts a struct/class object to a JSON string
+</p><p>Converts a vector to a JSON string
+</p><p>Converts a matrix to a JSON string<font color="red">(2027)</font>
 </p>
 <h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> ToString<span style="color: #000000;">&#40;</span> ClassObject data, string <span style="color: #000040;">&amp;</span> str, OCJSONToString <span style="color: #000040;">*</span> params <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000000;">&#41;</span></pre>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> ToString<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">const</span> vectorbase <span style="color: #000040;">&amp;</span> data, string <span style="color: #000040;">&amp;</span> str, OCJSONToString <span style="color: #000040;">*</span> params <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000000;">&#41;</span></pre>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> ToString<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">const</span> matrixbase <span style="color: #000040;">&amp;</span> data, string <span style="color: #000040;">&amp;</span> str, OCJSONToString <span style="color: #000040;">*</span> params <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000000;">&#41;</span></pre>
+<p><br />
+</p>
 <h2><a name="Parameters"></a><span class="mw-headline">Parameters</span></h2>
 <dl><dt> data</dt>
 <dd>[input] Reference to a struct/class/vectorbase object</dd>
@@ -30,12 +35,24 @@
 <dd>[output] Stringified JSON string from given object</dd>
 <dt> params</dt>
 <dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONToString below</dd></dl>
+<p><br />
+</p>
 <dl><dt> data</dt>
 <dd>[input] Origin C vector to convert to Javascript array</dd>
 <dt> str</dt>
 <dd>[output] Stringified JSON string from given object</dd>
 <dt> params</dt>
 <dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONToString below</dd></dl>
+<p><br />
+</p>
+<dl><dt> data</dt>
+<dd>[input] Origin C matrix</dd>
+<dt> str</dt>
+<dd>[output] Stringified JSON string from given object</dd>
+<dt> params</dt>
+<dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONToString below</dd></dl>
+<p><br />
+</p>
 <h2><a name="Return"></a><span class="mw-headline">Return</span></h2>
 <p>TRUE on success, FALSE on failure
 </p>
@@ -193,6 +210,8 @@
 <span style="color: #000000;">&#123;</span>
 	<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span>	szFloatFmt;
 	DWORD dwFlags;
+	<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> szTreeAttrKey;
+	<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> szTreeValKey;
 <span style="color: #000000;">&#125;</span>OCJSONToString;</pre>
 <p>szFloatFmt
 </p>

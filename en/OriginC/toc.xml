@@ -1699,6 +1699,12 @@
     <toc_src>OriginC:RGBtoLCH_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Data Conversion &gt; strtod</toc_name>
+    <toc_link>OriginC/Strtod_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/strtod</toc_url>
+    <toc_src>OriginC:Strtod_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Data Conversion &gt; strtol</toc_name>
     <toc_link>OriginC/Strtol_(global_function).html</toc_link>
     <toc_url>OriginC/ref/strtol</toc_url>
@@ -2933,6 +2939,12 @@
     <toc_link>OriginC/Add_plots_to_layer_(global_function).html</toc_link>
     <toc_url>OriginC/ref/add_plots_to_layer</toc_url>
     <toc_src>OriginC:Add_plots_to_layer_(global_function)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Internal Origin Objects &gt; Graph &gt; plot_sparkline</toc_name>
+    <toc_link>OriginC/Plot_sparkline_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/plot_sparkline</toc_url>
+    <toc_src>OriginC:Plot_sparkline_(global_function)</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Internal Origin Objects &gt; Graph &gt; check_has_plotted_in_graph</toc_name>
@@ -6991,6 +7003,12 @@
     <toc_src>OriginC:Norminv_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Distribution Functions &gt; Inverse Cumulative Distribution Functions &gt; ocmath_betainv</toc_name>
+    <toc_link>OriginC/Ocmath_betainv_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/ocmath_betainv</toc_url>
+    <toc_src>OriginC:Ocmath_betainv_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Distribution Functions &gt; Inverse Cumulative Distribution Functions &gt; srangeinv</toc_name>
     <toc_link>OriginC/Srangeinv_(global_function).html</toc_link>
     <toc_url>OriginC/ref/srangeinv</toc_url>
@@ -7165,6 +7183,12 @@
     <toc_src>Category:Random_Number_Generators_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; bernrnd</toc_name>
+    <toc_link>OriginC/Bernrnd_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/bernrnd</toc_url>
+    <toc_src>OriginC:Bernrnd_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; betarnd</toc_name>
     <toc_link>OriginC/Betarnd_(global_function).html</toc_link>
     <toc_url>OriginC/ref/betarnd</toc_url>
@@ -7193,6 +7217,12 @@
     <toc_link>OriginC/Disrnd_(global_function).html</toc_link>
     <toc_url>OriginC/ref/disrnd</toc_url>
     <toc_src>OriginC:Disrnd_(global_function)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; disrnd2</toc_name>
+    <toc_link>OriginC/Disrnd2_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/disrnd2</toc_url>
+    <toc_src>OriginC:Disrnd2_(global_function)</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; exprnd</toc_name>
@@ -7225,10 +7255,28 @@
     <toc_src>OriginC:Hygernd_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; laprnd</toc_name>
+    <toc_link>OriginC/Laprnd_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/laprnd</toc_url>
+    <toc_src>OriginC:Laprnd_(global_function)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; levrnd</toc_name>
+    <toc_link>OriginC/Levrnd_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/levrnd</toc_url>
+    <toc_src>OriginC:Levrnd_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; lgsrnd</toc_name>
     <toc_link>OriginC/Lgsrnd_(global_function).html</toc_link>
     <toc_url>OriginC/ref/lgsrnd</toc_url>
     <toc_src>OriginC:Lgsrnd_(global_function)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; llgsrnd</toc_name>
+    <toc_link>OriginC/Llgsrnd_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/llgsrnd</toc_url>
+    <toc_src>OriginC:Llgsrnd_(global_function)</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; lognrnd</toc_name>
@@ -7255,6 +7303,12 @@
     <toc_src>OriginC:Normrnd_(global_function)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; ocmath_is_matrix_positive_definite</toc_name>
+    <toc_link>OriginC/Ocmath_is_matrix_positive_definite_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/ocmath_is_matrix_positive_definite</toc_url>
+    <toc_src>OriginC:Ocmath_is_matrix_positive_definite_(global_function)</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; permrnd</toc_name>
     <toc_link>OriginC/Permrnd_(global_function).html</toc_link>
     <toc_url>OriginC/ref/permrnd</toc_url>
@@ -7265,6 +7319,12 @@
     <toc_link>OriginC/Poissrnd_(global_function).html</toc_link>
     <toc_url>OriginC/ref/poissrnd</toc_url>
     <toc_src>OriginC:Poissrnd_(global_function)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; sevrnd</toc_name>
+    <toc_link>OriginC/Sevrnd_(global_function).html</toc_link>
+    <toc_url>OriginC/ref/sevrnd</toc_url>
+    <toc_src>OriginC:Sevrnd_(global_function)</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; Statistics &gt; Random Number Generators &gt; trirnd</toc_name>
@@ -7565,12 +7625,6 @@
     <toc_link>OriginC/Get_system_font_name_(global_function).html</toc_link>
     <toc_url>OriginC/ref/get_system_font_name</toc_url>
     <toc_src>OriginC:Get_system_font_name_(global_function)</toc_src>
-  </toc>
-  <toc>
-    <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; System &gt; InstallPythonPackages</toc_name>
-    <toc_link>OriginC/InstallPythonPackages_(global_function).html</toc_link>
-    <toc_url>OriginC/ref/InstallPythonPackages</toc_url>
-    <toc_src>OriginC:InstallPythonPackages_(global_function)</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Global Functions &gt; System &gt; IsClipboardFormatAvailable</toc_name>
@@ -9199,10 +9253,22 @@
     <toc_src>Category:Matrixbase_(class)</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::AllNANUM</toc_name>
+    <toc_link>OriginC/Matrixbase-AllNANUM.html</toc_link>
+    <toc_url>OriginC/ref/matrixbase-AllNANUM</toc_url>
+    <toc_src>OriginC:Matrixbase-AllNANUM</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::AllNonZero</toc_name>
     <toc_link>OriginC/Matrixbase-AllNonZero.html</toc_link>
     <toc_url>OriginC/ref/matrixbase-AllNonZero</toc_url>
     <toc_src>OriginC:Matrixbase-AllNonZero</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::AnyNANUM</toc_name>
+    <toc_link>OriginC/Matrixbase-AnyNANUM.html</toc_link>
+    <toc_url>OriginC/ref/matrixbase-AnyNANUM</toc_url>
+    <toc_src>OriginC:Matrixbase-AnyNANUM</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Composite Data Types &gt; matrixbase &gt; matrixbase::AnyNonZero</toc_name>
@@ -11137,6 +11203,12 @@
     <toc_src>OriginC:Column-IsFilterDisabled</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Internal Origin Objects &gt; Column &gt; Column::IsMirror</toc_name>
+    <toc_link>OriginC/Column-IsMirror.html</toc_link>
+    <toc_url>OriginC/ref/Column-IsMirror</toc_url>
+    <toc_src>OriginC:Column-IsMirror</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Internal Origin Objects &gt; Column &gt; Column::IsWriteProtected</toc_name>
     <toc_link>OriginC/Column-IsWriteProtected.html</toc_link>
     <toc_url>OriginC/ref/Column-IsWriteProtected</toc_url>
@@ -11165,6 +11237,12 @@
     <toc_link>OriginC/Column-SetAsCategorical.html</toc_link>
     <toc_url>OriginC/ref/Column-SetAsCategorical</toc_url>
     <toc_src>OriginC:Column-SetAsCategorical</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Internal Origin Objects &gt; Column &gt; Column::SetAsMirror</toc_name>
+    <toc_link>OriginC/Column-SetAsMirror.html</toc_link>
+    <toc_url>OriginC/ref/Column-SetAsMirror</toc_url>
+    <toc_src>OriginC:Column-SetAsMirror</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Internal Origin Objects &gt; Column &gt; Column::SetComments</toc_name>
@@ -20179,6 +20257,66 @@
     <toc_src>OriginC:LTVarTempChange-LTVarTempChange</toc_src>
   </toc>
   <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap</toc_name>
+    <toc_link>Category/Omap_(class).html</toc_link>
+    <toc_url>OriginC/ref/omap</toc_url>
+    <toc_src>Category:Omap_(class)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::Contains</toc_name>
+    <toc_link>OriginC/Omap-Contains.html</toc_link>
+    <toc_url>OriginC/ref/omap-Contains</toc_url>
+    <toc_src>OriginC:Omap-Contains</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::Erase</toc_name>
+    <toc_link>OriginC/Omap-Erase.html</toc_link>
+    <toc_url>OriginC/ref/omap-Erase</toc_url>
+    <toc_src>OriginC:Omap-Erase</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::Get</toc_name>
+    <toc_link>OriginC/Omap-Get.html</toc_link>
+    <toc_url>OriginC/ref/omap-Get</toc_url>
+    <toc_src>OriginC:Omap-Get</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::GetKeys</toc_name>
+    <toc_link>OriginC/Omap-GetKeys.html</toc_link>
+    <toc_url>OriginC/ref/omap-GetKeys</toc_url>
+    <toc_src>OriginC:Omap-GetKeys</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::GetSize</toc_name>
+    <toc_link>OriginC/Omap-GetSize.html</toc_link>
+    <toc_url>OriginC/ref/omap-GetSize</toc_url>
+    <toc_src>OriginC:Omap-GetSize</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::GetValues</toc_name>
+    <toc_link>OriginC/Omap-GetValues.html</toc_link>
+    <toc_url>OriginC/ref/omap-GetValues</toc_url>
+    <toc_src>OriginC:Omap-GetValues</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::omap</toc_name>
+    <toc_link>OriginC/Omap-omap.html</toc_link>
+    <toc_url>OriginC/ref/omap-omap</toc_url>
+    <toc_src>OriginC:Omap-omap</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::RemoveAll</toc_name>
+    <toc_link>OriginC/Omap-RemoveAll.html</toc_link>
+    <toc_url>OriginC/ref/omap-RemoveAll</toc_url>
+    <toc_src>OriginC:Omap-RemoveAll</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; omap &gt; omap::Set</toc_name>
+    <toc_link>OriginC/Omap-Set.html</toc_link>
+    <toc_url>OriginC/ref/omap-Set</toc_url>
+    <toc_src>OriginC:Omap-Set</toc_src>
+  </toc>
+  <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; OrgAppInfo</toc_name>
     <toc_link>Category/OrgAppInfo_(class).html</toc_link>
     <toc_url>OriginC/ref/OrgAppInfo</toc_url>
@@ -20303,6 +20441,54 @@
     <toc_link>Category/OriginApp_(class).html</toc_link>
     <toc_url>OriginC/ref/OriginApp</toc_url>
     <toc_src>Category:OriginApp_(class)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset</toc_name>
+    <toc_link>Category/Oset_(class).html</toc_link>
+    <toc_url>OriginC/ref/oset</toc_url>
+    <toc_src>Category:Oset_(class)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::Contains</toc_name>
+    <toc_link>OriginC/Oset-Contains.html</toc_link>
+    <toc_url>OriginC/ref/oset-Contains</toc_url>
+    <toc_src>OriginC:Oset-Contains</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::Erase</toc_name>
+    <toc_link>OriginC/Oset-Erase.html</toc_link>
+    <toc_url>OriginC/ref/oset-Erase</toc_url>
+    <toc_src>OriginC:Oset-Erase</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::GetAsVector</toc_name>
+    <toc_link>OriginC/Oset-GetAsVector.html</toc_link>
+    <toc_url>OriginC/ref/oset-GetAsVector</toc_url>
+    <toc_src>OriginC:Oset-GetAsVector</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::GetSize</toc_name>
+    <toc_link>OriginC/Oset-GetSize.html</toc_link>
+    <toc_url>OriginC/ref/oset-GetSize</toc_url>
+    <toc_src>OriginC:Oset-GetSize</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::Insert</toc_name>
+    <toc_link>OriginC/Oset-Insert.html</toc_link>
+    <toc_url>OriginC/ref/oset-Insert</toc_url>
+    <toc_src>OriginC:Oset-Insert</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::oset</toc_name>
+    <toc_link>OriginC/Oset-oset.html</toc_link>
+    <toc_url>OriginC/ref/oset-oset</toc_url>
+    <toc_src>OriginC:Oset-oset</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; oset &gt; oset::RemoveAll</toc_name>
+    <toc_link>OriginC/Oset-RemoveAll.html</toc_link>
+    <toc_url>OriginC/ref/oset-RemoveAll</toc_url>
+    <toc_src>OriginC:Oset-RemoveAll</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Classes &gt; Utility &gt; Profiler</toc_name>
@@ -21179,6 +21365,60 @@
     <toc_link>OriginC/STR_GUI_THEME_FILE_ATTRIB.html</toc_link>
     <toc_url>OriginC/ref/STR_GUI_THEME_FILE_ATTRIB</toc_url>
     <toc_src>OriginC:STR_GUI_THEME_FILE_ATTRIB</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword</toc_name>
+    <toc_link>Category/Keyword_(OriginC).html</toc_link>
+    <toc_url>OriginC/ref/Keyword</toc_url>
+    <toc_src>Category:Keyword_(OriginC)</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; auto</toc_name>
+    <toc_link>OriginC/Auto.html</toc_link>
+    <toc_url>OriginC/ref/auto</toc_url>
+    <toc_src>OriginC:Auto</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; ffor</toc_name>
+    <toc_link>OriginC/Ffor.html</toc_link>
+    <toc_url>OriginC/ref/ffor</toc_url>
+    <toc_src>OriginC:Ffor</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; for</toc_name>
+    <toc_link>OriginC/For.html</toc_link>
+    <toc_url>OriginC/ref/for</toc_url>
+    <toc_src>OriginC:For</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; if</toc_name>
+    <toc_link>OriginC/If.html</toc_link>
+    <toc_url>OriginC/ref/if</toc_url>
+    <toc_src>OriginC:If</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; nullptr</toc_name>
+    <toc_link>OriginC/Nullptr.html</toc_link>
+    <toc_url>OriginC/ref/nullptr</toc_url>
+    <toc_src>OriginC:Nullptr</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; override</toc_name>
+    <toc_link>OriginC/Override.html</toc_link>
+    <toc_url>OriginC/ref/override</toc_url>
+    <toc_src>OriginC:Override</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; static_assert</toc_name>
+    <toc_link>OriginC/Static_assert.html</toc_link>
+    <toc_url>OriginC/ref/static_assert</toc_url>
+    <toc_src>OriginC:Static_assert</toc_src>
+  </toc>
+  <toc>
+    <toc_name>Origin C &gt; Origin C Reference &gt; Keyword &gt; switch</toc_name>
+    <toc_link>OriginC/Switch.html</toc_link>
+    <toc_url>OriginC/ref/switch</toc_url>
+    <toc_src>OriginC:Switch</toc_src>
   </toc>
   <toc>
     <toc_name>Origin C &gt; Origin C Reference &gt; Typedef</toc_name>

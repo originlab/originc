@@ -68,6 +68,28 @@
 	GETN_MULTI_COLS_BRANCH<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">5</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>;<span style="color: #008000;">//second var not used</span>
 	GetNBox<span style="color: #000000;">&#40;</span>tr<span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
+<p><b>EX3</b>
+</p>
+<dl><dt>make controls in two row align vertically</dt></dl>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> GETN_MULTI_COLS<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span> 
+	GETN_TREE<span style="color: #000000;">&#40;</span>testTree<span style="color: #000000;">&#41;</span>
+        GETN_BEGIN_BRANCH<span style="color: #000000;">&#40;</span>advanced, <span style="color: #ff00ff;">&quot;Advanced&quot;</span><span style="color: #000000;">&#41;</span>
+        GETN_MULTI_COLS_BRANCH<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">3</span>,<span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>  
+			GETN_OPTION_BRANCH<span style="color: #000000;">&#40;</span>GETNBRANCH_OPEN<span style="color: #000000;">&#41;</span>
+			
+			GETN_CHECK<span style="color: #000000;">&#40;</span>value, _L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Value&quot;</span><span style="color: #000000;">&#41;</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span> GETN_OPTION_DISPLAY_FORMAT<span style="color: #000000;">&#40;</span>DISPLAY_EDITOR_CHECK_ON_LEFT<span style="color: #000000;">&#41;</span>
+			GETN_NUM<span style="color: #000000;">&#40;</span>valuefrom, _L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;From&quot;</span><span style="color: #000000;">&#41;</span>, NANUM<span style="color: #000000;">&#41;</span> GETN_CUEBANNER<span style="color: #000000;">&#40;</span>_L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Auto&quot;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>
+			GETN_NUM<span style="color: #000000;">&#40;</span>valueto, _L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;To&quot;</span><span style="color: #000000;">&#41;</span>, NANUM<span style="color: #000000;">&#41;</span> GETN_CUEBANNER<span style="color: #000000;">&#40;</span>_L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Auto&quot;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>
+			
+			GETN_CHECK<span style="color: #000000;">&#40;</span>rank, _L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Top N&quot;</span><span style="color: #000000;">&#41;</span>, <span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span> GETN_OPTION_DISPLAY_FORMAT<span style="color: #000000;">&#40;</span>DISPLAY_EDITOR_CHECK_ON_LEFT<span style="color: #000000;">&#41;</span>
+			GETN_NUM<span style="color: #000000;">&#40;</span>rankn, <span style="color: #ff00ff;">&quot; &quot;</span>, <span style="color: #0000dd;">10.0</span><span style="color: #000000;">&#41;</span> <span style="color: #008000;">//use space &quot; &quot; as placeholder to align the controls vertically</span>
+			GETN_LIST<span style="color: #000000;">&#40;</span>rankitem, <span style="color: #ff00ff;">&quot; &quot;</span>, <span style="color: #0000dd;">0</span>, _L<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Items|Percent&quot;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span> 
+				GETN_EDIT_DISPLAY_WIDTH_RANGE<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;13-13&quot;</span><span style="color: #000000;">&#41;</span> <span style="color: #008000;">//make list control same width as editbox</span>
+        GETN_END_BRANCH<span style="color: #000000;">&#40;</span>advanced<span style="color: #000000;">&#41;</span>   
+        <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span>GetNBox<span style="color: #000000;">&#40;</span>testTree<span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>
+            out_tree<span style="color: #000000;">&#40;</span>testTree<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
 <h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
 <p><a href="../../OriginC/OriginC/GETN_PAD.html" title="OriginC:GETN PAD">GETN_PAD</a>, <a href="../../OriginC/OriginC/GETN_ADDITIONAL_TAB.html" title="OriginC:GETN ADDITIONAL TAB">GETN_ADDITIONAL_TAB</a>
 </p>

@@ -1,0 +1,93 @@
+<h1 class="firstHeading">2.4.3 for</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Name"><span class="tocnumber">1</span> <span class="toctext">Name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Description"><span class="tocnumber">2</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Remark"><span class="tocnumber">3</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Header_to_Include"><span class="tocnumber">5</span> <span class="toctext">Header to Include</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#See_Also"><span class="tocnumber">6</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Reference"><span class="tocnumber">7</span> <span class="toctext">Reference</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Name"></a><span class="mw-headline">Name</span></h2>
+<p>for
+</p>
+<h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
+<p>The for statement lets you repeat a statement or compound statement a specified number of times. The body of a for statement is executed zero or more times until an optional condition becomes false.
+</p>
+<h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> for_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> ii <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; ii <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">3</span>; ii<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span>
+	<span style="color: #000000;">&#123;</span>
+		out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;ii=&quot;</span>, ii<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span></pre>
+<dl><dt><b>for</b> support iterating over range</dt></dl>
+<p><b>EX2</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//for ([int k, string v]&#160;: map) {}</span>
+<span style="color: #008000;">//for (auto&amp; [k, v]&#160;: map) {}</span>
+<span style="color: #0000ff;">void</span> for_map_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	omap<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>, string<span style="color: #000080;">&gt;</span> m1;
+	m1.<span style="color: #000000;">Set</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">100</span>, <span style="color: #ff00ff;">&quot;Hello&quot;</span><span style="color: #000000;">&#41;</span>;
+	m1.<span style="color: #000000;">Set</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">200</span>, <span style="color: #ff00ff;">&quot;World&quot;</span><span style="color: #000000;">&#41;</span>;
+	m1.<span style="color: #000000;">Set</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">300</span>, <span style="color: #ff00ff;">&quot;test&quot;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #000000;">&#91;</span><span style="color: #0000ff;">int</span> k, string v<span style="color: #000000;">&#93;</span> <span style="color: #000000;">:</span> m1<span style="color: #000000;">&#41;</span>
+	<span style="color: #000000;">&#123;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%d ==&#160;%s<span style="color: #666666; font-weight: bold;">\r</span><span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, k, v<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">auto</span><span style="color: #000040;">&amp;</span> <span style="color: #000000;">&#91;</span>key, val<span style="color: #000000;">&#93;</span>, index<span style="color: #000000;">:</span> m1<span style="color: #000000;">&#41;</span>
+	<span style="color: #000000;">&#123;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;[%d]&#160;%d -&gt;&#160;%s<span style="color: #666666; font-weight: bold;">\r</span><span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, index, key, val<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX3</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//for (double vv&#160;: vec) {}</span>
+<span style="color: #0000ff;">void</span> for_vec<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector vData <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span><span style="color: #0000dd;">0.37</span>, <span style="color: #0000dd;">12.049</span>, <span style="color: #0000dd;">856</span><span style="color: #000000;">&#125;</span>;
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">double</span> vv <span style="color: #000000;">:</span> vData<span style="color: #000000;">&#41;</span> 
+	<span style="color: #000000;">&#123;</span>
+		out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;value=&quot;</span>,vv<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX4</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//for (auto&amp; ref, size_t idx&#160;: vv) {}</span>
+<span style="color: #008000;">//for (auto nn, index&#160;: arr) {}</span>
+<span style="color: #0000ff;">void</span> for_vec2<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector<span style="color: #000080;">&lt;</span>string<span style="color: #000080;">&gt;</span> vData <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span><span style="color: #ff00ff;">&quot;AUD&quot;</span>, <span style="color: #ff00ff;">&quot;YUAN&quot;</span>, <span style="color: #ff00ff;">&quot;HKD&quot;</span><span style="color: #000000;">&#125;</span>;
+	
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">auto</span> nn, index <span style="color: #000000;">:</span> vData<span style="color: #000000;">&#41;</span> 
+	<span style="color: #000000;">&#123;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%d =&#160;%s<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, index, nn<span style="color: #000000;">&#41;</span>;	
+		nn <span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;--&quot;</span>; <span style="color: #008000;">// value in vData is not changed</span>
+	<span style="color: #000000;">&#125;</span>
+	
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">auto</span><span style="color: #000040;">&amp;</span> ref, <span style="color: #0000ff;">size_t</span> idx <span style="color: #000000;">:</span> vData<span style="color: #000000;">&#41;</span> 
+	<span style="color: #000000;">&#123;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%d =&#160;%s<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, idx, ref<span style="color: #000000;">&#41;</span>;
+		ref <span style="color: #000080;">=</span> <span style="color: #ff00ff;">&quot;--&quot;</span>; <span style="color: #008000;">// value in vData is changed</span>
+	<span style="color: #000000;">&#125;</span>
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
+<h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<p><a href="../../OriginC/OriginC/Ffor.html" title="OriginC:Ffor">ffor</a>
+</p>
+<h2><a name="Reference"></a><span class="mw-headline">Reference</span></h2>
+
+
+
+
+
+

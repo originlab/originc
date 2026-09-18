@@ -18,6 +18,7 @@
 <h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
 <p>An Origin C vector is a dynamically allocated and sized array that is not tied to an internal Origin data set allowing a greater degree of flexibility. 
 </p><p>vector is a template class with a default type of double but a vector of any basic data type (including char, byte, short, word, int, uint, complex, string) can be constructed using the syntax vector&lt;type&gt;. The vector class is derived from the vectorbase class from which it inherits methods and properties.
+</p><p>Origin 2027 supports vector of simple struct. See <b>EX3</b> in Example below.
 </p>
 <h2><a name="Hierarchy"></a><span class="mw-headline">Hierarchy</span></h2>
 <ul><li><a href="../../OriginC/Category/Vectorbase_(class).html" title="Category:Vectorbase (class)">vectorbase</a>
@@ -62,6 +63,89 @@
 
     <span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> jj <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; jj <span style="color: #000080;">&lt;</span> vsNames.<span style="color: #000000;">GetSize</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>; jj<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span> <span style="color: #008000;">// Output string one by one</span>
         <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%s<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, vsNames<span style="color: #000000;">&#91;</span>jj<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX3</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//vector of simple struct</span>
+<span style="color: #0000ff;">struct</span> StSimpleTypes
+<span style="color: #000000;">&#123;</span>
+	<span style="color: #0000ff;">int</span>				nValue;
+	<span style="color: #0000ff;">double</span>			rValue;
+	
+<span style="color: #000000;">&#125;</span>;
+
+<span style="color: #0000ff;">void</span> vector_struct_simple_types<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>		vst;
+	
+	StSimpleTypes				st1;
+	
+	st1.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">100</span>;
+	st1.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1000.88</span>;
+	vst.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>st1<span style="color: #000000;">&#41;</span>;
+	
+	st1.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">101</span>;
+	st1.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1001.88</span>;
+	vst.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>st1<span style="color: #000000;">&#41;</span>;
+
+	st1.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">102</span>;
+	st1.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1002.88</span>;
+	vst.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>st1<span style="color: #000000;">&#41;</span>;
+
+	StSimpleTypes				<span style="color: #000040;">*</span>pst <span style="color: #000080;">=</span> vst;
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;pst[2].nValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;pst[2].rValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	
+	StSimpleTypes				<span style="color: #000040;">*</span>pst2;
+	pst2 <span style="color: #000080;">=</span> pst;
+	pst2 <span style="color: #000040;">+</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span>;
+	pst2<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>nValue <span style="color: #000080;">=</span> <span style="color: #0000dd;">666</span>;
+	pst2<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>rValue <span style="color: #000080;">=</span> <span style="color: #0000dd;">777.4</span>;
+	
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER: pst[2].nValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER: pst[2].rValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	
+	vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">13</span>;
+	vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">33.44</span>;
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER2: pst[2].nValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER2: pst[2].rValue = &quot;</span>, pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	
+	<span style="color: #0000ff;">double</span>							<span style="color: #000040;">*</span>pr2 <span style="color: #000080;">=</span> <span style="color: #000040;">&amp;</span>pst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;*pr2 = &quot;</span>, <span style="color: #000040;">*</span>pr2<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000040;">*</span>pr2 <span style="color: #000080;">=</span> <span style="color: #0000dd;">66.2</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;*pr2 = &quot;</span>, <span style="color: #000040;">*</span>pr2<span style="color: #000000;">&#41;</span>;
+	
+	StSimpleTypes				<span style="color: #000040;">*</span>pst3 <span style="color: #000080;">=</span> <span style="color: #000040;">&amp;</span>vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#93;</span>;
+	pst3<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>nValue <span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">99</span>;
+	pst3<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>rValue <span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">99.345</span>;
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER3:vst[1].nValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER3: vst[1].rValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	
+	StSimpleTypes				st4;
+	
+	st4.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">111</span>;
+	st4.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1111.11</span>;
+	vst.<span style="color: #000000;">InsertAt</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">1</span>, st4<span style="color: #000000;">&#41;</span>;
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER4:vst[1].nValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER4: vst[1].rValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER4:vst[3].nValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">nValue</span><span style="color: #000000;">&#41;</span>;
+	out_double<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;AFTER4: vst[3].rValue = &quot;</span>, vst<span style="color: #000000;">&#91;</span><span style="color: #0000dd;">3</span><span style="color: #000000;">&#93;</span>.<span style="color: #000000;">rValue</span><span style="color: #000000;">&#41;</span>;
+	
+	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;size=&quot;</span>, vst.<span style="color: #000000;">GetSize</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;
+	vst.<span style="color: #000000;">RemoveAt</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>;
+	
+	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>		vst2;	
+	StSimpleTypes				st2;
+	
+	st2.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span>;
+	st2.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">10.88</span>;
+	vst2.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>st2<span style="color: #000000;">&#41;</span>;
+	
+	st2.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">11</span>;
+	st2.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">11.88</span>;
+	vst2.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>st2<span style="color: #000000;">&#41;</span>;
+
+	vst.<span style="color: #000000;">Append</span><span style="color: #000000;">&#40;</span>vst2<span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
 <h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
 <p>origin.h

@@ -24,21 +24,21 @@
 </p><p>A single header file, which includes all the commonly used NAG header files, is provided below. Usually, you can just include this header file in your code. 
 </p>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>OC_nag.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span> <span style="color: #008000;">// includes all common NAG header files</span></pre>
-<p>If only a single NAG function or just a few are used, you can also just include its (their) own individual NAG header file(s). For example, if the NAG function <i>f02abc</i> is called in the code, then two related NAG header files need to be included.
+<p>If only a single NAG function or just a few are used, you can also just include its (their) own individual NAG header file(s). For example, if the NAG function <i>c06gzc</i> is called in the code, then two related NAG header files need to be included.
 </p>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>NAG\nag.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span>    <span style="color: #008000;">// NAG struct and type definitions</span>
-<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>NAG\nagf02.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span> <span style="color: #008000;">// contains the f02 function declarations</span></pre>
+<span style="color: #0000ff;">#include</span> <span style="color: #000080;">&lt;</span>NAG\nagc06.<span style="color: #000000;">h</span><span style="color: #000080;">&gt;</span> <span style="color: #008000;">// contains the c06 function declarations</span></pre>
 <h2><a name="Error_StructureNAG_Error_Structure"></a><span class="mw-headline">Error Structure<span class="OIndex" style="display:none">NAG Error Structure</span></span></h2>
 <p>All NAG functions accept one argument, which is a pointer of NagError structure. This structure is used to test whether the NAG function is executing successfully or not.
-</p><p>The example below shows whether the NAG function <i>f02abc</i> works successfully.
+</p><p>The example below shows whether the NAG function <i>c06gzc</i> works successfully.
 </p>
 <pre class="oc" style="font-family:monospace;">NagError err;                    <span style="color: #008000;">// Declare an error structure</span>
-f02abc<span style="color: #000000;">&#40;</span>n, mx, n, r, v, n, <span style="color: #000040;">&amp;</span>err<span style="color: #000000;">&#41;</span>; <span style="color: #008000;">// Call NAG f02abc function</span>
+c06gzc<span style="color: #000000;">&#40;</span>n, v, <span style="color: #000040;">&amp;</span>err<span style="color: #000000;">&#41;</span>;              <span style="color: #008000;">// Call NAG c06gzc function</span>
 <span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span> err.<span style="color: #000000;">code</span> <span style="color: #000040;">!</span><span style="color: #000080;">=</span> NE_NOERROR <span style="color: #000000;">&#41;</span>     <span style="color: #008000;">// If an error occurred</span>
     <span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span>err.<span style="color: #000000;">message</span><span style="color: #000000;">&#41;</span>;         <span style="color: #008000;">// Output error message</span></pre>
 <p>If you don't need to know whether the call is successful or not, the error structure declaration is not needed. And the <b>NAGERR_DEFAULT</b> macro can be passed instead. This macro is a NULL pointer. To ensure compatibility with future versions of NAG functions, it will be better to use this macro if you can work without error structure.
 </p>
-<pre class="oc" style="font-family:monospace;">f02abc<span style="color: #000000;">&#40;</span>n, mx, n, r, v, n, NAGERR_DEFAULT<span style="color: #000000;">&#41;</span>;</pre>
+<pre class="oc" style="font-family:monospace;">c06gzc<span style="color: #000000;">&#40;</span>n, v, NAGERR_DEFAULT<span style="color: #000000;">&#41;</span>;</pre>
 <h2><a name="Callback_FunctionsNAG_Callback_Functions"></a><span class="mw-headline">Callback Functions<span class="OIndex" style="display:none">NAG Callback Functions</span></span></h2>
 <p>In the NAG Library, most of the routines involve callback functions. Before defining a callback function, you need to know the return type and argument types of the callback function that NAG will expect when calling it.
 </p><p>Take the NAG function <i>d01ajc</i> for example. In the header file <i>nagd01.h</i>, we can see that the first argument is <b>NAG_D01AJC_FUN f</b>. This argument is a callback function. Then in <i>nag_types.h</i>, we find that <b>NAG_D01AJC_FUN</b> is a type of <b>NAG_D01_FUN</b>, which is defined as:

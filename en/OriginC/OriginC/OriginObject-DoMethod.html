@@ -61,18 +61,6 @@ If pdVal is NULL will return the method return integer value directly
 	<span style="color: #0000ff;">int</span> nn <span style="color: #000080;">=</span> wks.<span style="color: #000000;">DoMethod</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;dc.Allow&quot;</span>, <span style="color: #0000dd;">1</span><span style="color: #000000;">&#41;</span>;
 	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;wks.dc.Allow(1) = &quot;</span>, nn<span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
-<p><b>EX3</b>
-</p>
-<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> cpdc<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
-<span style="color: #000000;">&#123;</span>
-	WorksheetPage wp <span style="color: #000080;">=</span> Project.<span style="color: #000000;">Pages</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
-	wp.<span style="color: #000000;">DoMethod</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;cp.add&quot;</span>, <span style="color: #ff00ff;">&quot;1 40 DataConnector 3&quot;</span><span style="color: #000000;">&#41;</span>;<span style="color: #008000;">// show Control Pane</span>
-	GETN_BOX<span style="color: #000000;">&#40;</span>trTemp<span style="color: #000000;">&#41;</span>
-	GETN_NUM<span style="color: #000000;">&#40;</span>xFrom, <span style="color: #ff00ff;">&quot;X From&quot;</span>, <span style="color: #0000dd;">1.3</span><span style="color: #000000;">&#41;</span>
-	GETN_NUM<span style="color: #000000;">&#40;</span>xStep, <span style="color: #ff00ff;">&quot;X Step&quot;</span>, <span style="color: #000040;">-</span><span style="color: #0000dd;">0.5</span><span style="color: #000000;">&#41;</span>
-	string strxml <span style="color: #000080;">=</span> trTemp.<span style="color: #000000;">XML</span>;
-	wp.<span style="color: #000000;">DoMethod</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;cp.SetTree&quot;</span>, strxml<span style="color: #000000;">&#41;</span>;
-<span style="color: #000000;">&#125;</span></pre>
 <p><b>EX4</b>
 </p>
 <pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//DoMethod is implemented for Column class in 9.8b</span>

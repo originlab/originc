@@ -22,7 +22,10 @@ Constructor to create a vector copy of an Origin Dataset.
 </p><p><br />
 Constructor to create a vector from a source column.
 </p><p><br />
+Constructor to create a vector from another vector.<font color="red">(2027)</font>
+</p><p><br />
 Complex vector constructor.
+</p><p><br />
 </p>
 <h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
 <pre class="oc" style="font-family:monospace;">vector<span style="color: #000000;">&#40;</span> <span style="color: #000000;">&#41;</span></pre>
@@ -37,7 +40,12 @@ Complex vector constructor.
 <pre class="oc" style="font-family:monospace;">vector<span style="color: #000000;">&#40;</span> Column <span style="color: #000040;">&amp;</span> cc, <span style="color: #0000ff;">int</span> nLowerIndex <span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">1</span>, <span style="color: #0000ff;">int</span> nUpperIndex <span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">1</span>, <span style="color: #0000ff;">int</span> nWriteback <span style="color: #000080;">=</span> WRITEBACK_NO <span style="color: #000000;">&#41;</span></pre>
 <p><br />
 </p>
+<pre class="oc" style="font-family:monospace;">vector<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">const</span> vectorbase <span style="color: #000040;">&amp;</span> vOther <span style="color: #000000;">&#41;</span></pre>
+<p><br />
+</p>
 <pre class="oc" style="font-family:monospace;">vector<span style="color: #000000;">&#40;</span> vector <span style="color: #000040;">&amp;</span> vR, vector <span style="color: #000040;">&amp;</span> vI <span style="color: #000000;">&#41;</span></pre>
+<p><br />
+</p>
 <h2><a name="Parameters"></a><span class="mw-headline">Parameters</span></h2>
 <dl><dt> nSize</dt>
 <dd>[input] Size of declared vector</dd></dl>
@@ -67,10 +75,16 @@ Complex vector constructor.
 <dd>};</dd></dl>
 <p><br />
 </p>
+<dl><dt> vOther </dt>
+<dd>[input] source vector</dd></dl>
+<p><br />
+</p>
 <dl><dt> vR</dt>
 <dd>[input] real part of complex vector</dd>
 <dt> vI</dt>
 <dd>[input] image part of complex vector</dd></dl>
+<p><br />
+</p>
 <h2><a name="Return"></a><span class="mw-headline">Return</span></h2>
 <h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
 <p><b>EX1</b>
@@ -112,7 +126,8 @@ Complex vector constructor.
 		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%d<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, vN<span style="color: #000000;">&#91;</span>m<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
 	<span style="color: #000000;">&#125;</span>
 <span style="color: #000000;">&#125;</span></pre>
-<p><b>EX4</b>
+<p><br />
+<b>EX4</b>
 </p>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> vector_vector_ex4<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
 <span style="color: #000000;">&#123;</span>
@@ -158,7 +173,22 @@ Complex vector constructor.
 <span style="color: #000000;">&#125;</span></pre>
 <p><b>EX6</b>
 </p>
-<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> vector_vector_ex6<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<pre class="oc" style="font-family:monospace;">vector _get_data<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector vv<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">5</span><span style="color: #000000;">&#41;</span>;
+	vv.<span style="color: #000000;">Data</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">1.0</span>, <span style="color: #0000dd;">10.0</span>, <span style="color: #0000dd;">1.5</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">return</span> vv;
+<span style="color: #000000;">&#125;</span>
+
+<span style="color: #0000ff;">void</span> vector_ex6<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector v1 <span style="color: #000080;">=</span> _get_data<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
+	vector v2 <span style="color: #000080;">=</span> v1;
+	vector v3<span style="color: #000000;">&#40;</span>v2<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<p><b>EX7</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> vector_vector_ex7<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
 <span style="color: #000000;">&#123;</span>
     vector vR <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span> <span style="color: #0000dd;">1</span>, <span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span> <span style="color: #000000;">&#125;</span>;
     vector vI <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span> <span style="color: #0000dd;">4</span>, <span style="color: #0000dd;">5</span>, <span style="color: #0000dd;">6</span> <span style="color: #000000;">&#125;</span>;

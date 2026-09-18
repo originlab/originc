@@ -19,10 +19,18 @@
 </p>
 <h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
 <p>Parse a string as JSON and transform it to a struct/class object
+</p><p>Parse a string as JSON and transform it to a struct/class object
+</p><p>Parse a string as JSON and transform it to a vector
+</p><p>Parse a string as JSON and transform it to a matrix<font color="red">(2027)</font>
+</p><p><br />
 </p>
 <h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> FromString<span style="color: #000000;">&#40;</span> ClassObject data, LPCSTR str, DWORD dwJSONLOAD <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span> <span style="color: #000000;">&#41;</span></pre>
-<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> FromString<span style="color: #000000;">&#40;</span> vectorbase <span style="color: #000040;">&amp;</span> data, LPCSTR str <span style="color: #000000;">&#41;</span></pre>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> FromString<span style="color: #000000;">&#40;</span> ClassObject data, LPCSTR str, OCJSONFromString <span style="color: #000040;">*</span> params <span style="color: #000000;">&#41;</span></pre>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> FromString<span style="color: #000000;">&#40;</span> vectorbase <span style="color: #000040;">&amp;</span> data, LPCSTR str, OCJSONFromString <span style="color: #000040;">*</span> params <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000000;">&#41;</span></pre>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">BOOL</span> FromString<span style="color: #000000;">&#40;</span> matrixbase <span style="color: #000040;">&amp;</span> data, LPCSTR str, OCJSONFromString <span style="color: #000040;">*</span> params <span style="color: #000080;">=</span> <span style="color: #0000ff;">NULL</span> <span style="color: #000000;">&#41;</span></pre>
+<p><br />
+</p>
 <h2><a name="Parameters"></a><span class="mw-headline">Parameters</span></h2>
 <dl><dt> data</dt>
 <dd>[output]Reference to a struct/class object</dd>
@@ -32,10 +40,32 @@
 <dd>[input]Additional options for loading JSON string
 <dl><dd>JSONLOAD_ODE_SHORTENED = 0x00010000</dd>
 <dd>JSONLOAD_ODE_PREPARE_FOR_IMPORT = 0x00020000</dd></dl></dd></dl>
+<p><br />
+</p>
+<dl><dt> data</dt>
+<dd>[output]Reference to a struct/class object</dd>
+<dt> str</dt>
+<dd>[input]Stringified JSON string from given object</dd>
+<dt> params</dt>
+<dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONFromString below</dd></dl>
+<p><br />
+</p>
 <dl><dt> data</dt>
 <dd>[output]vector to accept Javascript array</dd>
 <dt> str</dt>
-<dd>[input]Stringified JSON string from given object</dd></dl>
+<dd>[input]Stringified JSON string from given object</dd>
+<dt> params</dt>
+<dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONFromString below</dd></dl>
+<p><br />
+</p>
+<dl><dt> data</dt>
+<dd>[output]matrix to accept Javascript array</dd>
+<dt> str</dt>
+<dd>[input]Stringified JSON string from given object</dd>
+<dt> params</dt>
+<dd>[input] Pointer to a struct that holds additional parameters. See struct OCJSONFromString below</dd></dl>
+<p><br />
+</p>
 <h2><a name="Return"></a><span class="mw-headline">Return</span></h2>
 <p>TRUE on success, FALSE on failure
 </p>
@@ -92,7 +122,40 @@
 	string strds2;
 	JSON.<span style="color: #000000;">ToString</span><span style="color: #000000;">&#40;</span>dsA, strds2<span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
+<p><b>EX3</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span>  testmatrix<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	matrix<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> mm, mm2;
+    mm.<span style="color: #000000;">SetSize</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">int</span> i;
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span>i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; i <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">2</span>; i<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span> <span style="color: #000000;">&#123;</span>
+		vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> vPara;
+		vPara.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>i<span style="color: #000040;">+</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>;
+		mm.<span style="color: #000000;">SetRow</span><span style="color: #000000;">&#40;</span>vPara, i<span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+    string str;
+    JSON.<span style="color: #000000;">ToString</span><span style="color: #000000;">&#40;</span>mm, str<span style="color: #000000;">&#41;</span>; 
+	JSON.<span style="color: #000000;">FromString</span><span style="color: #000000;">&#40;</span>mm2, str<span style="color: #000000;">&#41;</span>; 
+<span style="color: #000000;">&#125;</span></pre>
+<p><br />
+</p>
 <h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<p>Declaration of OCJSONFromString
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">enum</span> <span style="color: #000000;">&#123;</span>
+	JSONLOAD_ODE_SHORTENED			<span style="color: #000080;">=</span> 0x00010000,
+	JSONLOAD_ODE_PREPARE_FOR_IMPORT		<span style="color: #000080;">=</span> 0x00020000,
+	JSONLOAD_CONVERT_XML_ELEMENTS_ATTRIBUTES<span style="color: #000080;">=</span> 0x00100000,
+
+<span style="color: #000000;">&#125;</span>;
+
+<span style="color: #0000ff;">typedef</span> <span style="color: #0000ff;">struct</span> OCJSONFromString
+<span style="color: #000000;">&#123;</span>
+	DWORD dwLoad;
+	<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> szTreeAttrKey;
+	<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span><span style="color: #000040;">*</span> szTreeValKey;
+<span style="color: #000000;">&#125;</span> OCJSONFromString;</pre>
 <h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
 <dl><dd><a href="../../OriginC/OriginC/JSON-ToString.html" title="OriginC:JSON-ToString">JSON::ToString</a></dd>
 <dd><a href="../../OriginC/OriginC/Okutil_http_get_(global_function).html" title="OriginC:Okutil http get (global function)">okutil_http_get</a></dd></dl>

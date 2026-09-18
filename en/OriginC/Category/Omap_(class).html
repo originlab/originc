@@ -1,0 +1,113 @@
+<h1 class="firstHeading">2.2.7.5 omap</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Name"><span class="tocnumber">1</span> <span class="toctext">Name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Remark"><span class="tocnumber">2</span> <span class="toctext">Remark</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Hierarchy"><span class="tocnumber">3</span> <span class="toctext">Hierarchy</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Header_to_Include"><span class="tocnumber">5</span> <span class="toctext">Header to Include</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Reference"><span class="tocnumber">6</span> <span class="toctext">Reference</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Members"><span class="tocnumber">7</span> <span class="toctext">Members</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Name"></a><span class="mw-headline">Name</span></h2>
+<p>omap
+</p>
+<h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<p>The OriginC omap class is a sorted associative container that contains key-value pairs with unique keys. Key and value must each be a numeric simple type or string. For floating keys or values (double / float), NANUM, NaN, and Inf are rejected. Set/Get/Contains/Erase return FALSE for those keys.
+</p>
+<h2><a name="Hierarchy"></a><span class="mw-headline">Hierarchy</span></h2>
+<h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> map_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	omap<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>, string<span style="color: #000080;">&gt;</span> m1;
+	m1.<span style="color: #000000;">Set</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">100</span>, <span style="color: #ff00ff;">&quot;Hello&quot;</span><span style="color: #000000;">&#41;</span>;
+	m1.<span style="color: #000000;">Set</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">200</span>, <span style="color: #ff00ff;">&quot;World&quot;</span><span style="color: #000000;">&#41;</span>;
+	string str;
+	<span style="color: #0000ff;">if</span> <span style="color: #000000;">&#40;</span>m1.<span style="color: #000000;">Get</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">200</span>, str<span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;Found value at 200:&#160;%s<span style="color: #666666; font-weight: bold;">\r</span><span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, str<span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
+<h2><a name="Reference"></a><span class="mw-headline">Reference</span></h2>
+<h2><a name="Members"></a><span class="mw-headline">Members</span></h2>
+<table class="TableGrid" style="; border-spacing: 0px; border-spacing: 0px;" border="1">
+<tr>
+<th bgcolor="#EFEFEF" width="2%">Name
+</th>
+<th bgcolor="#EFEFEF" width="18%">Brief
+</th>
+<th bgcolor="#EFEFEF" width="2%">Example
+</th></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-Contains.html" title="OriginC:Omap-Contains">Contains</a>
+</td>
+<td> Check whether a key is in the map
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-Contains.html#Examples" title="OriginC:Omap-Contains">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-Erase.html" title="OriginC:Omap-Erase">Erase</a>
+</td>
+<td> Remove the specified key from the map
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-Erase.html#Examples" title="OriginC:Omap-Erase">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-Get.html" title="OriginC:Omap-Get">Get</a>
+</td>
+<td> Get value by key
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-Get.html#Examples" title="OriginC:Omap-Get">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-GetKeys.html" title="OriginC:Omap-GetKeys">GetKeys</a>
+</td>
+<td> Get all keys
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-GetKeys.html#Examples" title="OriginC:Omap-GetKeys">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-GetSize.html" title="OriginC:Omap-GetSize">GetSize</a>
+</td>
+<td> Return the size of the map
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-GetSize.html#Examples" title="OriginC:Omap-GetSize">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-GetValues.html" title="OriginC:Omap-GetValues">GetValues</a>
+</td>
+<td> Get all values
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-GetValues.html#Examples" title="OriginC:Omap-GetValues">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-omap.html" title="OriginC:Omap-omap">omap</a>
+</td>
+<td> Default constructor
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-omap.html#Examples" title="OriginC:Omap-omap">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-RemoveAll.html" title="OriginC:Omap-RemoveAll">RemoveAll</a>
+</td>
+<td> Remove all keys and values from the map
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-RemoveAll.html#Examples" title="OriginC:Omap-RemoveAll">Examples</a>
+</td></tr>
+<tr>
+<td> <a href="../../OriginC/OriginC/Omap-Set.html" title="OriginC:Omap-Set">Set</a>
+</td>
+<td> Set value by key
+</td>
+<td align="center"> <a href="../../OriginC/OriginC/Omap-Set.html#Examples" title="OriginC:Omap-Set">Examples</a>
+</td></tr></table>
+
+
+
+
+
+

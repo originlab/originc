@@ -42,8 +42,15 @@
 	<span style="color: #0000ff;">for</span><span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> ii <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; ii<span style="color: #000080;">&lt;</span><span style="color: #0000dd;">3</span>; ii<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span>
 		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%f:	%f<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span>, dX<span style="color: #000000;">&#91;</span>ii<span style="color: #000000;">&#93;</span>, normcdf<span style="color: #000000;">&#40;</span>dX<span style="color: #000000;">&#91;</span>ii<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;
 <span style="color: #000000;">&#125;</span></pre>
-<p><br />
+<p><b>EX2</b>
+<br />Support vector in <font color="red">Origin 2026b</font>
 </p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> normcdf_ex2<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	vector vX <span style="color: #000080;">=</span> <span style="color: #000000;">&#123;</span><span style="color: #0000dd;">1</span>, <span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span><span style="color: #000000;">&#125;</span>;
+	vector vY;
+	vY <span style="color: #000080;">=</span> normcdf<span style="color: #000000;">&#40;</span> vX <span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
 <h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
 <h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
 <h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>

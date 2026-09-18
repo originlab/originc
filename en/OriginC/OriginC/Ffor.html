@@ -1,0 +1,126 @@
+<h1 class="firstHeading">2.4.2 ffor</h1><p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Name"><span class="tocnumber">1</span> <span class="toctext">Name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Description"><span class="tocnumber">2</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Syntax"><span class="tocnumber">3</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Remark"><span class="tocnumber">4</span> <span class="toctext">Remark</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Inside_ffor_can_call_these_functions"><span class="tocnumber">4.1</span> <span class="toctext">Inside ffor can call these functions</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#For_thread-safe.2C_these_interlocked_functions_should_use_for_increment.2Fdecrement"><span class="tocnumber">4.2</span> <span class="toctext">For thread-safe, these interlocked functions should use for increment/decrement</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Header_to_Include"><span class="tocnumber">6</span> <span class="toctext">Header to Include</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#See_Also"><span class="tocnumber">7</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Reference"><span class="tocnumber">8</span> <span class="toctext">Reference</span></a></li>
+</ul>
+</div>
+
+<h2><a name="Name"></a><span class="mw-headline">Name</span></h2>
+<p>ffor
+</p>
+<h2><a name="Description"></a><span class="mw-headline">Description</span></h2>
+<p>A multithreaded faster <a href="../../OriginC/OriginC/For.html" title="OriginC:For">for</a> statement.
+</p>
+<h2><a name="Syntax"></a><span class="mw-headline">Syntax</span></h2>
+<pre class="oc" style="font-family:monospace;">ffor<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> <span style="color: #000080;">&lt;</span>variable name<span style="color: #000080;">&gt;</span>; <span style="color: #000080;">&lt;</span>start valuue<span style="color: #000080;">&gt;</span>;  <span style="color: #000080;">&lt;</span>end value<span style="color: #000080;">&gt;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#123;</span><span style="color: #000000;">&#125;</span></pre>
+<h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
+<h3><a name="Inside_ffor_can_call_these_functions"></a><span class="mw-headline">Inside ffor can call these functions</span></h3>
+<dl><dt> External VC functions</dt>
+<dt> #pragma ffunc() functions (see example below)</dt></dl>
+<h3><a name="For_thread-safe.2C_these_interlocked_functions_should_use_for_increment.2Fdecrement"></a><span class="mw-headline">For thread-safe, these interlocked functions should use for increment/decrement</span></h3>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">int</span>  AtomicLoad<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// return value</span>
+<span style="color: #0000ff;">void</span> AtomicStore<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p, <span style="color: #0000ff;">int</span> value<span style="color: #000000;">&#41;</span> <span style="color: #008000;">// store value in p</span>
+<span style="color: #0000ff;">int</span>  AtomicExchange<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p, <span style="color: #0000ff;">int</span> value <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// store value in p, and return old value</span>
+<span style="color: #0000ff;">int</span> AtomicInc<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p<span style="color: #000000;">&#41;</span> <span style="color: #008000;">// +1, return value</span>
+<span style="color: #0000ff;">int</span> AtomicDec<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// -1, return value</span>
+<span style="color: #0000ff;">int</span> AtomicAdd<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">int</span> <span style="color: #000040;">*</span> p, <span style="color: #0000ff;">int</span> n <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// +n, returns old value</span>
+<span style="color: #008000;">// double</span>
+<span style="color: #0000ff;">double</span> AtomicLoadDbl<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">const</span> <span style="color: #0000ff;">double</span> <span style="color: #000040;">*</span> p <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// return value</span>
+<span style="color: #0000ff;">void</span>   AtomicStoreDbl<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">double</span> <span style="color: #000040;">*</span> p, <span style="color: #0000ff;">double</span> value <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// store value in p</span>
+<span style="color: #0000ff;">double</span> AtomicExchangeDbl<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">double</span> <span style="color: #000040;">*</span> p, <span style="color: #0000ff;">double</span> value <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// store value in p, and return old value</span>
+<span style="color: #0000ff;">double</span> AtomicAddDbl<span style="color: #000000;">&#40;</span> <span style="color: #0000ff;">double</span><span style="color: #000040;">*</span> p, <span style="color: #0000ff;">double</span> d <span style="color: #000000;">&#41;</span> <span style="color: #008000;">// +d, returns old value</span></pre>
+<h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX1</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #008000;">//active matrix sheet should have 3 matrix object</span>
+<span style="color: #008000;">// this will multiply the first two and put results on third one</span>
+<span style="color: #0000ff;">void</span> ffor_ex<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	MatrixPage mPage <span style="color: #000080;">=</span> Project.<span style="color: #000000;">Pages</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span><span style="color: #000040;">!</span>mPage<span style="color: #000000;">&#41;</span>
+		<span style="color: #0000ff;">return</span>;
+	MatrixLayer mlyr1 <span style="color: #000080;">=</span> mPage.<span style="color: #000000;">Layers</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>;
+	Matrix matLayer1<span style="color: #000000;">&#40;</span>mlyr1, <span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>;
+	Matrix matLayer2<span style="color: #000000;">&#40;</span>mlyr1, <span style="color: #0000dd;">1</span><span style="color: #000000;">&#41;</span>;
+	Matrix matLayer3<span style="color: #000000;">&#40;</span>mlyr1, <span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>;
+	matrix mat1, mat2, mat3;
+	mat1 <span style="color: #000080;">=</span> matLayer1;
+	mat2 <span style="color: #000080;">=</span> matLayer2;
+	mat3 <span style="color: #000080;">=</span> matLayer3;
+	<span style="color: #0000ff;">int</span> nCols <span style="color: #000080;">=</span> mat1.<span style="color: #000000;">GetNumCols</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">int</span> nRows <span style="color: #000080;">=</span> mat1.<span style="color: #000000;">GetNumRows</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">if</span><span style="color: #000000;">&#40;</span>nRows <span style="color: #000040;">!</span><span style="color: #000080;">=</span> nCols<span style="color: #000000;">&#41;</span>
+		<span style="color: #0000ff;">return</span>;
+	
+	ffor<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> nR; <span style="color: #0000dd;">0</span>;  nRows<span style="color: #000000;">&#41;</span>
+	<span style="color: #000000;">&#123;</span>
+		ffor<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> nC; <span style="color: #0000dd;">0</span>; nRows<span style="color: #000000;">&#41;</span>
+		<span style="color: #000000;">&#123;</span>
+			<span style="color: #0000ff;">double</span> temp <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>;
+			ffor<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> k; <span style="color: #0000dd;">0</span>; nRows<span style="color: #000000;">&#41;</span>
+			<span style="color: #000000;">&#123;</span>
+				<span style="color: #0000ff;">double</span> dmat <span style="color: #000080;">=</span> mat1<span style="color: #000000;">&#91;</span>nR<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#91;</span>k<span style="color: #000000;">&#93;</span> <span style="color: #000040;">*</span> mat2<span style="color: #000000;">&#91;</span>k<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#91;</span>nC<span style="color: #000000;">&#93;</span>;
+				AtomicAddDbl<span style="color: #000000;">&#40;</span><span style="color: #000040;">&amp;</span>temp, dmat<span style="color: #000000;">&#41;</span>;
+			<span style="color: #000000;">&#125;</span>
+			mat3<span style="color: #000000;">&#91;</span>nR<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#91;</span>nC<span style="color: #000000;">&#93;</span> <span style="color: #000080;">=</span> temp;
+		<span style="color: #000000;">&#125;</span>
+	<span style="color: #000000;">&#125;</span>
+	matLayer3 <span style="color: #000080;">=</span> mat3;
+<span style="color: #000000;">&#125;</span></pre>
+<p><br />
+<b>EX2</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">#pragma</span> ffunc<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #000000;">&#41;</span>
+<span style="color: #0000ff;">int</span> myAdd<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> <span style="color: #000040;">&amp;</span>n1, <span style="color: #0000ff;">int</span> <span style="color: #000040;">&amp;</span>n2<span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+	myDuplicate<span style="color: #000000;">&#40;</span>n1<span style="color: #000000;">&#41;</span>;
+	myDuplicate<span style="color: #000000;">&#40;</span>n2<span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">return</span> n1 <span style="color: #000040;">+</span> n2;
+<span style="color: #000000;">&#125;</span>
+<span style="color: #0000ff;">void</span> myDuplicate<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> <span style="color: #000040;">&amp;</span>n<span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>  
+	n <span style="color: #000040;">*</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span>;
+<span style="color: #000000;">&#125;</span>
+<span style="color: #0000ff;">#pragma</span> ffunc<span style="color: #000000;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span> 
+
+<span style="color: #0000ff;">void</span> ffor_ffunc_ex<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> n <span style="color: #000080;">=</span> <span style="color: #0000dd;">5</span><span style="color: #000000;">&#41;</span>
+<span style="color: #000000;">&#123;</span>
+ 	Profiler  junk;
+ 	
+    vector v1;
+    vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> v2;;
+    vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> v3;;
+	v1.<span style="color: #000000;">Data</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">5</span>, n<span style="color: #000040;">+</span><span style="color: #0000dd;">5</span><span style="color: #000000;">&#41;</span>;
+	v2.<span style="color: #000000;">Data</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">5</span>, n<span style="color: #000040;">+</span><span style="color: #0000dd;">5</span><span style="color: #000000;">&#41;</span>;	
+	v3.<span style="color: #000000;">Data</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">5</span>, n<span style="color: #000040;">+</span><span style="color: #0000dd;">5</span><span style="color: #000000;">&#41;</span>;	      
+  	ffor<span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> ii; <span style="color: #0000dd;">0</span>;  n<span style="color: #000000;">&#41;</span>
+  	<span style="color: #000000;">&#123;</span>
+   		v1<span style="color: #000000;">&#91;</span>ii<span style="color: #000000;">&#93;</span> <span style="color: #000080;">=</span> myAdd<span style="color: #000000;">&#40;</span>v2<span style="color: #000000;">&#91;</span>ii<span style="color: #000000;">&#93;</span>, v3<span style="color: #000000;">&#91;</span>ii<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
+   	<span style="color: #000000;">&#125;</span>          
+<span style="color: #000000;">&#125;</span></pre>
+<p><br />
+</p>
+<h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
+<h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
+<p><a href="../../OriginC/OriginC/For.html" title="OriginC:For">for</a>
+</p>
+<h2><a name="Reference"></a><span class="mw-headline">Reference</span></h2>
+
+
+
+
+
+
