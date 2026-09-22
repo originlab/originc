@@ -110,16 +110,16 @@ It can help to find out errors when base class’s prototype is modified but der
 <h3><a name="vector_of_simple_struct"></a><span class="mw-headline">vector of simple struct</span></h3>
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">struct</span> StSimpleTypes
 <span style="color: #000000;">&#123;</span>
-	<span style="color: #0000ff;">int</span>				nValue;
+	<span style="color: #0000ff;">int</span>			nValue;
 	<span style="color: #0000ff;">double</span>			rValue;
 	
 <span style="color: #000000;">&#125;</span>;
 
 <span style="color: #0000ff;">void</span> vector_struct_simple_type<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
 <span style="color: #000000;">&#123;</span>
-	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>		vst;
+	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>	vst;
 	
-	StSimpleTypes				st1;
+	StSimpleTypes		st1;
 	
 	st1.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">100</span>;
 	st1.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1000.88</span>;
@@ -136,8 +136,8 @@ It can help to find out errors when base class’s prototype is modified but der
 	out_int<span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;size=&quot;</span>, vst.<span style="color: #000000;">GetSize</span><span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span><span style="color: #000000;">&#41;</span>;
 	vst.<span style="color: #000000;">RemoveAt</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">0</span><span style="color: #000000;">&#41;</span>;
 	
-	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>		vst2;	
-	StSimpleTypes				st2;
+	vector<span style="color: #000080;">&lt;</span>StSimpleTypes<span style="color: #000080;">&gt;</span>	vst2;	
+	StSimpleTypes		st2;
 	
 	st2.<span style="color: #000000;">nValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span>;
 	st2.<span style="color: #000000;">rValue</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">10.88</span>;
@@ -276,15 +276,15 @@ static_assert <span style="color: #000000;">&#40;</span> test_int<span style="co
 <pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span>  testmatrix<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span>
 <span style="color: #000000;">&#123;</span>
 	matrix<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> mm, mm2;
-    mm.<span style="color: #000000;">SetSize</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
+	mm.<span style="color: #000000;">SetSize</span><span style="color: #000000;">&#40;</span><span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span><span style="color: #000000;">&#41;</span>;
 	<span style="color: #0000ff;">int</span> i;
 	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span>i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; i <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">2</span>; i<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span> <span style="color: #000000;">&#123;</span>
 		vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> vPara;
 		vPara.<span style="color: #000000;">Add</span><span style="color: #000000;">&#40;</span>i<span style="color: #000040;">+</span><span style="color: #0000dd;">2</span><span style="color: #000000;">&#41;</span>;
 		mm.<span style="color: #000000;">SetRow</span><span style="color: #000000;">&#40;</span>vPara, i<span style="color: #000000;">&#41;</span>;
 	<span style="color: #000000;">&#125;</span>
-    string str;
-    JSON.<span style="color: #000000;">ToString</span><span style="color: #000000;">&#40;</span>mm, str<span style="color: #000000;">&#41;</span>; 
+	string str;
+	JSON.<span style="color: #000000;">ToString</span><span style="color: #000000;">&#40;</span>mm, str<span style="color: #000000;">&#41;</span>; 
 	JSON.<span style="color: #000000;">FromString</span><span style="color: #000000;">&#40;</span>mm2, str<span style="color: #000000;">&#41;</span>; 
 <span style="color: #000000;">&#125;</span></pre>
 <p>For more: <a href="../../OriginC/OriginC/JSON-FromString.html" title="OriginC:JSON-FromString">FromString</a>, <a href="../../OriginC/OriginC/JSON-ToString.html" title="OriginC:JSON-ToString">ToString</a>
@@ -384,7 +384,8 @@ static_assert <span style="color: #000000;">&#40;</span> test_int<span style="co
 <p>For more: <a href="../../OriginC/OriginC/If.html" title="OriginC:If">if</a>, <a href="../../OriginC/OriginC/Switch.html" title="OriginC:Switch">switch</a>
 </p>
 <h3><a name="Sticky_Scroll_in_Code_Builder"></a><span class="mw-headline">Sticky Scroll in Code Builder</span></h3>
-<p><a  class="image"><img alt="StickyscrollforCodeBuilder.gif" src="../images/Recent_Changes/StickyscrollforCodeBuilder.gif?v=54978" width="960"  /></a>
+<p><a  class="image"><img alt="StickyscrollforCodeBuilder.gif" src="../images/Recent_Changes/StickyscrollforCodeBuilder.gif?v=54982" width="430"  /></a>
+</p><p>If you want to turn Sticky Scroll off, right-click at the Sticky Scroll header area and select Sticky Scroll. <a class="external text" href="../../CodeBuilder/CodeBuilder/Workspace_text_editor_and_other_windows.html#Text_Editor">For more.</a>
 </p>
 <h3><a name="Code_Builder_support_drag_the_file_to_other_app"></a><span class="mw-headline">Code Builder support drag the file to other app</span></h3>
 <p>From Origin2027, Code Builder support drag the file from MDI or workspace tree to other app.
