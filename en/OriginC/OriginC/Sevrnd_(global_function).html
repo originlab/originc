@@ -32,6 +32,19 @@
 <p>Return NE_NOERROR(0) on success, otherwise error
 </p>
 <h2><a name="Examples"></a><span class="mw-headline">Examples</span></h2>
+<p><b>EX</b>
+</p>
+<pre class="oc" style="font-family:monospace;"><span style="color: #0000ff;">void</span> test_sevrnd<span style="color: #000000;">&#40;</span><span style="color: #000000;">&#41;</span> 
+<span style="color: #000000;">&#123;</span>
+	<span style="color: #0000ff;">int</span> n <span style="color: #000080;">=</span> <span style="color: #0000dd;">10</span>;
+	vector<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">double</span><span style="color: #000080;">&gt;</span> vd<span style="color: #000000;">&#40;</span>n<span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">int</span> nRet <span style="color: #000080;">=</span> sevrnd<span style="color: #000000;">&#40;</span>vd, n, <span style="color: #0000dd;">0</span>, <span style="color: #0000dd;">1.0</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #0000ff;">for</span> <span style="color: #000000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span>; i <span style="color: #000080;">&lt;</span> n; i<span style="color: #000040;">++</span><span style="color: #000000;">&#41;</span> 
+	<span style="color: #000000;">&#123;</span>
+		<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;%f<span style="color: #666666; font-weight: bold;">\t</span>&quot;</span>, vd<span style="color: #000000;">&#91;</span>i<span style="color: #000000;">&#93;</span><span style="color: #000000;">&#41;</span>;
+	<span style="color: #000000;">&#125;</span>
+	<span style="color: #000000;">printf</span><span style="color: #000000;">&#40;</span><span style="color: #ff00ff;">&quot;<span style="color: #666666; font-weight: bold;">\n</span>&quot;</span><span style="color: #000000;">&#41;</span>;
+<span style="color: #000000;">&#125;</span></pre>
 <h2><a name="Remark"></a><span class="mw-headline">Remark</span></h2>
 <h2><a name="See_Also"></a><span class="mw-headline">See Also</span></h2>
 <h2><a name="Header_to_Include"></a><span class="mw-headline">Header to Include</span></h2>
